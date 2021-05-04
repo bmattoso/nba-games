@@ -70,6 +70,7 @@ dependencies {
     implementation "androidx.core:core-ktx:$core_ktx"
     implementation "androidx.lifecycle:lifecycle-runtime-ktx:$androidx_lifecycle"
     implementation "androidx.startup:startup-runtime:$androidx_startup"
+    implementation "com.airbnb.android:lottie:$lottie_version"
     implementation "com.google.android.material:material:$google_material"
     implementation "com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:$kotlinx_serialization_converter"
     implementation "com.squareup.okhttp3:okhttp:$okhttp"

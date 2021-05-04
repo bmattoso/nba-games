@@ -17,4 +17,5 @@ ext {
     kotlinx_serialization_converter = '0.8.0'
     okhttp = '4.9.1'
     retrofit = '2.9.0'
+    lottie_version = '3.4.0'
 }
