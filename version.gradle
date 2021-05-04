@@ -13,4 +13,8 @@ ext {
     androidx_junit_ext = '1.1.2'
     koin_version = '3.0.1'
     kotlin_version = '1.4.32'
+    kotlinx_serialization = '1.0.0'
+    kotlinx_serialization_converter = '0.8.0'
+    okhttp = '4.9.1'
+    retrofit = '2.9.0'
 }
