@@ -17,6 +17,6 @@ ext {
     kotlinx_serialization_converter = '0.8.0'
     okhttp = '4.9.1'
     retrofit = '2.9.0'
-    lottie_compose_version = '1.0.0-alpha02'
+    lottie_compose_version = '1.0.0-beta03-1'
     compone_navigation_version = '1.0.0-alpha10'
 }
