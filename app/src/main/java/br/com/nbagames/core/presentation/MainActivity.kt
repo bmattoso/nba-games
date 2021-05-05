@@ -1,38 +1,35 @@
-package br.com.nbagames.splash
+package br.com.nbagames.core.presentation
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
+import br.com.nbagames.core.navigation.NavigationRoutes
+import br.com.nbagames.splash.Splash
 import br.com.nbagames.ui.theme.NbaGamesTheme
 
-class SplashActivity : ComponentActivity() {
+class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setContent {
             NbaGamesTheme {
                 Surface(color = MaterialTheme.colors.background) {
-                    Greeting("Android")
+                    NavigationRoutes()
                 }
             }
         }
     }
 }
 
-@Composable
-fun Greeting(name: String) {
-    Text(text = "Hello $name!")
-}
-
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
     NbaGamesTheme {
-        Greeting("Android")
+        NavigationRoutes()
     }
 }

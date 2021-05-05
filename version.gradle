@@ -18,4 +18,5 @@ ext {
     okhttp = '4.9.1'
     retrofit = '2.9.0'
     lottie_version = '3.4.0'
+    compone_navigation_version = '1.0.0-alpha10'
 }
