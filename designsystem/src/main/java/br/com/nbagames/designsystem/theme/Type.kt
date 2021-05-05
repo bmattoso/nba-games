@@ -1,4 +1,4 @@
-package br.com.nbagames.ui.theme
+package br.com.nbagames.designsystem.theme
 
 import androidx.compose.material.Typography
 import androidx.compose.ui.text.TextStyle

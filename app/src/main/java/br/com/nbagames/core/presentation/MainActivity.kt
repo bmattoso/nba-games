@@ -8,8 +8,7 @@ import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 import br.com.nbagames.core.navigation.NavigationRoutes
-import br.com.nbagames.splash.Splash
-import br.com.nbagames.ui.theme.NbaGamesTheme
+import br.com.nbagames.designsystem.theme.NbaGamesTheme
 
 class MainActivity : ComponentActivity() {
 
