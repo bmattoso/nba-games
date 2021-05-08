@@ -3,6 +3,7 @@ package br.com.nbagames.designsystem.components
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.TextUnit
@@ -15,7 +16,8 @@ fun TextField(
     modifier: Modifier = Modifier,
     fontSize: TextUnit = 16.sp,
     fontStyle: FontStyle = FontStyle.Normal,
-    fontWeight: FontWeight = FontWeight.Normal
+    fontWeight: FontWeight = FontWeight.Normal,
+    color: Color = Color.Black
 ) {
     Text(
         text = text,
@@ -24,5 +26,6 @@ fun TextField(
         fontSize = fontSize,
         fontStyle = fontStyle,
         fontWeight = fontWeight,
+        color = color,
     )
 }

@@ -7,6 +7,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import androidx.navigation.compose.navigate
 import androidx.navigation.compose.rememberNavController
 import br.com.nbagames.home.Home
 import br.com.nbagames.splash.Splash
@@ -36,5 +37,6 @@ internal data class NavigationDestination(
     val context: Context
 ) {
     fun onSetupLoaded() {
+        navController.navigate(Routes.Home.name)
     }
 }
