@@ -5,8 +5,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.NavHostController
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import androidx.navigation.compose.navArgument
 import androidx.navigation.compose.navigate
 import androidx.navigation.compose.rememberNavController
 import br.com.nbagames.home.Home
@@ -21,13 +23,19 @@ fun NavigationRoutes(startDestination: String = Routes.Splash.name) {
     NavHost(navController = navController, startDestination = startDestination) {
 
         composable(Routes.Splash.name) {
-            Splash(
-                onSetupLoaded = actions::onSetupLoaded
-            )
+            Splash(onSetupLoaded = actions::onSetupLoaded)
         }
 
         composable(Routes.Home.name) {
-            Home()
+            Home(onLiveGameClick = actions::onLiveGameClick)
+        }
+
+        composable(
+            route = Routes.LiveGame.name + "/{gameId}",
+            arguments = listOf(navArgument("gameId") { type = NavType.StringType }),
+        ) { backStackEntry ->
+            val arguments = requireNotNull(backStackEntry.arguments)
+
         }
     }
 }
@@ -38,5 +46,9 @@ internal data class NavigationDestination(
 ) {
     fun onSetupLoaded() {
         navController.navigate(Routes.Home.name)
+    }
+
+    fun onLiveGameClick(gameId: String) {
+        navController.navigate(Routes.LiveGame.name + "/" + gameId)
     }
 }

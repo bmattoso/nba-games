@@ -11,13 +11,15 @@ import br.com.nbagames.designsystem.R
 private val DarkColorPalette = darkColors(
     primary = Color(R.color.brightGray),
     primaryVariant = Color(R.color.blackCurrant),
-    secondary = Color(R.color.londonHue)
+    secondary = Color(R.color.londonHue),
+    background = Color(R.color.blackCurrant)
 )
 
 private val LightColorPalette = lightColors(
     primary = Color(R.color.brightGrayLight),
     primaryVariant = Color(R.color.blackCurrant),
-    secondary = Color(R.color.londonHue)
+    secondary = Color(R.color.londonHue),
+    background = Color(R.color.blackCurrant)
 )
 
 @Composable
