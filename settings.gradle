@@ -10,3 +10,4 @@ rootProject.name = "nbagames"
 include ':app'
 include ':designsystem'
 include ':game'
+include ':model'
