@@ -1,7 +1,11 @@
 package br.com.nbagames.game.view
 
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.BoxWithConstraints
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
@@ -10,14 +14,15 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import br.com.nbagames.designsystem.components.TextField
 import br.com.nbagames.game.R
+import br.com.nbagames.model.LiveGame
 
 @Composable
 fun LiveGameListContent(
-    liveGames: List<Any>,
+    liveGames: List<LiveGame>,
     onLiveGameClick: (gameId: String) -> Unit
 ) {
     BoxWithConstraints(modifier = Modifier.padding(start = 8.dp, end = 8.dp)) {
-        Column(Modifier.fillMaxSize().background(MaterialTheme.colors.primary)) {
+        Column(Modifier.fillMaxSize()) {
             TextField(
                 text = stringResource(id = R.string.live_games_list),
                 fontSize = MaterialTheme.typography.h5.fontSize
@@ -32,7 +37,7 @@ fun LiveGameListContent(
                         val currentLiveGame = liveGames[index]
                         val selectedBackground = getCardBackground(index).backgroundUrl
                         LiveGameCard(
-                            cardBackgroundUrl = selectedBackground,
+                            cardBackgroundUrl = LiveGameCardBackground.Panel.backgroundUrl,
                             liveGame = currentLiveGame,
                             onLiveGameClick = onLiveGameClick
                         )

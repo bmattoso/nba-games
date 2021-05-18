@@ -20,4 +20,5 @@ ext {
     lottie_compose_version = '1.0.0-beta03-1'
     compone_navigation_version = '1.0.0-alpha10'
     compose_viewmodel = '1.0.0-alpha04'
+    coil_version = '0.9.1'
 }
