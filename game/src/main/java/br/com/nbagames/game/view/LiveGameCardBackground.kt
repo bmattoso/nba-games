@@ -1,10 +1,13 @@
 package br.com.nbagames.game.view
 
+import androidx.annotation.DrawableRes
+import br.com.nbagames.game.R
+
 enum class LiveGameCardBackground(
-    val backgroundUrl: String
+    @DrawableRes val backgroundRes: Int
 ) {
-    BallAndTable("http://wallpaperaccess.com/download/basketball-139522"),
-    FireBall("http://wallpaperaccess.com/download/basketball-139529"),
-    Arena("http://wallpaperaccess.com/download/basketball-139598"),
-    Panel("https://img.elo7.com.br/product/original/2CBD45A/painel-sublimado-basquete-quadra-250x200-painel-sublimado.jpg")
+    BallAndTable(R.drawable.ball_and_table_dark),
+    FireBall(R.drawable.fireball_dark),
+    Arena(R.drawable.arena_dark),
+    Panel(R.drawable.panel_dark)
 }

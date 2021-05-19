@@ -8,18 +8,21 @@ import kotlinx.coroutines.flow.flow
 class LiveGameViewModel : ViewModel() {
 
     fun getLiveGameList(): Flow<LiveGameViewState> = flow {
-        emit(
-            LiveGameViewState.Loaded(
-                listOf(
-                    LiveGame(
-                        id = "1",
-                        homeTeam = "Miami Heat",
-                        awayTeam = "Brooklyn Nets",
-                        homePoints = 10,
-                        awayPoints = 11
-                    )
+        val games = mutableListOf<LiveGame>()
+        repeat(4) {
+            games.add(
+                LiveGame(
+                    id = "1",
+                    homeTeam = "Miami Heat",
+                    awayTeam = "Brooklyn Nets",
+                    homePoints = 10,
+                    awayPoints = 11
                 )
             )
+        }
+
+        emit(
+            LiveGameViewState.Loaded(games)
         )
     }
 }
