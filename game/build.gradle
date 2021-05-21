@@ -54,5 +54,4 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-viewmodel-compose:$compose_viewmodel"
     implementation "io.insert-koin:koin-android:$koin_version"
     implementation "io.insert-koin:koin-androidx-compose:$koin_version"
-    implementation "com.google.accompanist:accompanist-coil:$coil_version"
 }

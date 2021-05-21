@@ -47,5 +47,6 @@ dependencies {
     implementation "androidx.compose.material:material-icons-extended:$compose_version"
     implementation "androidx.compose.ui:ui:$compose_version"
     implementation "androidx.compose.ui:ui-tooling:$compose_uitooling"
+    implementation "com.google.accompanist:accompanist-coil:$coil_version"
     implementation "com.airbnb.android:lottie-compose:$lottie_compose_version"
 }
