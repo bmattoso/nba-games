@@ -35,7 +35,6 @@ fun NavigationRoutes(startDestination: String = Routes.Splash.name) {
             arguments = listOf(navArgument("gameId") { type = NavType.StringType }),
         ) { backStackEntry ->
             val arguments = requireNotNull(backStackEntry.arguments)
-
         }
     }
 }
