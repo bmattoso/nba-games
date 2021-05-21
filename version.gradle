@@ -21,4 +21,5 @@ ext {
     compone_navigation_version = '1.0.0-alpha10'
     compose_viewmodel = '1.0.0-alpha04'
     coil_version = '0.9.1'
+    ktlint_version = '0.41.0'
 }
