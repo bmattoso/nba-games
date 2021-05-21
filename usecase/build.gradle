@@ -1,4 +1,13 @@
 plugins {
     id 'kotlin'
 }
+apply from: rootProject.file("version.gradle")
 apply from: rootProject.file("ktlint.gradle")
+apply from: rootProject.file("unit-test.gradle")
+
+dependencies {
+    implementation project(":model")
+
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutine_version")
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutine_test_version")
+}
