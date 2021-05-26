@@ -1,7 +1,7 @@
 plugins {
     id 'kotlin'
 }
-apply from: rootProject.file("version.gradle")
+apply from: rootProject.file("dependencies_versions.gradle")
 apply from: rootProject.file("ktlint.gradle")
 apply from: rootProject.file("unit-test.gradle")
 

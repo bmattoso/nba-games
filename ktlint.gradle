@@ -1,4 +1,4 @@
-apply from: rootProject.file("version.gradle")
+apply from: rootProject.file("dependencies_versions.gradle")
 
 configurations {
     ktlint
@@ -14,7 +14,6 @@ task ktlint(type: JavaExec, group: "verification") {
     main = "com.pinterest.ktlint.Main"
     args "src/**/*.kt"
 }
-check.dependsOn ktlint
 
 task ktlintFormat(type: JavaExec, group: "formatting") {
     description = "Fix Kotlin code style deviations."
