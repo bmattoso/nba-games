@@ -3,6 +3,6 @@ apply from: rootProject.file("compose_dependencies.gradle")
 apply from: rootProject.file("dependencies_versions.gradle")
 
 dependencies {
-    implementation "com.google.accompanist:accompanist-coil:$coil_version"
+    implementation "io.coil-kt:coil-compose:$coil_version"
     implementation "com.airbnb.android:lottie-compose:$lottie_compose_version"
 }

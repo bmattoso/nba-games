@@ -3,18 +3,19 @@ plugins {
     id 'kotlin-android'
 }
 apply from: rootProject.file("dependencies_versions.gradle")
+apply from: rootProject.file("android_versions.gradle")
 apply from: rootProject.file("secrets.gradle")
 apply from: rootProject.file("ktlint.gradle")
 
 android {
-    compileSdk 30
+    compileSdk project.compileSdkVersion
 
     defaultConfig {
         applicationId "br.com.nbagames"
-        minSdk 21
-        targetSdk 30
-        versionCode 1
-        versionName "1.0"
+        minSdk project.minSdkVersion
+        targetSdk project.targetSdkVersion
+        versionCode project.versionCode
+        versionName project.versionName
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {

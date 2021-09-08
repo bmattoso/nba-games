@@ -19,14 +19,9 @@ import androidx.compose.ui.unit.dp
 import br.com.nbagames.designsystem.R
 import br.com.nbagames.designsystem.theme.NbaGamesTheme
 import br.com.nbagames.designsystem.theme.smallPadding
-import com.airbnb.lottie.compose.rememberLottieAnimationState
 
 @Composable
 fun NbaProgressIndicator() {
-    val animationState = rememberLottieAnimationState(
-        autoPlay = true, repeatCount = Integer.MAX_VALUE
-    )
-
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -38,8 +33,7 @@ fun NbaProgressIndicator() {
         ) {
             DefaultLottieAnimation(
                 animationResId = R.raw.loading_ball,
-                modifier = Modifier.size(100.dp),
-                animationState = animationState
+                modifier = Modifier.size(100.dp)
             )
             TextField(
                 text = stringResource(id = R.string.loading),

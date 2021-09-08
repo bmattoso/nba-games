@@ -6,9 +6,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
-import com.google.accompanist.coil.rememberCoilPainter
-import com.google.accompanist.imageloading.ImageLoadState
+import coil.annotation.ExperimentalCoilApi
+import coil.compose.ImagePainter
+import coil.compose.rememberImagePainter
 
+@ExperimentalCoilApi
 @Composable
 fun ImageLoader(
     imageUrl: String,
@@ -16,12 +18,12 @@ fun ImageLoader(
     @DrawableRes defaultContentResource: Int,
     modifier: Modifier = Modifier
 ) {
-    val painter = rememberCoilPainter(
-        request = imageUrl,
-        fadeIn = true
+    val painter = rememberImagePainter(
+        data = imageUrl,
+        builder = { crossfade(true) }
     )
 
-    val painterResource = if (painter.loadState is ImageLoadState.Success) {
+    val painterResource = if (painter.state is ImagePainter.State.Success) {
         painter
     } else {
         painterResource(defaultContentResource)
