@@ -41,12 +41,7 @@ android {
             buildConfigField("String", "BACKEND_BASE_URL", "\"https://api-nba-v1.p.rapidapi.com/\"")
         }
     }
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
     kotlinOptions {
-        jvmTarget = '1.8'
         useIR = true
     }
     buildFeatures {
