@@ -13,37 +13,43 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import br.com.nbagames.R
+import br.com.nbagames.core.navigation.HomeRoute
+import br.com.nbagames.core.navigation.Route
 import br.com.nbagames.designsystem.components.TextField
 
 @Composable
 fun HomeBottomBar(
-    currentTab: HomeTab,
-    onTabSelected: (HomeTab) -> Unit
+    isContentLoaded: Boolean,
+    currentTab: Route,
+    onTabSelected: (HomeRoute) -> Unit
 ) {
-    BottomAppBar(backgroundColor = colorResource(id = R.color.brightGray)) {
-        HomeTab.values().forEach { homeTab ->
-            val isSelected = homeTab == currentTab
-            val selectedColor = getColorWhenIsSelected(isSelected)
+    if (isContentLoaded) {
+        BottomAppBar(backgroundColor = colorResource(id = R.color.brightGray)) {
+            homeBottomBarOptions.forEach { homeTab ->
+                val navigationTab = getTabFromRelatedNavigation(currentTab)
+                val isSelected = homeTab == navigationTab
+                val selectedColor = getColorWhenIsSelected(isSelected)
 
-            BottomNavigationItem(
-                icon = {
-                    Icon(
-                        painter = painterResource(homeTab.tabIcon),
-                        contentDescription = stringResource(id = currentTab.tabName),
-                        tint = selectedColor,
-                        modifier = Modifier.size(25.dp)
-                    )
-                },
-                label = {
-                    TextField(
-                        text = stringResource(homeTab.tabName),
-                        fontSize = 12.sp,
-                        color = selectedColor
-                    )
-                },
-                selected = isSelected,
-                onClick = { onTabSelected(homeTab) },
-            )
+                BottomNavigationItem(
+                    icon = {
+                        Icon(
+                            painter = painterResource(homeTab.tabIcon),
+                            contentDescription = stringResource(id = currentTab.title),
+                            tint = selectedColor,
+                            modifier = Modifier.size(25.dp)
+                        )
+                    },
+                    label = {
+                        TextField(
+                            text = stringResource(homeTab.tabName),
+                            fontSize = 12.sp,
+                            color = selectedColor
+                        )
+                    },
+                    selected = isSelected,
+                    onClick = { onTabSelected(homeTab) },
+                )
+            }
         }
     }
 }
@@ -55,3 +61,21 @@ private fun getColorWhenIsSelected(isSelected: Boolean): Color {
         Color.Black
     }
 }
+
+private fun getTabFromRelatedNavigation(currentTab: Route): HomeRoute {
+    if (homeBottomBarOptions.contains(currentTab)) {
+        return currentTab as HomeRoute
+    }
+
+    return when (currentTab) {
+        Route.LiveGameDetail -> HomeRoute.LiveGame
+        else -> HomeRoute.LiveGame
+    }
+}
+
+private val homeBottomBarOptions = listOf(
+    HomeRoute.LiveGame,
+    HomeRoute.Standings,
+    HomeRoute.Teams,
+    HomeRoute.Calendar
+)

@@ -4,6 +4,6 @@
     <color name="brightGrayLight">#FF5f6077</color>
     <color name="blackCurrant">#FF3F354B</color>
     <color name="londonHue">#FFBBAACC</color>
-    <color name="gun_powder">#3A3C59</color>
-    <color name="blackOpacity40">#20000000</color>
+    <color name="gunPowder">#3A3C59</color>
+    <color name="blackOpacity20">#20000000</color>
 </resources>

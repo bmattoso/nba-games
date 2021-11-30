@@ -19,7 +19,7 @@ private val LightColorPalette = lightColors(
     primary = Color(R.color.brightGrayLight),
     primaryVariant = Color(R.color.blackCurrant),
     secondary = Color(R.color.londonHue),
-    background = Color(R.color.blackCurrant)
+    background = Color(R.color.brightGray)
 )
 
 @Composable

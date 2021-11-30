@@ -25,7 +25,7 @@ fun NbaProgressIndicator() {
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(colorResource(id = R.color.blackOpacity40)),
+            .background(colorResource(id = R.color.blackOpacity20)),
         contentAlignment = Alignment.Center
     ) {
         Column(

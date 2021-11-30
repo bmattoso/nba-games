@@ -1,7 +1,8 @@
 <resources>
     <string name="app_name">NBA Games</string>
-    <string name="live_games">Live Games</string>
+    <string name="live_game_list">Live Games</string>
     <string name="standings">Standings</string>
     <string name="calendar">Calendar</string>
     <string name="teams">Teams</string>
+    <string name="game_details">Game details</string>
 </resources>

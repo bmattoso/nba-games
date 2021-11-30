@@ -1,80 +1,66 @@
 package br.com.nbagames.core.navigation
 
-import android.content.Context
-import android.os.Bundle
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.DisposableEffect
-import androidx.compose.runtime.MutableState
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.saveable.Saver
-import androidx.compose.runtime.saveable.rememberSaveable
-import androidx.compose.ui.platform.LocalContext
-import androidx.navigation.NavController
+import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavHostController
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.navArgument
-import androidx.navigation.compose.rememberNavController
-import br.com.nbagames.home.Home
+import br.com.nbagames.designsystem.components.TextField
+import br.com.nbagames.game.view.LiveGameDetail
+import br.com.nbagames.game.view.LiveGameList
 import br.com.nbagames.splash.Splash
 
 @Composable
 fun NavigationRoutes(
-    startDestination: String = Routes.Splash.name
+    navController: NavHostController,
+    startDestination: String = Route.Splash.route,
+    onContentLoaded: () -> Unit
 ) {
-    val navController = rememberNavController()
-    val context = LocalContext.current
-    val actions = remember(navController) { NavigationDestination(navController, context) }
-    val navigationState = rememberSaveable(saver = navStateSaver()) { mutableStateOf(Bundle()) }
-
-    DisposableEffect(Unit) {
-        val callback = NavController.OnDestinationChangedListener { navController, _, _ ->
-            navigationState.value = navController.saveState() ?: Bundle()
-        }
-        navController.addOnDestinationChangedListener(callback)
-        navController.restoreState(navigationState.value)
-
-        onDispose {
-            navController.removeOnDestinationChangedListener(callback)
-            navController.enableOnBackPressed(false)
-        }
-    }
+    val actions = remember(navController) { NavigationDestination(navController) }
 
     NavHost(navController = navController, startDestination = startDestination) {
 
-        composable(Routes.Splash.name) {
-            Splash(onSetupLoaded = actions::onSetupLoaded)
-        }
-
-        composable(Routes.Home.name) {
-            Home(onLiveGameClick = actions::onLiveGameClick)
+        composable(Route.Splash.route) {
+            Splash(onSetupLoaded = { actions.onSetupLoaded(onContentLoaded) })
         }
 
         composable(
-            route = Routes.LiveGame.name + "/{gameId}",
+            route = Route.LiveGameDetail.route,
             arguments = listOf(navArgument("gameId") { type = NavType.StringType }),
         ) {
+            LiveGameDetail()
+        }
+
+        composable(HomeRoute.LiveGame.route) {
+            LiveGameList(onLiveGameClick = actions::onLiveGameClick)
+        }
+
+        composable(HomeRoute.Standings.route) {
+            TextField(text = stringResource(id = HomeRoute.Standings.tabName))
+        }
+        composable(HomeRoute.Teams.route) {
+            TextField(text = stringResource(id = HomeRoute.Teams.tabName))
+        }
+        composable(HomeRoute.Calendar.route) {
+            TextField(text = stringResource(id = HomeRoute.Calendar.tabName))
         }
     }
 }
 
-internal data class NavigationDestination(
-    val navController: NavHostController,
-    val context: Context
-) {
-    fun onSetupLoaded() {
-        navController.popBackStack()
-        navController.navigate(Routes.Home.name)
+internal class NavigationDestination(private val navController: NavHostController) {
+    fun onSetupLoaded(onContentLoad: () -> Unit) {
+        navController.navigate(HomeRoute.LiveGame.route) {
+            popUpTo(Route.Splash.route) {
+                inclusive = true
+            }
+            onContentLoad()
+        }
     }
 
     fun onLiveGameClick(gameId: String) {
-        navController.navigate(Routes.LiveGame.name + "/" + gameId)
+        navController.navigate("liveGame/$gameId")
     }
 }
-
-private fun navStateSaver(): Saver<MutableState<Bundle>, out Any> = Saver(
-    save = { it.value },
-    restore = { mutableStateOf(it) }
-)

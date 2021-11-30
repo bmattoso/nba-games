@@ -5,10 +5,8 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.tooling.preview.Preview
-import br.com.nbagames.core.navigation.NavigationRoutes
 import br.com.nbagames.designsystem.theme.NbaGamesTheme
+import br.com.nbagames.home.Home
 
 class MainActivity : ComponentActivity() {
 
@@ -18,17 +16,9 @@ class MainActivity : ComponentActivity() {
         setContent {
             NbaGamesTheme {
                 Surface(color = MaterialTheme.colors.background) {
-                    NavigationRoutes()
+                    Home()
                 }
             }
         }
-    }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun DefaultPreview() {
-    NbaGamesTheme {
-        NavigationRoutes()
     }
 }
