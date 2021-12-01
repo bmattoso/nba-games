@@ -23,11 +23,9 @@ fun LiveGameListContent(
         items(
             count = liveGames.size,
             itemContent = { index ->
-                val currentLiveGame = liveGames[index]
-                val selectedBackground = getCardBackground(index)
                 LiveGameCard(
-                    liveGameCardBackground = selectedBackground,
-                    liveGame = currentLiveGame,
+                    liveGameCardBackground = getCardBackground(index),
+                    liveGame = liveGames[index],
                     onLiveGameClick = onLiveGameClick
                 )
             }

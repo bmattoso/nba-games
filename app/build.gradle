@@ -58,6 +58,7 @@ android {
 dependencies {
     implementation project(":designsystem")
     implementation project(":game")
+    implementation project(":usecase")
 
     implementation "androidx.activity:activity-compose:$compose_activity"
     implementation "androidx.appcompat:appcompat:$androidx_compat"

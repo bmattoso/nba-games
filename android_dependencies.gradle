@@ -40,4 +40,5 @@ dependencies {
     implementation "androidx.appcompat:appcompat:$androidx_compat"
     implementation "androidx.core:core-ktx:$core_ktx"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$androidx_lifecycle"
+    implementation "io.insert-koin:koin-android:$koin_version"
 }

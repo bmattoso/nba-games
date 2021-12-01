@@ -3,7 +3,9 @@ apply from: rootProject.file("dependencies_versions.gradle")
 
 dependencies {
     implementation project(":model")
+    implementation project(":repository")
 
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutine_version")
+
     testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutine_test_version")
 }

@@ -15,9 +15,7 @@ private const val APPLICATION_JSON = "application/json"
 @ExperimentalSerializationApi
 val networkModule = module {
 
-    factory {
-        AuthorizationInterceptor()
-    }
+    factory { AuthorizationInterceptor() }
 
     single {
         OkHttpClient.Builder()
