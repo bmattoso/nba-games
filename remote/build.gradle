@@ -5,5 +5,10 @@ dependencies {
     implementation project(":model")
 
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutine_version")
+    implementation "com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:$kotlinx_serialization_converter"
+    implementation "com.squareup.okhttp3:okhttp:$okhttp"
+    implementation "com.squareup.retrofit2:retrofit:$retrofit"
+    implementation "org.jetbrains.kotlinx:kotlinx-serialization-json:$kotlinx_serialization"
+
     testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutine_test_version")
 }

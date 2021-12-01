@@ -59,6 +59,7 @@ dependencies {
     implementation project(":designsystem")
     implementation project(":game")
     implementation project(":usecase")
+    implementation project(":remote")
 
     implementation "androidx.activity:activity-compose:$compose_activity"
     implementation "androidx.appcompat:appcompat:$androidx_compat"
@@ -70,11 +71,7 @@ dependencies {
     implementation "androidx.navigation:navigation-compose:$compone_navigation_version"
     implementation "androidx.startup:startup-runtime:$androidx_startup"
     implementation "com.google.android.material:material:$google_material"
-    implementation "com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:$kotlinx_serialization_converter"
-    implementation "com.squareup.okhttp3:okhttp:$okhttp"
-    implementation "com.squareup.retrofit2:retrofit:$retrofit"
     implementation "io.insert-koin:koin-android:$koin_version"
-    implementation "org.jetbrains.kotlinx:kotlinx-serialization-json:$kotlinx_serialization"
 
     testImplementation "junit:junit:$junit"
     testImplementation "com.google.truth:truth:$google_truth"
