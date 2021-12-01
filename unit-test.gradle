@@ -1,7 +1,11 @@
 apply from: rootProject.file("dependencies_versions.gradle")
 
-test {
-    useJUnitPlatform()
+android {
+    testOptions {
+        unitTests.all {
+            useJUnitPlatform()
+        }
+    }
 }
 
 dependencies {
