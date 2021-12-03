@@ -1,15 +1,17 @@
 package br.com.nbagames.usecase.game
 
-import br.com.nbagames.model.LiveGame
+import br.com.nbagames.model.Game
 import br.com.nbagames.repository.game.GameRepository
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flowOf
+import kotlinx.coroutines.flow.flow
 
 class LoadLiveGamesImpl(
     private val gameRepository: GameRepository
 ) : LoadLiveGames {
 
-    override suspend operator fun invoke(): Flow<List<LiveGame>> {
-        return flowOf(emptyList())
+    override suspend operator fun invoke(): Flow<List<Game>> {
+        return flow {
+            emit(gameRepository.getLiveGamesFromRemote())
+        }
     }
 }

@@ -2,6 +2,7 @@ apply from: rootProject.file("android_dependencies.gradle")
 
 dependencies {
     implementation project(":model")
+    implementation project(":remote")
 
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutine_version")
     testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutine_test_version")

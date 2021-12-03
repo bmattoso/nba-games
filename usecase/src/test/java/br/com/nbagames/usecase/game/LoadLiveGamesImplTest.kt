@@ -1,5 +1,6 @@
 package br.com.nbagames.usecase.game
 
+import br.com.nbagames.usecase.game.fake.FakeGameRepository
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runBlockingTest
 import org.junit.jupiter.api.BeforeEach
@@ -13,7 +14,9 @@ internal class LoadLiveGamesImplTest {
 
     @BeforeEach
     fun setup() {
-        loadLiveGames = LoadLiveGamesImpl()
+        loadLiveGames = LoadLiveGamesImpl(
+            gameRepository = FakeGameRepository()
+        )
     }
 
     @Test

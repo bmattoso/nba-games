@@ -1,4 +1,4 @@
-package br.com.nbagames.di
+package br.com.nbagames.remote.di
 
 import kotlinx.serialization.ExperimentalSerializationApi
 import org.junit.Before
@@ -15,7 +15,7 @@ class NetworkModuleTest {
     @Before
     fun setup() {
         koinApplication = startKoin {
-            modules(networkModule)
+            modules(NetworkModule.getNetworkModule("", "", ""))
         }
     }
 

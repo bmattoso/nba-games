@@ -1,14 +1,17 @@
 package br.com.nbagames.repository.game
 
-import br.com.nbagames.model.LiveGame
+import br.com.nbagames.model.Game
+import br.com.nbagames.remote.game.GameRemote
 
-class GameRepositoryImpl : GameRepository {
+class GameRepositoryImpl(
+    private val gameRemote: GameRemote
+) : GameRepository {
 
-    override suspend fun getLiveGamesFromRemote(): List<LiveGame> {
-        return emptyList()
+    override suspend fun getLiveGamesFromRemote(): List<Game> {
+        return gameRemote.getLiveGameList()
     }
 
-    override suspend fun getLiveGamesFromCache(): List<LiveGame> {
+    override suspend fun getLiveGamesFromCache(): List<Game> {
         return emptyList()
     }
 }
