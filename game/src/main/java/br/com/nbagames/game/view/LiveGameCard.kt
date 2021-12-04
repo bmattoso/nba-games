@@ -28,12 +28,12 @@ import br.com.nbagames.designsystem.components.ImageLoader
 import br.com.nbagames.designsystem.components.TextField
 import br.com.nbagames.designsystem.theme.NbaGamesTheme
 import br.com.nbagames.game.R
-import br.com.nbagames.model.LiveGame
 import br.com.nbagames.model.Team
+import br.com.nbagames.usecase.game.presentation.LiveGamePresentation
 
 @Composable
 fun LiveGameCard(
-    liveGame: LiveGame,
+    liveGame: LiveGamePresentation,
     liveGameCardBackground: LiveGameCardBackground = LiveGameCardBackground.Panel,
     onLiveGameClick: (gameId: String) -> Unit = {}
 ) {
@@ -67,7 +67,7 @@ private fun CardBackground(
 }
 
 @Composable
-private fun GameIdentification(liveGame: LiveGame) {
+private fun GameIdentification(liveGame: LiveGamePresentation) {
     Row(
         horizontalArrangement = Arrangement.SpaceEvenly,
         verticalAlignment = Alignment.CenterVertically,
@@ -93,19 +93,19 @@ private fun TeamIdentification(team: Team) {
     ) {
         ImageLoader(
             imageUrl = team.logo,
-            contentDescription = team.nickName,
+            contentDescription = team.shortName,
             defaultContentResource = R.drawable.default_team_logo,
             modifier = Modifier.size(60.dp)
         )
         TextField(
-            text = team.nickName,
+            text = team.shortName,
             color = Color.White
         )
     }
 }
 
 @Composable
-fun GameInformation(liveGame: LiveGame) {
+fun GameInformation(liveGame: LiveGamePresentation) {
     Column(
         modifier = Modifier.fillMaxWidth(),
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -141,19 +141,17 @@ fun GameInformation(liveGame: LiveGame) {
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
-    val liveGame = LiveGame(
+    val liveGame = LiveGamePresentation(
         id = "1",
         homeTeam = Team(
             id = "1",
             fullName = "Miami Heat",
-            nickName = "Heat",
             shortName = "MHT",
             logo = ""
         ),
         awayTeam = Team(
             id = "2",
             fullName = "Brooklyn Nets",
-            nickName = "Nets",
             shortName = "BNT",
             logo = ""
         ),

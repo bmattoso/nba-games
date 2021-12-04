@@ -1,4 +1,4 @@
-package br.com.nbagames.remote.team
+package br.com.nbagames.remote.team.response
 
 import br.com.nbagames.remote.game.response.ScoreResponse
 import kotlinx.serialization.SerialName

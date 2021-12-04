@@ -1,6 +1,6 @@
 package br.com.nbagames.remote.game.response
 
-import br.com.nbagames.remote.team.TeamResponse
+import br.com.nbagames.remote.team.response.TeamResponse
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -11,7 +11,8 @@ data class GameResponse(
     val gameDuration: String,
     val currentPeriod: String,
     val statusGame: String,
-    val startTimeUtc: String,
-    val endTimeUtc: String,
-    val awayTeam: TeamResponse
+    @SerialName("startTimeUTC") val startTimeUtc: String,
+    @SerialName("endTimeUTC") val endTimeUtc: String,
+    @SerialName("hTeam") val homeTeam: TeamResponse,
+    @SerialName("vTeam") val visitantTeam: TeamResponse
 )

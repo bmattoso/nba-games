@@ -27,9 +27,12 @@ object NetworkModule {
             }
 
             single {
+                val jsonConfiguration = Json {
+                    ignoreUnknownKeys = true
+                }
                 Retrofit.Builder()
                     .baseUrl(baseUrl)
-                    .addConverterFactory(Json.asConverterFactory(APPLICATION_JSON.toMediaType()))
+                    .addConverterFactory(jsonConfiguration.asConverterFactory(APPLICATION_JSON.toMediaType()))
                     .client(get())
                     .build()
             }

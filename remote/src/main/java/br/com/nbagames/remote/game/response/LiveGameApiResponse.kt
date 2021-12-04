@@ -4,6 +4,6 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class LiveGameResponse(
-    @SerialName("api") val liveGameApiResponse: LiveGameApiResponse
+data class LiveGameApiResponse(
+    @SerialName("games") val liveGameList: List<GameResponse>
 )

@@ -5,6 +5,6 @@ import retrofit2.http.GET
 
 interface GameService {
 
-    @GET("games/live")
-    fun getLiveGamesNow(): LiveGameResponse
+    @GET("games/live/")
+    suspend fun getLiveGamesNow(): LiveGameResponse
 }
