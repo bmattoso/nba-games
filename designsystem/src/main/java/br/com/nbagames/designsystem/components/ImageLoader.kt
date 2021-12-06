@@ -5,9 +5,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.painterResource
 import coil.annotation.ExperimentalCoilApi
-import coil.compose.ImagePainter
 import coil.compose.rememberImagePainter
 
 @ExperimentalCoilApi
@@ -20,17 +18,14 @@ fun ImageLoader(
 ) {
     val painter = rememberImagePainter(
         data = imageUrl,
-        builder = { crossfade(true) }
+        builder = {
+            crossfade(true)
+            placeholder(defaultContentResource)
+        }
     )
 
-    val painterResource = if (painter.state is ImagePainter.State.Success) {
-        painter
-    } else {
-        painterResource(defaultContentResource)
-    }
-
     Image(
-        painter = painterResource,
+        painter = painter,
         contentDescription = contentDescription,
         modifier = modifier,
         contentScale = ContentScale.Fit
