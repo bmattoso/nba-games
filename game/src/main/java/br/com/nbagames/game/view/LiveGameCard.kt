@@ -30,6 +30,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import br.com.nbagames.designsystem.components.ImageLoader
 import br.com.nbagames.designsystem.components.TextField
+import br.com.nbagames.designsystem.extension.formatGameClock
+import br.com.nbagames.designsystem.extension.formatNumberTwoDigits
 import br.com.nbagames.designsystem.theme.NbaGamesTheme
 import br.com.nbagames.game.R
 import br.com.nbagames.model.Team
@@ -45,6 +47,7 @@ fun LiveGameCard(
         backgroundColor = Color.White,
         modifier = Modifier
             .fillMaxWidth()
+            .height(160.dp)
             .clickable(onClick = { onLiveGameClick(liveGame.id) })
     ) {
         Row(
@@ -56,7 +59,7 @@ fun LiveGameCard(
                     .fillMaxHeight()
                     .width(120.dp)
                     .align(Alignment.CenterVertically),
-                verticalArrangement = Arrangement.SpaceBetween,
+                verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 GameScoreBoard(homePoints = liveGame.homePoints, visitantPoints = liveGame.visitantPoints)
@@ -74,9 +77,9 @@ fun LiveGameCard(
 private fun TeamIdentification(team: Team) {
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.SpaceBetween,
+        verticalArrangement = Arrangement.Center,
         modifier = Modifier
-            .padding(top = 12.dp, bottom = 12.dp)
+            .padding(top = 24.dp, bottom = 12.dp)
             .size(90.dp)
     ) {
         ImageLoader(
@@ -101,10 +104,10 @@ private fun GameScoreBoard(homePoints: Int, visitantPoints: Int) {
     Row(
         modifier = Modifier.fillMaxWidth(),
         verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.SpaceBetween
+        horizontalArrangement = Arrangement.SpaceBetween,
     ) {
         TextField(
-            text = homePoints.toString(),
+            text = homePoints.formatNumberTwoDigits(),
             fontSize = 26.sp,
             modifier = Modifier.align(Alignment.CenterVertically)
         )
@@ -116,7 +119,7 @@ private fun GameScoreBoard(homePoints: Int, visitantPoints: Int) {
                 .align(Alignment.CenterVertically)
         )
         TextField(
-            text = visitantPoints.toString(),
+            text = visitantPoints.formatNumberTwoDigits(),
             fontSize = 26.sp,
             modifier = Modifier.align(Alignment.CenterVertically)
         )
@@ -136,7 +139,7 @@ private fun GameClock(clockTime: String) {
         )
         Spacer(modifier = Modifier.size(10.dp))
         TextField(
-            text = clockTime,
+            text = clockTime.formatGameClock(),
             color = Color.Black,
             fontSize = 18.sp,
             textAlign = TextAlign.Center,
