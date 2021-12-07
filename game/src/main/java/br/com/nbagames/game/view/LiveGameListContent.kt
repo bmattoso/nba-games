@@ -24,16 +24,10 @@ fun LiveGameListContent(
             count = liveGames.size,
             itemContent = { index ->
                 LiveGameCard(
-                    liveGameCardBackground = getCardBackground(index),
                     liveGame = liveGames[index],
                     onLiveGameClick = onLiveGameClick
                 )
             }
         )
     }
-}
-
-private fun getCardBackground(index: Int): LiveGameCardBackground {
-    val allBackgrounds = LiveGameCardBackground.values()
-    return allBackgrounds[index % allBackgrounds.size]
 }

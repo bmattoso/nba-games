@@ -6,6 +6,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.sp
 import br.com.nbagames.designsystem.theme.Font
@@ -17,7 +18,8 @@ fun TextField(
     fontSize: TextUnit = 16.sp,
     fontStyle: FontStyle = FontStyle.Normal,
     fontWeight: FontWeight = FontWeight.Normal,
-    color: Color = Color.Black
+    color: Color = Color.Black,
+    textAlign: TextAlign = TextAlign.Start
 ) {
     Text(
         text = text,
@@ -27,5 +29,6 @@ fun TextField(
         fontStyle = fontStyle,
         fontWeight = fontWeight,
         color = color,
+        textAlign = textAlign
     )
 }

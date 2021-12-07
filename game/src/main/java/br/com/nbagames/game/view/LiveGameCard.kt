@@ -1,26 +1,28 @@
 package br.com.nbagames.game.view
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.material.Card
+import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -34,108 +36,123 @@ import br.com.nbagames.usecase.game.presentation.LiveGamePresentation
 @Composable
 fun LiveGameCard(
     liveGame: LiveGamePresentation,
-    liveGameCardBackground: LiveGameCardBackground = LiveGameCardBackground.Panel,
     onLiveGameClick: (gameId: String) -> Unit = {}
 ) {
     Card(
         elevation = 4.dp,
+        backgroundColor = Color.White,
         modifier = Modifier
             .fillMaxWidth()
-            .fillMaxHeight(0.5f)
             .clickable(onClick = { onLiveGameClick(liveGame.id) })
     ) {
-        CardBackground(cardBackgroundIdRes = liveGameCardBackground.backgroundRes)
-        Column {
-            GameIdentification(liveGame)
-            GameInformation(liveGame)
+        Row(
+            horizontalArrangement = Arrangement.SpaceEvenly,
+        ) {
+            TeamIdentification(liveGame.homeTeam)
+            Column(
+                modifier = Modifier
+                    .fillMaxHeight()
+                    .width(120.dp)
+                    .align(Alignment.CenterVertically),
+                verticalArrangement = Arrangement.SpaceBetween,
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                GameScoreBoard(homePoints = liveGame.homePoints, awayPoints = liveGame.awayPoints)
+                Spacer(modifier = Modifier.size(6.dp))
+                GameClock(clockTime = liveGame.currentTime)
+                Spacer(modifier = Modifier.size(6.dp))
+                GameQuarter(quarter = liveGame.currentTime)
+            }
+            TeamIdentification(liveGame.awayTeam)
         }
-    }
-}
-
-@Composable
-private fun CardBackground(
-    cardBackgroundIdRes: Int
-) {
-    Image(
-        painter = painterResource(id = cardBackgroundIdRes),
-        contentDescription = null,
-        modifier = Modifier
-            .fillMaxSize()
-            .alpha(0.80f),
-        contentScale = ContentScale.Fit
-    )
-}
-
-@Composable
-private fun GameIdentification(liveGame: LiveGamePresentation) {
-    Row(
-        horizontalArrangement = Arrangement.SpaceEvenly,
-        verticalAlignment = Alignment.CenterVertically,
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(top = 20.dp)
-    ) {
-        TeamIdentification(liveGame.homeTeam)
-        Image(
-            painter = painterResource(id = R.drawable.ic_versus_white),
-            contentDescription = null,
-            modifier = Modifier.size(25.dp)
-        )
-        TeamIdentification(liveGame.awayTeam)
     }
 }
 
 @Composable
 private fun TeamIdentification(team: Team) {
     Column(
-        verticalArrangement = Arrangement.SpaceEvenly,
-        horizontalAlignment = Alignment.CenterHorizontally
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.SpaceBetween,
+        modifier = Modifier
+            .padding(top = 12.dp, bottom = 12.dp)
+            .size(90.dp)
     ) {
         ImageLoader(
             imageUrl = team.logo,
-            contentDescription = team.shortName,
+            contentDescription = team.fullName,
             defaultContentResource = R.drawable.default_team_logo,
-            modifier = Modifier.size(60.dp)
+            modifier = Modifier.size(50.dp)
         )
+        Spacer(modifier = Modifier.height(8.dp))
         TextField(
-            text = team.shortName,
-            color = Color.White
+            text = team.fullName,
+            color = Color.Black,
+            fontWeight = FontWeight.Medium,
+            fontSize = 14.sp,
+            textAlign = TextAlign.Center
         )
     }
 }
 
 @Composable
-fun GameInformation(liveGame: LiveGamePresentation) {
-    Column(
+private fun GameScoreBoard(homePoints: Int, awayPoints: Int) {
+    Row(
         modifier = Modifier.fillMaxWidth(),
-        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.SpaceBetween
     ) {
-        val gameScore = "${liveGame.homePoints} : ${liveGame.awayPoints}"
-
         TextField(
-            text = gameScore,
-            color = Color.White,
-            fontSize = 40.sp,
-            fontWeight = FontWeight.ExtraBold
+            text = homePoints.toString(),
+            fontSize = 26.sp,
+            modifier = Modifier.align(Alignment.CenterVertically)
         )
-        Row(
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            Image(
-                painter = painterResource(id = R.drawable.ic_clock),
-                contentDescription = null,
-                modifier = Modifier.size(20.dp)
-            )
-            Spacer(modifier = Modifier.size(10.dp))
-            TextField(
-                text = liveGame.currentTime,
-                color = Color.White,
-                fontSize = 20.sp,
-                fontWeight = FontWeight.Medium,
-                fontStyle = FontStyle.Italic
-            )
-        }
+        Image(
+            painter = painterResource(id = R.drawable.ic_versus_grey),
+            contentDescription = null,
+            modifier = Modifier
+                .size(12.dp)
+                .align(Alignment.CenterVertically)
+        )
+        TextField(
+            text = awayPoints.toString(),
+            fontSize = 26.sp,
+            modifier = Modifier.align(Alignment.CenterVertically)
+        )
     }
+}
+
+@Composable
+private fun GameClock(clockTime: String) {
+    Row(
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.SpaceAround
+    ) {
+        Image(
+            painter = painterResource(id = R.drawable.ic_clock_grey),
+            contentDescription = null,
+            modifier = Modifier.size(16.dp)
+        )
+        Spacer(modifier = Modifier.size(10.dp))
+        TextField(
+            text = clockTime,
+            color = Color.Black,
+            fontSize = 18.sp,
+            textAlign = TextAlign.Center,
+            fontWeight = FontWeight.Light,
+        )
+    }
+}
+
+@Composable
+fun GameQuarter(quarter: String) {
+    TextField(
+        text = "Second quarter",
+        color = Color.Black,
+        fontSize = 12.sp,
+        textAlign = TextAlign.Center,
+        fontWeight = FontWeight.Light,
+        modifier = Modifier.fillMaxWidth()
+    )
 }
 
 @Preview(showBackground = true)
@@ -147,13 +164,13 @@ fun DefaultPreview() {
             id = "1",
             fullName = "Miami Heat",
             shortName = "MHT",
-            logo = ""
+            logo = "https:\\/\\/upload.wikimedia.org\\/wikipedia\\/fr\\/thumb\\/d\\/de\\/Houston_Rockets_logo_2003.png\\/330px-Houston_Rockets_logo_2003.png"
         ),
         awayTeam = Team(
             id = "2",
             fullName = "Brooklyn Nets",
             shortName = "BNT",
-            logo = ""
+            logo = "https://upload.wikimedia.org/wikipedia/fr/8/89/Raptors2015.png"
         ),
         homePoints = 10,
         awayPoints = 11,
@@ -161,8 +178,12 @@ fun DefaultPreview() {
     )
 
     NbaGamesTheme {
-        LiveGameCard(
-            liveGame = liveGame
-        )
+        Scaffold(
+            modifier = Modifier
+                .padding(10.dp)
+                .background(colorResource(id = R.color.brightGrayLight))
+        ) {
+            LiveGameCard(liveGame = liveGame)
+        }
     }
 }

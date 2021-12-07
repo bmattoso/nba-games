@@ -19,12 +19,11 @@ fun LiveGameList(
     onLiveGameClick: (gameId: String) -> Unit,
     liveGameViewModel: LiveGameViewModel = getViewModel()
 ) {
-    val liveGameViewState = liveGameViewModel.getLiveGameList()
-        .collectAsState(initial = LiveGameViewState.Loading)
+    val liveGameViewState = liveGameViewModel.getLiveGameList().collectAsState(initial = LiveGameViewState.Loading)
 
     Scaffold(
         modifier = Modifier.fillMaxSize(),
-        backgroundColor = colorResource(id = R.color.blackCurrant)
+        backgroundColor = colorResource(id = R.color.brightGrayLight)
     ) {
         Crossfade(liveGameViewState.value) { currentState ->
             when (currentState) {
