@@ -1,0 +1,120 @@
+{
+  "api": {
+    "status": 200,
+    "message": "GET games\/live",
+    "results": 3,
+    "filters": ["seasonYear", "league", "gameId", "teamId", "date", "live"],
+    "games": [{
+      "seasonYear": "2021",
+      "league": "standard",
+      "gameId": "9136",
+      "startTimeUTC": "2021-12-05T23:00:00.000Z",
+      "endTimeUTC": "",
+      "arena": "State Farm Arena",
+      "city": "Atlanta",
+      "country": "USA",
+      "clock": "9:40",
+      "gameDuration": "1:11",
+      "currentPeriod": "3\/4",
+      "halftime": "0",
+      "EndOfPeriod": "0",
+      "seasonStage": "2",
+      "statusShortGame": "2",
+      "statusGame": "In Play",
+      "vTeam": {
+        "teamId": "5",
+        "shortName": "CHA",
+        "fullName": "Charlotte Hornets",
+        "nickName": "Hornets",
+        "logo": "https:\/\/upload.wikimedia.org\/wikipedia\/fr\/thumb\/f\/f3\/Hornets_de_Charlotte_logo.svg\/1200px-Hornets_de_Charlotte_logo.svg.png",
+        "score": {
+          "points": "74"
+        }
+      },
+      "hTeam": {
+        "teamId": "1",
+        "shortName": "ATL",
+        "fullName": "Atlanta Hawks",
+        "nickName": "Hawks",
+        "logo": "https:\/\/upload.wikimedia.org\/wikipedia\/fr\/e\/ee\/Hawks_2016.png",
+        "score": {
+          "points": "134"
+        }
+      }
+    }, {
+      "seasonYear": "2021",
+      "league": "standard",
+      "gameId": "9137",
+      "startTimeUTC": "2021-12-05T23:00:00.000Z",
+      "endTimeUTC": "",
+      "arena": "Scotiabank Arena",
+      "city": "Toronto",
+      "country": "Canada",
+      "clock": "9:38",
+      "gameDuration": "01:11",
+      "currentPeriod": "3\/4",
+      "halftime": "0",
+      "EndOfPeriod": "0",
+      "seasonStage": "2",
+      "statusShortGame": "2",
+      "statusGame": "In Play",
+      "vTeam": {
+        "teamId": "41",
+        "shortName": "WAS",
+        "fullName": "Washington Wizards",
+        "nickName": "Wizards",
+        "logo": "https:\/\/upload.wikimedia.org\/wikipedia\/fr\/archive\/d\/d6\/20161212034849%21Wizards2015.png",
+        "score": {
+          "points": "144"
+        }
+      },
+      "hTeam": {
+        "teamId": "38",
+        "shortName": "TOR",
+        "fullName": "Toronto Raptors",
+        "nickName": "Raptors",
+        "logo": "https:\/\/upload.wikimedia.org\/wikipedia\/fr\/8\/89\/Raptors2015.png",
+        "score": {
+          "points": "167"
+        }
+      }
+    }, {
+      "seasonYear": "2021",
+      "league": "standard",
+      "gameId": "9138",
+      "startTimeUTC": "2021-12-06T00:00:00.000Z",
+      "endTimeUTC": "",
+      "arena": "Toyota Center",
+      "city": "Houston",
+      "country": "USA",
+      "clock": "5:17",
+      "gameDuration": "0:09",
+      "currentPeriod": "1\/4",
+      "halftime": "0",
+      "EndOfPeriod": "0",
+      "seasonStage": "2",
+      "statusShortGame": "2",
+      "statusGame": "In Play",
+      "vTeam": {
+        "teamId": "23",
+        "shortName": "NOP",
+        "fullName": "New Orleans Pelicans",
+        "nickName": "Pelicans",
+        "logo": "https:\/\/upload.wikimedia.org\/wikipedia\/fr\/thumb\/2\/21\/New_Orleans_Pelicans.png\/200px-New_Orleans_Pelicans.png",
+        "score": {
+          "points": "16"
+        }
+      },
+      "hTeam": {
+        "teamId": "14",
+        "shortName": "HOU",
+        "fullName": "Houston Rockets",
+        "nickName": "Rockets",
+        "logo": "https:\/\/upload.wikimedia.org\/wikipedia\/fr\/thumb\/d\/de\/Houston_Rockets_logo_2003.png\/330px-Houston_Rockets_logo_2003.png",
+        "score": {
+          "points": "04"
+        }
+      }
+    }]
+  }
+}
