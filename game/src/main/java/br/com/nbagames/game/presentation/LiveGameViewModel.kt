@@ -2,8 +2,8 @@ package br.com.nbagames.game.presentation
 
 import android.util.Log
 import androidx.lifecycle.ViewModel
+import br.com.nbagames.game.mapper.LiveGamePresentationMapper
 import br.com.nbagames.usecase.game.LoadLiveGames
-import br.com.nbagames.usecase.game.mapper.LiveGamePresentationMapper
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.collect

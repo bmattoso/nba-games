@@ -1,5 +1,6 @@
-package br.com.nbagames.usecase.game.mapper
+package br.com.nbagames.game.mapper
 
+import br.com.nbagames.designsystem.extension.getResourceTextId
 import br.com.nbagames.model.Game
 import br.com.nbagames.usecase.game.presentation.LiveGamePresentation
 
@@ -13,7 +14,8 @@ class LiveGamePresentationMapper {
                 visitantTeam = liveGame.visitantTeam,
                 homePoints = liveGame.homePoints,
                 visitantPoints = liveGame.visitantPoints,
-                gameClock = liveGame.currentClock
+                gameClock = liveGame.currentClock,
+                quarter = liveGame.quarter.getResourceTextId()
             )
         }
     }

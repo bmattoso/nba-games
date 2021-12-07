@@ -8,5 +8,6 @@ data class LiveGamePresentation(
     val visitantTeam: Team,
     val homePoints: Int,
     val visitantPoints: Int,
-    val gameClock: String
+    val gameClock: String,
+    val quarter: Int
 )

@@ -1,5 +1,6 @@
 package br.com.nbagames.game.view
 
+import androidx.annotation.StringRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -21,6 +22,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -61,7 +63,7 @@ fun LiveGameCard(
                 Spacer(modifier = Modifier.size(6.dp))
                 GameClock(clockTime = liveGame.gameClock)
                 Spacer(modifier = Modifier.size(6.dp))
-                GameQuarter(quarter = liveGame.gameClock)
+                GameQuarter(quarter = liveGame.quarter)
             }
             TeamIdentification(liveGame.visitantTeam)
         }
@@ -144,9 +146,9 @@ private fun GameClock(clockTime: String) {
 }
 
 @Composable
-fun GameQuarter(quarter: String) {
+fun GameQuarter(@StringRes quarter: Int) {
     TextField(
-        text = "Second quarter",
+        text = stringResource(id = quarter),
         color = Color.Black,
         fontSize = 12.sp,
         textAlign = TextAlign.Center,
@@ -174,7 +176,8 @@ fun DefaultPreview() {
         ),
         homePoints = 10,
         visitantPoints = 11,
-        gameClock = "2:37"
+        gameClock = "2:37",
+        quarter = R.string.first_quarter
     )
 
     NbaGamesTheme {
