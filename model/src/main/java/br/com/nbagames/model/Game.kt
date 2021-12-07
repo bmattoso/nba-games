@@ -6,5 +6,5 @@ data class Game(
     val visitantTeam: Team,
     val homePoints: Int,
     val visitantPoints: Int,
-    val currentTime: String
+    val currentClock: String
 )

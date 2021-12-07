@@ -10,10 +10,10 @@ class LiveGamePresentationMapper {
             LiveGamePresentation(
                 id = liveGame.id,
                 homeTeam = liveGame.homeTeam,
-                awayTeam = liveGame.visitantTeam,
+                visitantTeam = liveGame.visitantTeam,
                 homePoints = liveGame.homePoints,
-                awayPoints = liveGame.visitantPoints,
-                currentTime = liveGame.currentTime
+                visitantPoints = liveGame.visitantPoints,
+                gameClock = liveGame.currentClock
             )
         }
     }

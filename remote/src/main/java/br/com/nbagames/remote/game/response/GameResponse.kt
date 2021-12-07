@@ -8,7 +8,7 @@ import kotlinx.serialization.Serializable
 data class GameResponse(
     @SerialName("gameId") val id: String,
     val arena: String,
-    val gameDuration: String,
+    val clock: String,
     val currentPeriod: String,
     val statusGame: String,
     @SerialName("startTimeUTC") val startTimeUtc: String,

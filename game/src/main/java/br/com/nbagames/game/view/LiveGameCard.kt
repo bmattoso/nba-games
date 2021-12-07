@@ -57,13 +57,13 @@ fun LiveGameCard(
                 verticalArrangement = Arrangement.SpaceBetween,
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                GameScoreBoard(homePoints = liveGame.homePoints, awayPoints = liveGame.awayPoints)
+                GameScoreBoard(homePoints = liveGame.homePoints, visitantPoints = liveGame.visitantPoints)
                 Spacer(modifier = Modifier.size(6.dp))
-                GameClock(clockTime = liveGame.currentTime)
+                GameClock(clockTime = liveGame.gameClock)
                 Spacer(modifier = Modifier.size(6.dp))
-                GameQuarter(quarter = liveGame.currentTime)
+                GameQuarter(quarter = liveGame.gameClock)
             }
-            TeamIdentification(liveGame.awayTeam)
+            TeamIdentification(liveGame.visitantTeam)
         }
     }
 }
@@ -95,7 +95,7 @@ private fun TeamIdentification(team: Team) {
 }
 
 @Composable
-private fun GameScoreBoard(homePoints: Int, awayPoints: Int) {
+private fun GameScoreBoard(homePoints: Int, visitantPoints: Int) {
     Row(
         modifier = Modifier.fillMaxWidth(),
         verticalAlignment = Alignment.CenterVertically,
@@ -114,7 +114,7 @@ private fun GameScoreBoard(homePoints: Int, awayPoints: Int) {
                 .align(Alignment.CenterVertically)
         )
         TextField(
-            text = awayPoints.toString(),
+            text = visitantPoints.toString(),
             fontSize = 26.sp,
             modifier = Modifier.align(Alignment.CenterVertically)
         )
@@ -166,15 +166,15 @@ fun DefaultPreview() {
             shortName = "MHT",
             logo = "https:\\/\\/upload.wikimedia.org\\/wikipedia\\/fr\\/thumb\\/d\\/de\\/Houston_Rockets_logo_2003.png\\/330px-Houston_Rockets_logo_2003.png"
         ),
-        awayTeam = Team(
+        visitantTeam = Team(
             id = "2",
             fullName = "Brooklyn Nets",
             shortName = "BNT",
             logo = "https://upload.wikimedia.org/wikipedia/fr/8/89/Raptors2015.png"
         ),
         homePoints = 10,
-        awayPoints = 11,
-        currentTime = "2:37"
+        visitantPoints = 11,
+        gameClock = "2:37"
     )
 
     NbaGamesTheme {

@@ -15,7 +15,7 @@ class GameMapper(
                 visitantTeam = teamMapper.mapTeamResponseToTeam(gameResponse.visitantTeam),
                 homePoints = gameResponse.homeTeam.score.points.toInt(),
                 visitantPoints = gameResponse.visitantTeam.score.points.toInt(),
-                currentTime = gameResponse.gameDuration
+                currentClock = gameResponse.clock
             )
         }
     }
