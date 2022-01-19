@@ -1,11 +1,10 @@
 package br.com.nbagames.designsystem.components
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -16,31 +15,31 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import br.com.nbagames.designsystem.R
-import br.com.nbagames.designsystem.color.CustomColors.blackOpacity20
 import br.com.nbagames.designsystem.theme.NbaGamesTheme
 import br.com.nbagames.designsystem.theme.smallPadding
 
 @Composable
-fun NbaProgressIndicator() {
+fun NbaProgressIndicator(
+    modifier: Modifier = Modifier,
+    loadingMessage: Int = R.string.loading,
+    animationSize: Int = 100,
+    textColor: Color = MaterialTheme.colorScheme.onSurface
+) {
     Box(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(blackOpacity20),
+        modifier = modifier,
         contentAlignment = Alignment.Center
     ) {
-        Column(
-            horizontalAlignment = Alignment.CenterHorizontally,
-        ) {
+        Column(horizontalAlignment = Alignment.CenterHorizontally) {
             DefaultLottieAnimation(
                 animationResId = R.raw.loading_ball,
-                modifier = Modifier.size(100.dp)
+                modifier = Modifier.size(animationSize.dp)
             )
             TextField(
-                text = stringResource(id = R.string.loading),
+                text = stringResource(id = loadingMessage),
                 modifier = Modifier.padding(smallPadding),
                 fontStyle = FontStyle.Italic,
                 fontWeight = FontWeight.Bold,
-                color = Color.White
+                color = textColor
             )
         }
     }

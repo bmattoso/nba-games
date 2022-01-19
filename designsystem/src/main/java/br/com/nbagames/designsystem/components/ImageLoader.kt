@@ -9,10 +9,10 @@ import coil.compose.rememberImagePainter
 
 @Composable
 fun ImageLoader(
+    modifier: Modifier = Modifier,
     imageUrl: String,
     contentDescription: String,
-    @DrawableRes defaultContentResource: Int,
-    modifier: Modifier = Modifier
+    @DrawableRes defaultContentResource: Int
 ) {
     val painter = rememberImagePainter(
         data = imageUrl,

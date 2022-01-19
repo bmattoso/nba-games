@@ -2,35 +2,56 @@ package br.com.nbagames.game.presentation
 
 import android.util.Log
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import br.com.nbagames.game.mapper.LiveGamePresentationMapper
 import br.com.nbagames.usecase.game.LoadLiveGames
-import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.launch
 
 class LiveGameViewModel(
     private val loadLiveGames: LoadLiveGames,
     private val liveGamePresentationMapper: LiveGamePresentationMapper,
 ) : ViewModel() {
 
-    fun getLiveGameList(): Flow<LiveGameViewState> = flow {
-        emit(LiveGameViewState.Loading)
-        loadLiveGames()
-            .map { liveGameList -> liveGamePresentationMapper.mapLiveGamePresentation(liveGameList) }
-            .onEach { liveGameList ->
-                val liveGameViewState = if (liveGameList.isEmpty()) {
-                    LiveGameViewState.Empty
-                } else {
-                    LiveGameViewState.Loaded(liveGameList = liveGameList)
+    private val mutableLiveGamesViewState = MutableStateFlow(LiveGameListUiState())
+    val uiState: StateFlow<LiveGameListUiState> = mutableLiveGamesViewState
+
+    init {
+        loadLiveGameList()
+    }
+
+    fun loadLiveGameList() {
+        viewModelScope.launch {
+            loadLiveGames()
+                .map { liveGameList -> liveGamePresentationMapper.mapLiveGamePresentation(liveGameList) }
+                .onEach { liveGameList ->
+                    val currentState = uiState.value
+                    val newState = currentState.copy(
+                        showLoading = false,
+                        showEmptyState = liveGameList.isEmpty(),
+                        liveGameList = liveGameList,
+                        showError = false,
+                        errorMessage = null
+                    )
+                    mutableLiveGamesViewState.value = newState
                 }
-                emit(liveGameViewState)
-            }
-            .catch { throwable ->
-                Log.e("Exception", Log.getStackTraceString(throwable))
-                emit(LiveGameViewState.Error(throwable = throwable))
-            }.collect()
+                .catch { throwable ->
+                    Log.e("Exception", Log.getStackTraceString(throwable))
+                    val currentState = uiState.value
+                    val newState = currentState.copy(
+                        showLoading = false,
+                        showEmptyState = false,
+                        liveGameList = emptyList(),
+                        showError = true,
+                        errorMessage = null
+                    )
+                    mutableLiveGamesViewState.value = newState
+                }.collect()
+        }
     }
 }

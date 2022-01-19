@@ -13,8 +13,8 @@ import br.com.nbagames.designsystem.theme.Font
 
 @Composable
 fun TextField(
-    text: String,
     modifier: Modifier = Modifier,
+    text: String,
     fontSize: TextUnit = 16.sp,
     fontStyle: FontStyle = FontStyle.Normal,
     fontWeight: FontWeight = FontWeight.Normal,

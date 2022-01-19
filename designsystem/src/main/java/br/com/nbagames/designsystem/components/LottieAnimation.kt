@@ -11,8 +11,8 @@ import com.airbnb.lottie.compose.rememberLottieComposition
 
 @Composable
 fun DefaultLottieAnimation(
-    @RawRes animationResId: Int,
     modifier: Modifier,
+    @RawRes animationResId: Int,
     iterations: Int = LottieConstants.IterateForever
 ) {
     val animationComposition by rememberLottieComposition(

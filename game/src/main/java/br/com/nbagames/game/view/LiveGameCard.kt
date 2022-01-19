@@ -75,8 +75,8 @@ fun LiveGameCard(
 
 @Composable
 private fun TeamIdentification(
-    team: Team,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    team: Team
 ) {
     Column(
         modifier = modifier,
@@ -101,9 +101,9 @@ private fun TeamIdentification(
 
 @Composable
 private fun GameScoreBoard(
+    modifier: Modifier = Modifier,
     homePoints: Int,
     visitantPoints: Int,
-    modifier: Modifier = Modifier,
 ) {
     Row(
         modifier = modifier,
@@ -133,8 +133,8 @@ private fun GameScoreBoard(
 
 @Composable
 private fun GameClock(
-    clockTime: String,
     modifier: Modifier = Modifier,
+    clockTime: String,
 ) {
     Row(
         modifier = modifier,
