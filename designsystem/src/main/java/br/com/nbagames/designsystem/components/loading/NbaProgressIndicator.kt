@@ -1,4 +1,4 @@
-package br.com.nbagames.designsystem.components
+package br.com.nbagames.designsystem.components.loading
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -15,6 +15,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import br.com.nbagames.designsystem.R
+import br.com.nbagames.designsystem.components.TextField
 import br.com.nbagames.designsystem.theme.NbaGamesTheme
 import br.com.nbagames.designsystem.theme.smallPadding
 

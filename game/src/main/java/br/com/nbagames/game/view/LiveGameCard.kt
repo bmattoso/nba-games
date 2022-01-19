@@ -28,8 +28,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import br.com.nbagames.designsystem.components.ImageLoader
 import br.com.nbagames.designsystem.components.TextField
+import br.com.nbagames.designsystem.components.loading.ImageLoader
 import br.com.nbagames.designsystem.extension.formatGameClock
 import br.com.nbagames.designsystem.extension.formatNumberTwoDigits
 import br.com.nbagames.designsystem.theme.NbaGamesTheme

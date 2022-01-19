@@ -1,4 +1,4 @@
-package br.com.nbagames.designsystem.components
+package br.com.nbagames.designsystem.components.loading
 
 import androidx.annotation.RawRes
 import androidx.compose.runtime.Composable

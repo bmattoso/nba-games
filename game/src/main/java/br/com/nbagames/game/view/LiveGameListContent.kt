@@ -2,7 +2,6 @@ package br.com.nbagames.game.view
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.defaultMinSize
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.runtime.Composable
@@ -17,7 +16,7 @@ fun LiveGameListContent(
     onLiveGameClick: (gameId: String) -> Unit
 ) {
     LazyColumn(
-        modifier = modifier.fillMaxSize(),
+        modifier = modifier,
         verticalArrangement = Arrangement.spacedBy(12.dp)
     ) {
         items(
@@ -27,7 +26,7 @@ fun LiveGameListContent(
                     liveGame = liveGames[index],
                     onLiveGameClick = onLiveGameClick,
                     modifier = Modifier
-                        .defaultMinSize(minHeight = 150.dp)
+                        .defaultMinSize(minHeight = 160.dp)
                         .padding(horizontal = 16.dp, vertical = 10.dp)
                 )
             }

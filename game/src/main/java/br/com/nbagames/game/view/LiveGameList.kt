@@ -6,7 +6,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
-import br.com.nbagames.designsystem.components.NbaProgressIndicator
+import br.com.nbagames.designsystem.components.loading.NbaProgressIndicator
 import br.com.nbagames.game.presentation.LiveGameViewModel
 import org.koin.androidx.compose.getViewModel
 
@@ -20,11 +20,11 @@ fun LiveGameList(
     val liveGameListUiState = liveGameViewModel.uiState.collectAsState().value
 
     when {
-        liveGameListUiState.showLoading -> NbaProgressIndicator(modifier = Modifier.fillMaxSize())
+        liveGameListUiState.showLoading -> NbaProgressIndicator(modifier = modifier.fillMaxSize())
         liveGameListUiState.showEmptyState -> Text(text = "Empty")
         liveGameListUiState.showError -> Text(text = "Error")
         else -> LiveGameListContent(
-            modifier = modifier,
+            modifier = modifier.fillMaxSize(),
             liveGames = liveGameListUiState.liveGameList,
             onLiveGameClick = onLiveGameClick
         )
