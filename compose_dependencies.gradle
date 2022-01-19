@@ -10,10 +10,14 @@ android {
 }
 
 dependencies {
+    implementation "androidx.activity:activity-compose:$compose_activity"
     implementation "androidx.compose.material:material:$compose_version"
-    implementation "androidx.compose.material:material-icons-extended:$compose_version"
+    implementation "androidx.compose.material3:material3:$google_material_3"
     implementation "androidx.compose.ui:ui:$compose_version"
     implementation "androidx.compose.ui:ui-tooling:$compose_uitooling"
     implementation "androidx.lifecycle:lifecycle-viewmodel-compose:$compose_viewmodel"
+    implementation "com.google.android.material:material:$google_material"
     implementation "io.insert-koin:koin-androidx-compose:$koin_version"
+
+    androidTestImplementation "androidx.compose.ui:ui-test-junit4:$compose_version"
 }

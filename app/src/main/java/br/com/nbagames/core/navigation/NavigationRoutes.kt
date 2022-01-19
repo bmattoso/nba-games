@@ -1,13 +1,16 @@
 package br.com.nbagames.core.navigation
 
+import androidx.compose.foundation.background
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavHostController
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.navArgument
+import br.com.nbagames.designsystem.color.CustomColors.blackCurrant
 import br.com.nbagames.designsystem.components.TextField
 import br.com.nbagames.game.view.LiveGameDetail
 import br.com.nbagames.game.view.LiveGameList
@@ -24,7 +27,10 @@ fun NavigationRoutes(
     NavHost(navController = navController, startDestination = startDestination) {
 
         composable(Route.Splash.route) {
-            Splash(onSetupLoaded = { actions.onSetupLoaded(onContentLoaded) })
+            Splash(
+                modifier = Modifier.background(blackCurrant),
+                onSetupLoaded = { actions.onSetupLoaded(onContentLoaded) }
+            )
         }
 
         composable(

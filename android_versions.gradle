@@ -1,9 +1,8 @@
 ext {
     compileSdkVersion = 31
     buildToolsVersion = '30.0.3'
-    minSdkVersion     = 21
+    minSdkVersion     = 24
     targetSdkVersion  = 31
     versionCode       = 1
     versionName       = '1.0'
-    jvmTargetVersion  = '1.8'
 }

@@ -5,10 +5,8 @@ import androidx.compose.foundation.Image
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
-import coil.annotation.ExperimentalCoilApi
 import coil.compose.rememberImagePainter
 
-@ExperimentalCoilApi
 @Composable
 fun ImageLoader(
     imageUrl: String,

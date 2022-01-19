@@ -2,25 +2,25 @@ package br.com.nbagames.game.view
 
 import androidx.annotation.StringRes
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxHeight
-import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.defaultMinSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.material.Card
-import androidx.compose.material.Scaffold
+import androidx.compose.material.Surface
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
@@ -39,28 +39,25 @@ import br.com.nbagames.usecase.game.presentation.LiveGamePresentation
 
 @Composable
 fun LiveGameCard(
+    modifier: Modifier = Modifier,
     liveGame: LiveGamePresentation,
     onLiveGameClick: (gameId: String) -> Unit = {}
 ) {
     Card(
         elevation = 4.dp,
-        backgroundColor = Color.White,
-        modifier = Modifier
-            .fillMaxWidth()
-            .height(160.dp)
-            .clickable(onClick = { onLiveGameClick(liveGame.id) })
+        modifier = modifier.clickable(onClick = { onLiveGameClick(liveGame.id) })
     ) {
         Row(
-            horizontalArrangement = Arrangement.SpaceEvenly,
+            modifier = Modifier.padding(12.dp),
+            verticalAlignment = Alignment.CenterVertically
         ) {
-            TeamIdentification(liveGame.homeTeam)
+            TeamIdentification(
+                team = liveGame.homeTeam,
+                modifier = Modifier.weight(1f)
+            )
             Column(
-                modifier = Modifier
-                    .fillMaxHeight()
-                    .width(120.dp)
-                    .align(Alignment.CenterVertically),
-                verticalArrangement = Arrangement.Center,
-                horizontalAlignment = Alignment.CenterHorizontally
+                horizontalAlignment = Alignment.CenterHorizontally,
+                modifier = Modifier.weight(2f)
             ) {
                 GameScoreBoard(homePoints = liveGame.homePoints, visitantPoints = liveGame.visitantPoints)
                 Spacer(modifier = Modifier.size(6.dp))
@@ -68,19 +65,23 @@ fun LiveGameCard(
                 Spacer(modifier = Modifier.size(6.dp))
                 GameQuarter(quarter = liveGame.quarter)
             }
-            TeamIdentification(liveGame.visitantTeam)
+            TeamIdentification(
+                team = liveGame.visitantTeam,
+                modifier = Modifier.weight(1f)
+            )
         }
     }
 }
 
 @Composable
-private fun TeamIdentification(team: Team) {
+private fun TeamIdentification(
+    team: Team,
+    modifier: Modifier = Modifier
+) {
     Column(
+        modifier = modifier,
         horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center,
-        modifier = Modifier
-            .padding(top = 24.dp, bottom = 12.dp)
-            .size(90.dp)
+        verticalArrangement = Arrangement.Center
     ) {
         ImageLoader(
             imageUrl = team.logo,
@@ -89,46 +90,54 @@ private fun TeamIdentification(team: Team) {
             modifier = Modifier.size(50.dp)
         )
         Spacer(modifier = Modifier.height(8.dp))
-        TextField(
+        Text(
             text = team.fullName,
-            color = Color.Black,
-            fontWeight = FontWeight.Medium,
-            fontSize = 14.sp,
+            textAlign = TextAlign.Center,
+            style = MaterialTheme.typography.labelMedium,
+            color = Color.Black
+        )
+    }
+}
+
+@Composable
+private fun GameScoreBoard(
+    homePoints: Int,
+    visitantPoints: Int,
+    modifier: Modifier = Modifier,
+) {
+    Row(
+        modifier = modifier,
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        TextField(
+            modifier = Modifier.defaultMinSize(minWidth = 46.dp),
+            text = homePoints.formatNumberTwoDigits(),
+            fontSize = 26.sp,
+            textAlign = TextAlign.Center
+        )
+        Spacer(modifier = Modifier.width(16.dp))
+        Image(
+            painter = painterResource(id = R.drawable.ic_versus_grey),
+            contentDescription = null,
+            modifier = Modifier.size(12.dp)
+        )
+        Spacer(modifier = Modifier.width(16.dp))
+        TextField(
+            modifier = Modifier.defaultMinSize(minWidth = 46.dp),
+            text = visitantPoints.formatNumberTwoDigits(),
+            fontSize = 26.sp,
             textAlign = TextAlign.Center
         )
     }
 }
 
 @Composable
-private fun GameScoreBoard(homePoints: Int, visitantPoints: Int) {
+private fun GameClock(
+    clockTime: String,
+    modifier: Modifier = Modifier,
+) {
     Row(
-        modifier = Modifier.fillMaxWidth(),
-        verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.SpaceBetween,
-    ) {
-        TextField(
-            text = homePoints.formatNumberTwoDigits(),
-            fontSize = 26.sp,
-            modifier = Modifier.align(Alignment.CenterVertically)
-        )
-        Image(
-            painter = painterResource(id = R.drawable.ic_versus_grey),
-            contentDescription = null,
-            modifier = Modifier
-                .size(12.dp)
-                .align(Alignment.CenterVertically)
-        )
-        TextField(
-            text = visitantPoints.formatNumberTwoDigits(),
-            fontSize = 26.sp,
-            modifier = Modifier.align(Alignment.CenterVertically)
-        )
-    }
-}
-
-@Composable
-private fun GameClock(clockTime: String) {
-    Row(
+        modifier = modifier,
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.SpaceAround
     ) {
@@ -137,7 +146,7 @@ private fun GameClock(clockTime: String) {
             contentDescription = null,
             modifier = Modifier.size(16.dp)
         )
-        Spacer(modifier = Modifier.size(10.dp))
+        Spacer(modifier = Modifier.size(16.dp))
         TextField(
             text = clockTime.formatGameClock(),
             color = Color.Black,
@@ -156,10 +165,10 @@ fun GameQuarter(@StringRes quarter: Int) {
         fontSize = 12.sp,
         textAlign = TextAlign.Center,
         fontWeight = FontWeight.Light,
-        modifier = Modifier.fillMaxWidth()
     )
 }
 
+@ExperimentalMaterial3Api
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
@@ -184,12 +193,11 @@ fun DefaultPreview() {
     )
 
     NbaGamesTheme {
-        Scaffold(
-            modifier = Modifier
-                .padding(10.dp)
-                .background(colorResource(id = R.color.brightGrayLight))
-        ) {
-            LiveGameCard(liveGame = liveGame)
+        Surface(modifier = Modifier.padding(10.dp)) {
+            LiveGameCard(
+                liveGame = liveGame,
+                modifier = Modifier.padding(12.dp)
+            )
         }
     }
 }
