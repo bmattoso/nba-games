@@ -9,7 +9,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import androidx.navigation.compose.navArgument
+import androidx.navigation.navArgument
 import br.com.nbagames.designsystem.color.CustomColors.blackCurrant
 import br.com.nbagames.designsystem.components.TextField
 import br.com.nbagames.game.view.LiveGameDetail
