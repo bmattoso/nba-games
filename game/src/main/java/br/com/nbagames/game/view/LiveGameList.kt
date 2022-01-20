@@ -60,7 +60,6 @@ private fun LiveGameListEmptyState(
     }
 }
 
-
 @Composable
 private fun LiveGameListErrorState(
     modifier: Modifier = Modifier,
