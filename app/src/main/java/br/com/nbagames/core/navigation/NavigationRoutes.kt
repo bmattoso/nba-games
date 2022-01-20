@@ -1,6 +1,7 @@
 package br.com.nbagames.core.navigation
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
@@ -41,7 +42,11 @@ fun NavigationRoutes(
         }
 
         composable(HomeRoute.LiveGame.route) {
-            LiveGameList(onLiveGameClick = actions::onLiveGameClick)
+            LiveGameList(
+                modifier = Modifier.fillMaxSize(),
+                onLiveGameClick = actions::onLiveGameClick,
+                onClickOpenCalendar = actions::onClickOpenCalendar
+            )
         }
 
         composable(HomeRoute.Standings.route) {
@@ -68,5 +73,9 @@ internal class NavigationDestination(private val navController: NavHostControlle
 
     fun onLiveGameClick(gameId: String) {
         navController.navigate("liveGame/$gameId")
+    }
+
+    fun onClickOpenCalendar() {
+        navController.navigate(HomeRoute.Calendar.route)
     }
 }

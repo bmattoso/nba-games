@@ -32,17 +32,16 @@ import br.com.nbagames.designsystem.theme.NbaGamesTheme
 @Composable
 fun Home() {
     val navController = rememberNavController()
+    val currentTab by navController.currentRouteAsState()
     var isContentLoaded by remember { mutableStateOf(false) }
 
     Scaffold(
         topBar = {
-            val currentTab by navController.currentRouteAsState()
             if (isContentLoaded) {
                 HomeTopBar(currentNavigationRoute = currentTab)
             }
         },
         bottomBar = {
-            val currentTab by navController.currentRouteAsState()
             HomeBottomBar(
                 isContentLoaded = isContentLoaded,
                 currentTab = currentTab,

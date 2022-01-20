@@ -1,0 +1,16 @@
+{
+  "api": {
+    "status": 200,
+    "message": "GET games\/live",
+    "results": 0,
+    "filters": [
+      "seasonYear",
+      "league",
+      "gameId",
+      "teamId",
+      "date",
+      "live"
+    ],
+    "games": []
+  }
+}
