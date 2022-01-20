@@ -21,10 +21,11 @@ import br.com.nbagames.designsystem.components.loading.DefaultLottieAnimation
 import br.com.nbagames.designsystem.theme.NbaGamesTheme
 
 @Composable
-fun EmptyState(
+fun CommunicationSection(
     modifier: Modifier = Modifier,
     @StringRes message: Int,
-    @RawRes iconRes: Int = R.raw.nothing_found,
+    @RawRes animationRes: Int = R.raw.nothing_found,
+    animationSize: Int = 240,
     actionContent: @Composable () -> Unit,
 ) {
     Column(
@@ -32,8 +33,8 @@ fun EmptyState(
         horizontalAlignment = CenterHorizontally
     ) {
         DefaultLottieAnimation(
-            modifier = Modifier.size(240.dp),
-            animationResId = iconRes,
+            modifier = Modifier.size(animationSize.dp),
+            animationResId = animationRes,
             iterations = 2
         )
         TextField(text = stringResource(id = message), textAlign = TextAlign.Center)
@@ -47,7 +48,7 @@ fun EmptyState(
 fun DefaultPreview() {
     NbaGamesTheme {
         Surface {
-            EmptyState(
+            CommunicationSection(
                 modifier = Modifier.fillMaxSize(),
                 message = R.string.mtrl_picker_toggle_to_year_selection
             ) {

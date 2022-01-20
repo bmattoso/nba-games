@@ -26,6 +26,7 @@ class LiveGameViewModel(
     }
 
     fun loadLiveGameList() {
+        mutableLiveGamesViewState.value = mutableLiveGamesViewState.value.copy(showLoading = true)
         viewModelScope.launch {
             loadLiveGames()
                 .map { liveGameList -> liveGamePresentationMapper.mapLiveGamePresentation(liveGameList) }
@@ -36,7 +37,7 @@ class LiveGameViewModel(
                         showEmptyState = liveGameList.isEmpty(),
                         liveGameList = liveGameList,
                         showError = false,
-                        errorMessage = null
+                        liveGameListError = null
                     )
                     mutableLiveGamesViewState.value = newState
                 }
@@ -48,10 +49,17 @@ class LiveGameViewModel(
                         showEmptyState = false,
                         liveGameList = emptyList(),
                         showError = true,
-                        errorMessage = null
+                        liveGameListError = getLiveGameListErrorFromThrowable(throwable)
                     )
                     mutableLiveGamesViewState.value = newState
                 }.collect()
+        }
+    }
+
+    private fun getLiveGameListErrorFromThrowable(throwable: Throwable): LiveGameListError {
+        return when (throwable) {
+            is RuntimeException -> LiveGameListError.Server
+            else -> LiveGameListError.Unknown
         }
     }
 }

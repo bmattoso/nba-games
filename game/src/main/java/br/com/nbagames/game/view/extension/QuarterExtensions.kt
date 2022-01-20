@@ -1,7 +1,7 @@
-package br.com.nbagames.designsystem.extension
+package br.com.nbagames.game.view.extension
 
 import androidx.annotation.StringRes
-import br.com.nbagames.designsystem.R
+import br.com.nbagames.game.R
 import br.com.nbagames.model.Quarter
 
 @StringRes
