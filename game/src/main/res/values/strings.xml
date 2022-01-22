@@ -8,4 +8,7 @@
     <string name="fourth_quarter">Fourth Quarter</string>
     <string name="server_communication_failed">The connection with server is unstable, please try load information again.</string>
     <string name="load_again">Load Again</string>
+    <string name="countdown_timer_hint">Syncing in %1$s seconds</string>
+    <string name="sync">Sync</string>
+    <string name="countdown_timer_paused">Sync paused</string>
 </resources>

@@ -136,24 +136,26 @@ private fun GameClock(
     modifier: Modifier = Modifier,
     clockTime: String,
 ) {
-    Row(
-        modifier = modifier,
-        verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.SpaceAround
-    ) {
-        Image(
-            painter = painterResource(id = R.drawable.ic_clock_grey),
-            contentDescription = null,
-            modifier = Modifier.size(16.dp)
-        )
-        Spacer(modifier = Modifier.size(16.dp))
-        TextField(
-            text = clockTime.formatGameClock(),
-            color = Color.Black,
-            fontSize = 18.sp,
-            textAlign = TextAlign.Center,
-            fontWeight = FontWeight.Light,
-        )
+    if (clockTime.isNotEmpty()) {
+        Row(
+            modifier = modifier,
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.SpaceAround
+        ) {
+            Image(
+                painter = painterResource(id = R.drawable.ic_clock_grey),
+                contentDescription = null,
+                modifier = Modifier.size(16.dp)
+            )
+            Spacer(modifier = Modifier.size(8.dp))
+            TextField(
+                text = clockTime.formatGameClock(),
+                color = Color.Black,
+                fontSize = 18.sp,
+                textAlign = TextAlign.Center,
+                fontWeight = FontWeight.Light,
+            )
+        }
     }
 }
 

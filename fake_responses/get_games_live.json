@@ -2,19 +2,56 @@
   "api": {
     "status": 200,
     "message": "GET games\/live",
-    "results": 3,
+    "results": 8,
     "filters": ["seasonYear", "league", "gameId", "teamId", "date", "live"],
     "games": [{
       "seasonYear": "2021",
       "league": "standard",
-      "gameId": "9136",
-      "startTimeUTC": "2021-12-05T23:00:00.000Z",
+      "gameId": "10249",
+      "startTimeUTC": "2022-01-22T00:00:00.000Z",
       "endTimeUTC": "",
-      "arena": "State Farm Arena",
-      "city": "Atlanta",
+      "arena": "Spectrum Center",
+      "city": "Charlotte",
       "country": "USA",
-      "clock": "9:40",
-      "gameDuration": "1:11",
+      "clock": "7:59",
+      "gameDuration": "1:46",
+      "currentPeriod": "4\/4",
+      "halftime": "0",
+      "EndOfPeriod": "0",
+      "seasonStage": "2",
+      "statusShortGame": "2",
+      "statusGame": "In Play",
+      "vTeam": {
+        "teamId": "25",
+        "shortName": "OKC",
+        "fullName": "Oklahoma City Thunder",
+        "nickName": "Thunder",
+        "logo": "https:\/\/upload.wikimedia.org\/wikipedia\/fr\/thumb\/4\/4f\/Thunder_d%27Oklahoma_City_logo.svg\/1200px-Thunder_d%27Oklahoma_City_logo.svg.png",
+        "score": {
+          "points": "82"
+        }
+      },
+      "hTeam": {
+        "teamId": "5",
+        "shortName": "CHA",
+        "fullName": "Charlotte Hornets",
+        "nickName": "Hornets",
+        "logo": "https:\/\/upload.wikimedia.org\/wikipedia\/fr\/thumb\/f\/f3\/Hornets_de_Charlotte_logo.svg\/1200px-Hornets_de_Charlotte_logo.svg.png",
+        "score": {
+          "points": "102"
+        }
+      }
+    }, {
+      "seasonYear": "2021",
+      "league": "standard",
+      "gameId": "10250",
+      "startTimeUTC": "2022-01-22T00:00:00.000Z",
+      "endTimeUTC": "",
+      "arena": "Amway Center",
+      "city": "Orlando",
+      "country": "USA",
+      "clock": "58.1",
+      "gameDuration": "1:46",
       "currentPeriod": "3\/4",
       "halftime": "0",
       "EndOfPeriod": "0",
@@ -22,13 +59,87 @@
       "statusShortGame": "2",
       "statusGame": "In Play",
       "vTeam": {
-        "teamId": "5",
-        "shortName": "CHA",
-        "fullName": "Charlotte Hornets",
-        "nickName": "Hornets",
-        "logo": "https:\/\/upload.wikimedia.org\/wikipedia\/fr\/thumb\/f\/f3\/Hornets_de_Charlotte_logo.svg\/1200px-Hornets_de_Charlotte_logo.svg.png",
+        "teamId": "17",
+        "shortName": "LAL",
+        "fullName": "Los Angeles Lakers",
+        "nickName": "Lakers",
+        "logo": "https:\/\/upload.wikimedia.org\/wikipedia\/commons\/thumb\/3\/3c\/Los_Angeles_Lakers_logo.svg\/220px-Los_Angeles_Lakers_logo.svg.png",
         "score": {
-          "points": "74"
+          "points": "85"
+        }
+      },
+      "hTeam": {
+        "teamId": "26",
+        "shortName": "ORL",
+        "fullName": "Orlando Magic",
+        "nickName": "Magic",
+        "logo": "https:\/\/upload.wikimedia.org\/wikipedia\/fr\/b\/bd\/Orlando_Magic_logo_2010.png",
+        "score": {
+          "points": "75"
+        }
+      }
+    }, {
+      "seasonYear": "2021",
+      "league": "standard",
+      "gameId": "10251",
+      "startTimeUTC": "2022-01-22T00:00:00.000Z",
+      "endTimeUTC": "",
+      "arena": "Wells Fargo Center",
+      "city": "Philadelphia",
+      "country": "USA",
+      "clock": "6:40",
+      "gameDuration": "1:46",
+      "currentPeriod": "4\/4",
+      "halftime": "0",
+      "EndOfPeriod": "0",
+      "seasonStage": "2",
+      "statusShortGame": "2",
+      "statusGame": "In Play",
+      "vTeam": {
+        "teamId": "16",
+        "shortName": "LAC",
+        "fullName": "LA Clippers",
+        "nickName": "Clippers",
+        "logo": "https:\/\/upload.wikimedia.org\/wikipedia\/fr\/d\/d6\/Los_Angeles_Clippers_logo_2010.png",
+        "score": {
+          "points": "78"
+        }
+      },
+      "hTeam": {
+        "teamId": "27",
+        "shortName": "PHI",
+        "fullName": "Philadelphia 76ers",
+        "nickName": "76ers",
+        "logo": "https:\/\/upload.wikimedia.org\/wikipedia\/fr\/4\/48\/76ers_2016.png",
+        "score": {
+          "points": "87"
+        }
+      }
+    }, {
+      "seasonYear": "2021",
+      "league": "standard",
+      "gameId": "10252",
+      "startTimeUTC": "2022-01-22T00:30:00.000Z",
+      "endTimeUTC": "",
+      "arena": "State Farm Arena",
+      "city": "Atlanta",
+      "country": "USA",
+      "clock": "8:45",
+      "gameDuration": "1:14",
+      "currentPeriod": "3\/4",
+      "halftime": "0",
+      "EndOfPeriod": "0",
+      "seasonStage": "2",
+      "statusShortGame": "2",
+      "statusGame": "In Play",
+      "vTeam": {
+        "teamId": "20",
+        "shortName": "MIA",
+        "fullName": "Miami Heat",
+        "nickName": "Heat",
+        "logo": "https:\/\/upload.wikimedia.org\/wikipedia\/fr\/thumb\/1\/1c\/Miami_Heat_-_Logo.svg\/1200px-Miami_Heat_-_Logo.svg.png",
+        "score": {
+          "points": "57"
         }
       },
       "hTeam": {
@@ -38,20 +149,57 @@
         "nickName": "Hawks",
         "logo": "https:\/\/upload.wikimedia.org\/wikipedia\/fr\/e\/ee\/Hawks_2016.png",
         "score": {
-          "points": "134"
+          "points": "64"
         }
       }
     }, {
       "seasonYear": "2021",
       "league": "standard",
-      "gameId": "9137",
-      "startTimeUTC": "2021-12-05T23:00:00.000Z",
+      "gameId": "10253",
+      "startTimeUTC": "2022-01-22T00:30:00.000Z",
       "endTimeUTC": "",
-      "arena": "Scotiabank Arena",
-      "city": "Toronto",
-      "country": "Canada",
-      "clock": "9:38",
-      "gameDuration": "01:11",
+      "arena": "TD Garden",
+      "city": "Boston",
+      "country": "USA",
+      "clock": "9:46",
+      "gameDuration": "1:16",
+      "currentPeriod": "3\/4",
+      "halftime": "0",
+      "EndOfPeriod": "0",
+      "seasonStage": "2",
+      "statusShortGame": "2",
+      "statusGame": "In Play",
+      "vTeam": {
+        "teamId": "29",
+        "shortName": "POR",
+        "fullName": "Portland Trail Blazers",
+        "nickName": "Trail Blazers",
+        "logo": "https:\/\/upload.wikimedia.org\/wikipedia\/en\/thumb\/2\/21\/Portland_Trail_Blazers_logo.svg\/1200px-Portland_Trail_Blazers_logo.svg.png",
+        "score": {
+          "points": "58"
+        }
+      },
+      "hTeam": {
+        "teamId": "2",
+        "shortName": "BOS",
+        "fullName": "Boston Celtics",
+        "nickName": "Celtics",
+        "logo": "https:\/\/upload.wikimedia.org\/wikipedia\/fr\/thumb\/6\/65\/Celtics_de_Boston_logo.svg\/1024px-Celtics_de_Boston_logo.svg.png",
+        "score": {
+          "points": "64"
+        }
+      }
+    }, {
+      "seasonYear": "2021",
+      "league": "standard",
+      "gameId": "10254",
+      "startTimeUTC": "2022-01-22T01:00:00.000Z",
+      "endTimeUTC": "",
+      "arena": "Capital One Arena",
+      "city": "Washington",
+      "country": "USA",
+      "clock": "2:56",
+      "gameDuration": "0:46",
       "currentPeriod": "2\/4",
       "halftime": "0",
       "EndOfPeriod": "0",
@@ -59,36 +207,73 @@
       "statusShortGame": "2",
       "statusGame": "In Play",
       "vTeam": {
-        "teamId": "41",
-        "shortName": "WAS",
-        "fullName": "Washington Wizards",
-        "nickName": "Wizards",
-        "logo": "https:\/\/upload.wikimedia.org\/wikipedia\/fr\/archive\/d\/d6\/20161212034849%21Wizards2015.png",
-        "score": {
-          "points": "144"
-        }
-      },
-      "hTeam": {
         "teamId": "38",
         "shortName": "TOR",
         "fullName": "Toronto Raptors",
         "nickName": "Raptors",
         "logo": "https:\/\/upload.wikimedia.org\/wikipedia\/fr\/8\/89\/Raptors2015.png",
         "score": {
-          "points": "167"
+          "points": "47"
+        }
+      },
+      "hTeam": {
+        "teamId": "41",
+        "shortName": "WAS",
+        "fullName": "Washington Wizards",
+        "nickName": "Wizards",
+        "logo": "https:\/\/upload.wikimedia.org\/wikipedia\/fr\/archive\/d\/d6\/20161212034849%21Wizards2015.png",
+        "score": {
+          "points": "49"
         }
       }
     }, {
       "seasonYear": "2021",
       "league": "standard",
-      "gameId": "9138",
-      "startTimeUTC": "2021-12-06T00:00:00.000Z",
+      "gameId": "10255",
+      "startTimeUTC": "2022-01-22T01:00:00.000Z",
       "endTimeUTC": "",
-      "arena": "Toyota Center",
-      "city": "Houston",
+      "arena": "Fiserv Forum",
+      "city": "Milwaukee",
       "country": "USA",
-      "clock": "5:17",
-      "gameDuration": "0:09",
+      "clock": "7:52",
+      "gameDuration": "0:41",
+      "currentPeriod": "2\/4",
+      "halftime": "0",
+      "EndOfPeriod": "0",
+      "seasonStage": "2",
+      "statusShortGame": "2",
+      "statusGame": "In Play",
+      "vTeam": {
+        "teamId": "6",
+        "shortName": "CHI",
+        "fullName": "Chicago Bulls",
+        "nickName": "Bulls",
+        "logo": "https:\/\/upload.wikimedia.org\/wikipedia\/fr\/thumb\/d\/d1\/Bulls_de_Chicago_logo.svg\/1200px-Bulls_de_Chicago_logo.svg.png",
+        "score": {
+          "points": "26"
+        }
+      },
+      "hTeam": {
+        "teamId": "21",
+        "shortName": "MIL",
+        "fullName": "Milwaukee Bucks",
+        "nickName": "Bucks",
+        "logo": "https:\/\/upload.wikimedia.org\/wikipedia\/fr\/3\/34\/Bucks2015.png",
+        "score": {
+          "points": "28"
+        }
+      }
+    }, {
+      "seasonYear": "2021",
+      "league": "standard",
+      "gameId": "10256",
+      "startTimeUTC": "2022-01-22T01:30:00.000Z",
+      "endTimeUTC": "",
+      "arena": "AT&T Center",
+      "city": "San Antonio",
+      "country": "USA",
+      "clock": "5:25",
+      "gameDuration": "0:11",
       "currentPeriod": "1\/4",
       "halftime": "0",
       "EndOfPeriod": "0",
@@ -96,23 +281,23 @@
       "statusShortGame": "2",
       "statusGame": "In Play",
       "vTeam": {
-        "teamId": "23",
-        "shortName": "NOP",
-        "fullName": "New Orleans Pelicans",
-        "nickName": "Pelicans",
-        "logo": "https:\/\/upload.wikimedia.org\/wikipedia\/fr\/thumb\/2\/21\/New_Orleans_Pelicans.png\/200px-New_Orleans_Pelicans.png",
+        "teamId": "4",
+        "shortName": "BKN",
+        "fullName": "Brooklyn Nets",
+        "nickName": "Nets",
+        "logo": "https:\/\/upload.wikimedia.org\/wikipedia\/commons\/thumb\/4\/44\/Brooklyn_Nets_newlogo.svg\/130px-Brooklyn_Nets_newlogo.svg.png",
         "score": {
-          "points": "16"
+          "points": "14"
         }
       },
       "hTeam": {
-        "teamId": "14",
-        "shortName": "HOU",
-        "fullName": "Houston Rockets",
-        "nickName": "Rockets",
-        "logo": "https:\/\/upload.wikimedia.org\/wikipedia\/fr\/thumb\/d\/de\/Houston_Rockets_logo_2003.png\/330px-Houston_Rockets_logo_2003.png",
+        "teamId": "31",
+        "shortName": "SAS",
+        "fullName": "San Antonio Spurs",
+        "nickName": "Spurs",
+        "logo": "https:\/\/upload.wikimedia.org\/wikipedia\/fr\/0\/0e\/San_Antonio_Spurs_2018.png",
         "score": {
-          "points": "04"
+          "points": "10"
         }
       }
     }]
