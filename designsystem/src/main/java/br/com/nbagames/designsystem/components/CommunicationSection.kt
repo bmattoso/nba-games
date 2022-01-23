@@ -5,6 +5,7 @@ import androidx.annotation.StringRes
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.Button
 import androidx.compose.material.Surface
@@ -49,8 +50,8 @@ fun DefaultPreview() {
     NbaGamesTheme {
         Surface {
             CommunicationSection(
-                modifier = Modifier.fillMaxSize(),
-                message = R.string.mtrl_picker_toggle_to_year_selection
+                modifier = Modifier.fillMaxSize().padding(16.dp),
+                message = R.string.unknown_error_message
             ) {
                 Button(onClick = {}) {
                     Text(text = "Try load again")

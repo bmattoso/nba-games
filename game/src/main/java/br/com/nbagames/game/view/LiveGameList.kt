@@ -78,9 +78,7 @@ fun CountdownUpdate(
     }
 
     Row(
-        modifier = modifier
-            .background(color = MaterialTheme.colorScheme.primaryContainer)
-            .padding(8.dp),
+        modifier = modifier.background(color = MaterialTheme.colorScheme.primaryContainer),
         verticalAlignment = Alignment.CenterVertically
     ) {
         Text(

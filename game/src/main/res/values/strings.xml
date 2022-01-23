@@ -1,5 +1,4 @@
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="ExtraTranslation">
-    <string name="live_games_list">Live Games List</string>
     <string name="empty_live_games">It seems like there are no live games.\nSee the next games in the game\'s calendar section.</string>
     <string name="open_calendar">Open Calendar</string>
     <string name="first_quarter">First Quarter</string>

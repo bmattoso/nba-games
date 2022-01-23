@@ -12,11 +12,9 @@ import br.com.nbagames.designsystem.color.LightColors
 
 @Composable
 fun NbaGamesTheme(darkTheme: Boolean = isSystemInDarkTheme(), content: @Composable () -> Unit) {
-    val isDynamicColorAvailable = Build.VERSION.SDK_INT >= Build.VERSION_CODES.S
-
     val colorScheme = when {
-        isDynamicColorAvailable && darkTheme -> dynamicDarkColorScheme(LocalContext.current)
-        isDynamicColorAvailable && !darkTheme -> dynamicLightColorScheme(LocalContext.current)
+        Build.VERSION.SDK_INT >= Build.VERSION_CODES.S && darkTheme -> dynamicDarkColorScheme(LocalContext.current)
+        Build.VERSION.SDK_INT >= Build.VERSION_CODES.S && !darkTheme -> dynamicLightColorScheme(LocalContext.current)
         darkTheme -> DarkColors.createScheme()
         else -> LightColors.createScheme()
     }

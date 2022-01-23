@@ -45,14 +45,16 @@ android {
     kotlinOptions {
         useIR = true
     }
-    buildFeatures {
-        compose true
-    }
-    composeOptions {
-        kotlinCompilerExtensionVersion compose_version
-    }
     lintOptions {
         disable 'ObsoleteLintCustomCheck'
+    }
+
+    applicationVariants.all { variant ->
+        variant.assemble.doLast {
+            variant.outputs.each { output ->
+                delete "${output.outputFile.parent}/output*.json"
+            }
+        }
     }
 }
 
