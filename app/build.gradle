@@ -76,5 +76,4 @@ dependencies {
     testImplementation "io.insert-koin:koin-test-junit5:$koin_version"
 
     androidTestImplementation "androidx.test.espresso:espresso-core:$espresso"
-    androidTestImplementation "androidx.test.ext:junit:$androidx_junit_ext"
 }
