@@ -3,7 +3,6 @@ package br.com.nbagames.game.presentation
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import br.com.nbagames.designsystem.extension.formatNumberTwoDigits
 import br.com.nbagames.game.mapper.LiveGamePresentationMapper
 import br.com.nbagames.usecase.game.LoadLiveGames
 import kotlinx.coroutines.delay
@@ -14,10 +13,11 @@ import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
+import kotlin.time.Duration.Companion.seconds
 
-private const val INITIAL_COUNTDOWN_TEXT = "01:00"
+private const val INITIAL_COUNTDOWN_TEXT = "03:00"
 private const val COUNTDOWN_DELAY = 1000L
-private const val INITIAL_COUNTDOWN_VALUE = 60
+private const val INITIAL_COUNTDOWN_VALUE = 180
 
 class LiveGameViewModel(
     private val loadLiveGames: LoadLiveGames,
@@ -103,5 +103,5 @@ class LiveGameViewModel(
         }
     }
 
-    private fun formatCountdownTimer(value: Int): String = "00:${value.formatNumberTwoDigits()}"
+    private fun formatCountdownTimer(value: Int): String = value.seconds.toString()
 }
