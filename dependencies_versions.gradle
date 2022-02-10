@@ -18,7 +18,7 @@ ext {
     okhttp = '4.9.3'
     retrofit = '2.9.0'
     lottie_compose_version = '4.1.0'
-    compone_navigation_version = '2.4.0-rc01'
+    compone_navigation_version = '2.4.0'
     compose_viewmodel = '2.4.0'
     coil_version = '1.4.0'
     ktlint_version = '0.43.2'
