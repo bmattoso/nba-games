@@ -12,12 +12,12 @@ class GameMapper(
         return liveGameList.map { gameResponse ->
             Game(
                 id = gameResponse.id,
-                homeTeam = teamMapper.mapTeamResponseToTeam(gameResponse.homeTeam),
-                visitantTeam = teamMapper.mapTeamResponseToTeam(gameResponse.visitantTeam),
-                homePoints = gameResponse.homeTeam.score.points.toInt(),
-                visitantPoints = gameResponse.visitantTeam.score.points.toInt(),
-                currentClock = gameResponse.clock,
-                quarter = gameResponse.currentQuarter.toQuarter()
+                homeTeam = teamMapper.mapTeamResponseToTeam(gameResponse.teams.home),
+                visitorTeam = teamMapper.mapTeamResponseToTeam(gameResponse.teams.visitor),
+                homePoints = gameResponse.scores.home.points,
+                visitorPoints = gameResponse.scores.visitors.points,
+                currentClock = gameResponse.status.clock,
+                quarter = gameResponse.periods.current.toQuarter()
             )
         }
     }

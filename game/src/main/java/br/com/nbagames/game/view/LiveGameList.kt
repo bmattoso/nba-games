@@ -27,11 +27,10 @@ import br.com.nbagames.game.presentation.LiveGameListError
 import br.com.nbagames.game.presentation.LiveGameViewModel
 import org.koin.androidx.compose.getViewModel
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun LiveGameList(
     modifier: Modifier = Modifier,
-    onLiveGameClick: (gameId: String) -> Unit,
+    onLiveGameClick: (gameId: Int) -> Unit,
     onClickOpenCalendar: () -> Unit,
     liveGameViewModel: LiveGameViewModel = getViewModel()
 ) {

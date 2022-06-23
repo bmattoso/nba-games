@@ -71,7 +71,7 @@ internal class NavigationDestination(private val navController: NavHostControlle
         }
     }
 
-    fun onLiveGameClick(gameId: String) {
+    fun onLiveGameClick(gameId: Int) {
         navController.navigate("liveGame/$gameId")
     }
 

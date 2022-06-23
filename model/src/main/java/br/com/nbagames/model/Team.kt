@@ -1,8 +1,8 @@
 package br.com.nbagames.model
 
 data class Team(
-    val id: String,
-    val fullName: String,
-    val shortName: String,
+    val id: Int,
+    val name: String,
+    val nickname: String,
     val logo: String
 )

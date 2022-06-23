@@ -41,7 +41,7 @@ import br.com.nbagames.usecase.game.presentation.LiveGamePresentation
 fun LiveGameCard(
     modifier: Modifier = Modifier,
     liveGame: LiveGamePresentation,
-    onLiveGameClick: (gameId: String) -> Unit = {}
+    onLiveGameClick: (gameId: Int) -> Unit = {}
 ) {
     Card(
         elevation = 4.dp,
@@ -61,7 +61,7 @@ fun LiveGameCard(
             ) {
                 GameScoreBoard(homePoints = liveGame.homePoints, visitantPoints = liveGame.visitantPoints)
                 Spacer(modifier = Modifier.size(6.dp))
-                GameClock(clockTime = liveGame.gameClock)
+                liveGame.gameClock?.let { gameGlock -> GameClock(clockTime = gameGlock) }
                 Spacer(modifier = Modifier.size(6.dp))
                 GameQuarter(quarter = liveGame.quarter)
             }
@@ -85,13 +85,13 @@ private fun TeamIdentification(
     ) {
         ImageLoader(
             imageUrl = team.logo,
-            contentDescription = team.fullName,
+            contentDescription = team.name,
             defaultContentResource = R.drawable.default_team_logo,
             modifier = Modifier.size(50.dp)
         )
         Spacer(modifier = Modifier.height(8.dp))
         Text(
-            text = team.fullName,
+            text = team.name,
             textAlign = TextAlign.Center,
             style = MaterialTheme.typography.labelMedium,
             color = Color.Black
@@ -175,17 +175,17 @@ fun GameQuarter(@StringRes quarter: Int) {
 @Composable
 fun DefaultPreview() {
     val liveGame = LiveGamePresentation(
-        id = "1",
+        id = 1,
         homeTeam = Team(
-            id = "1",
-            fullName = "Miami Heat",
-            shortName = "MHT",
+            id = 1,
+            name = "Miami Heat",
+            nickname = "MHT",
             logo = "https:\\/\\/upload.wikimedia.org\\/wikipedia\\/fr\\/thumb\\/d\\/de\\/Houston_Rockets_logo_2003.png\\/330px-Houston_Rockets_logo_2003.png"
         ),
         visitantTeam = Team(
-            id = "2",
-            fullName = "Brooklyn Nets",
-            shortName = "BNT",
+            id = 2,
+            name = "Brooklyn Nets",
+            nickname = "BNT",
             logo = "https://upload.wikimedia.org/wikipedia/fr/8/89/Raptors2015.png"
         ),
         homePoints = 10,

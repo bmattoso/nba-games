@@ -11,9 +11,9 @@ class LiveGamePresentationMapper {
             LiveGamePresentation(
                 id = liveGame.id,
                 homeTeam = liveGame.homeTeam,
-                visitantTeam = liveGame.visitantTeam,
+                visitantTeam = liveGame.visitorTeam,
                 homePoints = liveGame.homePoints,
-                visitantPoints = liveGame.visitantPoints,
+                visitantPoints = liveGame.visitorPoints,
                 gameClock = liveGame.currentClock,
                 quarter = liveGame.quarter.getResourceTextId()
             )

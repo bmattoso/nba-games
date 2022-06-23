@@ -1,8 +1,10 @@
 package br.com.nbagames.remote.game
 
 import br.com.nbagames.model.Game
+import br.com.nbagames.remote.common.extension.formatToRequest
 import br.com.nbagames.remote.game.mapper.GameMapper
 import br.com.nbagames.remote.game.service.GameService
+import java.util.Date
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.withContext
 
@@ -13,8 +15,9 @@ class GameRemoteImpl(
 
     override suspend fun getLiveGameList(): List<Game> {
         return withContext(IO) {
-            val liveGameResponse = gameService.getLiveGamesNow()
-            gameMapper.mapLiveGameList(liveGameResponse.liveGameApiResponse.liveGameList)
+            val today = Date()
+            val liveGameResponse = gameService.getGamesFromDate(today.formatToRequest())
+            gameMapper.mapLiveGameList(liveGameResponse.gameList)
         }
     }
 }

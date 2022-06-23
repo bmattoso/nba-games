@@ -13,7 +13,7 @@ import br.com.nbagames.usecase.game.presentation.LiveGamePresentation
 fun LiveGameListContent(
     modifier: Modifier = Modifier,
     liveGames: List<LiveGamePresentation>,
-    onLiveGameClick: (gameId: String) -> Unit
+    onLiveGameClick: (gameId: Int) -> Unit
 ) {
     LazyColumn(
         modifier = modifier,

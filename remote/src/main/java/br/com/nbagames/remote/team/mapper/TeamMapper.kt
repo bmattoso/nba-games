@@ -8,8 +8,8 @@ class TeamMapper {
     fun mapTeamResponseToTeam(teamResponse: TeamResponse): Team {
         return Team(
             id = teamResponse.id,
-            fullName = teamResponse.fullName,
-            shortName = teamResponse.shortName,
+            name = teamResponse.name,
+            nickname = teamResponse.nickname,
             logo = teamResponse.logo
         )
     }

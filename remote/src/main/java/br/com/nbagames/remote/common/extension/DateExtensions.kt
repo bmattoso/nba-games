@@ -1,11 +1,11 @@
-package br.com.nbagames.designsystem.extension
+package br.com.nbagames.remote.common.extension
 
 import android.annotation.SuppressLint
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
 
-private const val REQUEST_DATE_PATTERN = "Y-m-d"
+private const val REQUEST_DATE_PATTERN = "Y-MM-dd"
 
 @SuppressLint("WeekBasedYear")
 fun Date.formatToRequest(): String {
