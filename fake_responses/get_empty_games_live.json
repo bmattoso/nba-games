@@ -1,16 +1,9 @@
 {
-  "api": {
-    "status": 200,
-    "message": "GET games\/live",
-    "results": 0,
-    "filters": [
-      "seasonYear",
-      "league",
-      "gameId",
-      "teamId",
-      "date",
-      "live"
-    ],
-    "games": []
-  }
+  "get": "games\/",
+  "parameters": {
+    "date": "2022-06-09"
+  },
+  "errors": [],
+  "results": 0,
+  "response": []
 }
