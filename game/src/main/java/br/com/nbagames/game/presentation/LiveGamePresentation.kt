@@ -1,4 +1,4 @@
-package br.com.nbagames.usecase.game.presentation
+package br.com.nbagames.game.presentation
 
 import br.com.nbagames.model.Team
 

@@ -7,7 +7,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import br.com.nbagames.usecase.game.presentation.LiveGamePresentation
+import br.com.nbagames.game.presentation.LiveGamePresentation
 
 @Composable
 fun LiveGameListContent(

@@ -35,7 +35,7 @@ import br.com.nbagames.designsystem.extension.formatNumberTwoDigits
 import br.com.nbagames.designsystem.theme.NbaGamesTheme
 import br.com.nbagames.game.R
 import br.com.nbagames.model.Team
-import br.com.nbagames.usecase.game.presentation.LiveGamePresentation
+import br.com.nbagames.game.presentation.LiveGamePresentation
 
 @Composable
 fun LiveGameCard(
