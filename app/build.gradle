@@ -5,6 +5,7 @@ plugins {
 apply from: rootProject.file("dependencies_versions.gradle")
 apply from: rootProject.file("compose_dependencies.gradle")
 apply from: rootProject.file("android_versions.gradle")
+apply from: rootProject.file("unit_test.gradle")
 apply from: rootProject.file("secrets.gradle")
 apply from: rootProject.file("ktlint.gradle")
 
@@ -61,7 +62,6 @@ android {
 dependencies {
     implementation project(":designsystem")
     implementation project(":game")
-    implementation project(":usecase")
     implementation project(":remote")
 
     implementation "androidx.appcompat:appcompat:$androidx_compat"
@@ -70,10 +70,6 @@ dependencies {
     implementation "androidx.navigation:navigation-compose:$compone_navigation_version"
     implementation "androidx.startup:startup-runtime:$androidx_startup"
     implementation "io.insert-koin:koin-android:$koin_version"
-
-    testImplementation "junit:junit:$junit"
-    testImplementation "com.google.truth:truth:$google_truth"
-    testImplementation "io.insert-koin:koin-test-junit5:$koin_version"
 
     androidTestImplementation "androidx.test.espresso:espresso-core:$espresso"
 }

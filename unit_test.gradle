@@ -2,6 +2,7 @@ apply from: rootProject.file("dependencies_versions.gradle")
 
 android {
     testOptions {
+        unitTests.returnDefaultValues = true
         unitTests.all {
             useJUnitPlatform()
         }
@@ -9,7 +10,7 @@ android {
 }
 
 dependencies {
-    testImplementation "junit:junit:$junit"
+    testImplementation "org.junit.jupiter:junit-jupiter:$junit_jupiter"
     testImplementation "com.google.truth:truth:$google_truth"
     testImplementation "io.insert-koin:koin-test-junit5:$koin_version"
 }

@@ -4,7 +4,7 @@ apply plugin: 'kotlin-android'
 apply from: rootProject.file("dependencies_versions.gradle")
 apply from: rootProject.file("android_versions.gradle")
 apply from: rootProject.file("ktlint.gradle")
-apply from: rootProject.file("unit-test.gradle")
+apply from: rootProject.file("unit_test.gradle")
 
 android {
     compileSdk project.compileSdkVersion
