@@ -49,14 +49,6 @@ android {
     lint {
         disable 'ObsoleteLintCustomCheck'
     }
-
-    applicationVariants.all { variant ->
-        variant.assemble.doLast {
-            variant.outputs.each { output ->
-                delete "${output.outputFile.parent}/output*.json"
-            }
-        }
-    }
 }
 
 dependencies {
