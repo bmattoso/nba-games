@@ -1,6 +1,5 @@
 package br.com.nbagames.remote.team.mapper
 
-import br.com.nbagames.remote.game.fixture.GameResponseFixture
 import br.com.nbagames.remote.team.fixture.TeamResponseFixture
 import com.google.common.truth.Truth.assertThat
 import org.junit.jupiter.api.BeforeEach

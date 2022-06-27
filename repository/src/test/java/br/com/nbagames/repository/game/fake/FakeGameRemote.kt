@@ -41,5 +41,4 @@ class FakeGameRemote : GameRemote {
 
         return gameList
     }
-
 }

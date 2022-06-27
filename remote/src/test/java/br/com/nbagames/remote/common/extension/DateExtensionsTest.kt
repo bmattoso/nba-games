@@ -1,8 +1,8 @@
 package br.com.nbagames.remote.common.extension
 
 import com.google.common.truth.Truth.assertThat
-import java.util.Date
 import org.junit.jupiter.api.Test
+import java.util.Date
 
 class DateExtensionsTest {
 

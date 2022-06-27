@@ -2,9 +2,9 @@ package br.com.nbagames.remote.common
 
 import br.com.nbagames.remote.common.fake.FakeInterceptorChain
 import com.google.common.truth.Truth.assertThat
-import java.util.UUID
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
+import java.util.UUID
 
 internal class AuthorizationInterceptorTest {
 

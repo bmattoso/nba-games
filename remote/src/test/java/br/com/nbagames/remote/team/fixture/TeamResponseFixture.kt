@@ -9,7 +9,7 @@ object TeamResponseFixture {
         name = "Golden State Warriors",
         nickname = "Warriors",
         logo = "https://upload.wikimedia.org/wikipedia/fr/thumb/d/de/Warriors_de_Golden_State_logo.svg/1200px" +
-                "-Warriors_de_Golden_State_logo.svg.png"
+            "-Warriors_de_Golden_State_logo.svg.png"
     )
 
     val bostonCeltics = TeamResponse(
@@ -17,6 +17,6 @@ object TeamResponseFixture {
         name = "Boston Celtics",
         nickname = "Celtics",
         logo = "https://upload.wikimedia.org/wikipedia/fr/thumb/6/65/Celtics_de_Boston_logo.svg/1024px" +
-                "-Celtics_de_Boston_logo.svg.png"
+            "-Celtics_de_Boston_logo.svg.png"
     )
 }

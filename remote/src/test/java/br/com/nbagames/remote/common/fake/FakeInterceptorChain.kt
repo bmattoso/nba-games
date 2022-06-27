@@ -1,12 +1,12 @@
 package br.com.nbagames.remote.common.fake
 
-import java.util.concurrent.TimeUnit
 import okhttp3.Call
 import okhttp3.Connection
 import okhttp3.Interceptor
 import okhttp3.Protocol
 import okhttp3.Request
 import okhttp3.Response
+import java.util.concurrent.TimeUnit
 
 const val BASE_URL = "https://api-nba-v1.p.rapidapi.com/"
 
