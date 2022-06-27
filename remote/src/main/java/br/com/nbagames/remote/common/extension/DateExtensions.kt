@@ -5,7 +5,7 @@ import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
 
-private const val REQUEST_DATE_PATTERN = "Y-MM-dd"
+const val REQUEST_DATE_PATTERN = "Y-MM-dd"
 
 @SuppressLint("WeekBasedYear")
 fun Date.formatToRequest(): String {
