@@ -7,15 +7,11 @@ import br.com.nbagames.repository.game.GameRepository
 
 class FakeGameRepository : GameRepository {
 
-    private val gameList: MutableList<Game> = mutableListOf()
+    var gameList: MutableList<Game> = mutableListOf()
 
     override suspend fun getLiveGamesFromRemote(): List<Game> = gameList
 
     override suspend fun getLiveGamesFromCache(): List<Game> = gameList
-
-    fun clearGameList() {
-        gameList.clear()
-    }
 
     fun populateGameList(): List<Game> {
         val homeTeam = Team(

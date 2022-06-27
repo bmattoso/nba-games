@@ -39,7 +39,7 @@ internal class LoadLiveGamesImplTest {
 
     @Test
     fun `Receive empty game list into flow`() {
-        val fakeGameRepository = FakeGameRepository().apply { clearGameList() }
+        val fakeGameRepository = FakeGameRepository().apply { gameList.clear() }
         instantiateLoadLiveGamesUseCase(fakeGameRepository)
 
         runBlockingTest {
