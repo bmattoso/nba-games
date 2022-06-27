@@ -7,4 +7,8 @@ object GameListResponseFixture {
     fun get() = GameListResponse(
         gameList = GameResponseFixture.getList()
     )
+
+    fun getEmptyList() = GameListResponse(
+        gameList = emptyList()
+    )
 }
