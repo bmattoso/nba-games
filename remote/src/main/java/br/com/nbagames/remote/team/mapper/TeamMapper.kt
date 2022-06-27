@@ -5,12 +5,10 @@ import br.com.nbagames.remote.team.response.TeamResponse
 
 class TeamMapper {
 
-    fun mapTeamResponseToTeam(teamResponse: TeamResponse): Team {
-        return Team(
-            id = teamResponse.id,
-            name = teamResponse.name,
-            nickname = teamResponse.nickname,
-            logo = teamResponse.logo
-        )
-    }
+    fun mapTeamResponseToTeam(teamResponse: TeamResponse) = Team(
+        id = teamResponse.id,
+        name = teamResponse.name,
+        nickname = teamResponse.nickname,
+        logo = teamResponse.logo
+    )
 }
