@@ -23,5 +23,5 @@ ext {
     coil_version = '1.4.0'
     ktlint_version = '0.43.2'
     coroutine_version = '1.5.2'
-    coroutine_test_version = '1.5.2'
+    coroutine_test_version = '1.6.3'
 }
