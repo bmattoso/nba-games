@@ -5,11 +5,13 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import br.com.nbagames.game.mapper.LiveGamePresentationMapper
 import br.com.nbagames.usecase.game.LoadLiveGames
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
@@ -61,7 +63,7 @@ class LiveGameViewModel(
                         liveGameListError = getLiveGameListErrorFromThrowable(throwable)
                     )
                     mutableLiveGamesViewState.value = newState
-                }.collect()
+                }.flowOn(Dispatchers.IO).collect()
         }
     }
 

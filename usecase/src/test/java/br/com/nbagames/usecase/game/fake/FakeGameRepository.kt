@@ -8,8 +8,13 @@ import br.com.nbagames.repository.game.GameRepository
 class FakeGameRepository : GameRepository {
 
     var gameList: MutableList<Game> = mutableListOf()
+    var throwExceptionRemote: Exception? = null
 
-    override suspend fun getLiveGamesFromRemote(): List<Game> = gameList
+    override suspend fun getLiveGamesFromRemote(): List<Game> {
+        throwExceptionRemote?.let { throw it }
+
+        return gameList
+    }
 
     override suspend fun getLiveGamesFromCache(): List<Game> = gameList
 
