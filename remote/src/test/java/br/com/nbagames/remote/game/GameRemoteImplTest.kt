@@ -6,14 +6,14 @@ import br.com.nbagames.remote.game.fixture.GameListResponseFixture
 import br.com.nbagames.remote.game.mapper.GameMapper
 import br.com.nbagames.remote.team.mapper.TeamMapper
 import com.google.common.truth.Truth.assertThat
-import java.text.DecimalFormat
-import java.util.Calendar
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.runBlocking
 import kotlinx.serialization.SerializationException
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
+import java.text.DecimalFormat
+import java.util.Calendar
 
 @ExperimentalCoroutinesApi
 internal class GameRemoteImplTest {
