@@ -1,5 +1,6 @@
 apply from: rootProject.file("android_dependencies.gradle")
 apply from: rootProject.file("compose_dependencies.gradle")
+apply from: rootProject.file("unit_test.gradle")
 
 dependencies {
     implementation project(":designsystem")
