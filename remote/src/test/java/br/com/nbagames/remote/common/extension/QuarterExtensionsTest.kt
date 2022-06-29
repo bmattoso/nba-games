@@ -5,7 +5,7 @@ import com.google.common.truth.Truth.assertThat
 import org.junit.jupiter.api.Test
 import kotlin.random.Random
 
-internal class QuarterExtensionsKtTest {
+internal class QuarterExtensionsTest {
 
     @Test
     fun `When receive 1 from API parse to first quarter`() {
