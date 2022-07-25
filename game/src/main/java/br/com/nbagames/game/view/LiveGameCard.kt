@@ -180,7 +180,8 @@ fun DefaultPreview() {
             id = 1,
             name = "Miami Heat",
             nickname = "MHT",
-            logo = "https:\\/\\/upload.wikimedia.org\\/wikipedia\\/fr\\/thumb\\/d\\/de\\/Houston_Rockets_logo_2003.png\\/330px-Houston_Rockets_logo_2003.png"
+            logo = "https://upload.wikimedia.org/wikipedia/fr/thumb/d/de/Houston_Rockets_logo_2003.png/330px" +
+                "-Houston_Rockets_logo_2003.png"
         ),
         visitantTeam = Team(
             id = 2,
