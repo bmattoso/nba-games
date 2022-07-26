@@ -5,7 +5,8 @@ import androidx.compose.foundation.Image
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
-import coil.compose.rememberImagePainter
+import androidx.compose.ui.res.painterResource
+import coil.compose.rememberAsyncImagePainter
 
 @Composable
 fun ImageLoader(
@@ -14,12 +15,9 @@ fun ImageLoader(
     contentDescription: String,
     @DrawableRes defaultContentResource: Int
 ) {
-    val painter = rememberImagePainter(
-        data = imageUrl,
-        builder = {
-            crossfade(true)
-            placeholder(defaultContentResource)
-        }
+    val painter = rememberAsyncImagePainter(
+        model = imageUrl,
+        placeholder = painterResource(defaultContentResource)
     )
 
     Image(
