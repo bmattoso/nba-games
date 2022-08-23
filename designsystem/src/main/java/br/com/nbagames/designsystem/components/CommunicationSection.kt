@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.material.Button
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Modifier
@@ -20,6 +21,7 @@ import androidx.compose.ui.unit.dp
 import br.com.nbagames.designsystem.R
 import br.com.nbagames.designsystem.components.loading.DefaultLottieAnimation
 import br.com.nbagames.designsystem.theme.NbaGamesTheme
+import br.com.nbagames.designsystem.theme.largePadding
 
 @Composable
 fun CommunicationSection(
@@ -27,7 +29,7 @@ fun CommunicationSection(
     @StringRes message: Int,
     @RawRes animationRes: Int = R.raw.nothing_found,
     animationSize: Int = 240,
-    actionContent: @Composable () -> Unit,
+    actionContent: @Composable () -> Unit
 ) {
     Column(
         modifier = modifier,
@@ -38,8 +40,12 @@ fun CommunicationSection(
             animationResId = animationRes,
             iterations = 2
         )
-        TextField(text = stringResource(id = message), textAlign = TextAlign.Center)
-        Spacer(modifier = Modifier.size(16.dp))
+        Text(
+            text = stringResource(id = message),
+            textAlign = TextAlign.Center,
+            style = MaterialTheme.typography.bodyLarge
+        )
+        Spacer(modifier = Modifier.size(largePadding))
         actionContent()
     }
 }
@@ -50,7 +56,9 @@ fun DefaultPreview() {
     NbaGamesTheme {
         Surface {
             CommunicationSection(
-                modifier = Modifier.fillMaxSize().padding(16.dp),
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(largePadding),
                 message = R.string.unknown_error_message
             ) {
                 Button(onClick = {}) {

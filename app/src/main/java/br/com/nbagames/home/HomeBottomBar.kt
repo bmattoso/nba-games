@@ -35,7 +35,7 @@ fun HomeBottomBar(
                     },
                     label = { Text(text = stringResource(homeTab.tabName)) },
                     selected = isSelected,
-                    onClick = { onTabSelected(homeTab) },
+                    onClick = { onTabSelected(homeTab) }
                 )
             }
         }

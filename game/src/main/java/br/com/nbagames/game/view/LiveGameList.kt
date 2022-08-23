@@ -21,6 +21,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import br.com.nbagames.designsystem.components.CommunicationSection
 import br.com.nbagames.designsystem.components.loading.NbaProgressIndicator
+import br.com.nbagames.designsystem.theme.AppTypography
+import br.com.nbagames.designsystem.theme.largePadding
+import br.com.nbagames.designsystem.theme.smallPadding
 import br.com.nbagames.game.R
 import br.com.nbagames.game.presentation.LiveGameListError
 import br.com.nbagames.game.presentation.LiveGameViewModel
@@ -38,11 +41,11 @@ fun LiveGameList(
     when {
         liveGameListUiState.showLoading -> NbaProgressIndicator(modifier = modifier)
         liveGameListUiState.showEmptyState -> LiveGameListEmptyState(
-            modifier = modifier.padding(16.dp),
+            modifier = modifier.padding(largePadding),
             onClickOpenCalendar = onClickOpenCalendar
         )
         liveGameListUiState.showError && liveGameListUiState.liveGameListError != null -> LiveGameListErrorState(
-            modifier = modifier.padding(16.dp),
+            modifier = modifier.padding(largePadding),
             liveGameListError = liveGameListUiState.liveGameListError,
             onClickTryAgain = { liveGameViewModel.loadLiveGameList() }
         )
@@ -88,9 +91,9 @@ fun CountdownUpdate(
         Text(
             text = stringResource(id = R.string.sync),
             color = MaterialTheme.colorScheme.onPrimaryContainer,
-            fontSize = 12.sp,
+            style = MaterialTheme.typography.bodySmall,
         )
-        Spacer(modifier = Modifier.size(6.dp))
+        Spacer(modifier = Modifier.size(smallPadding))
         Switch(
             checked = isCountdownAvailable,
             onCheckedChange = { onToggleCountdown() }

@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -35,7 +36,7 @@ fun NbaProgressIndicator(
                 animationResId = R.raw.loading_ball,
                 modifier = Modifier.size(animationSize.dp)
             )
-            TextField(
+            Text(
                 text = stringResource(id = loadingMessage),
                 modifier = Modifier.padding(smallPadding),
                 fontStyle = FontStyle.Italic,

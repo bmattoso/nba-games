@@ -16,8 +16,8 @@ object Font {
         Font(R.font.roboto_medium, FontWeight.Medium),
         Font(R.font.roboto_medium_italic, FontWeight.Medium, FontStyle.Italic),
         Font(R.font.roboto_bold, FontWeight.Bold),
-        Font(R.font.roboto_medium_italic, FontWeight.Bold, FontStyle.Italic),
+        Font(R.font.roboto_bold_italic, FontWeight.Bold, FontStyle.Italic),
         Font(R.font.roboto_thin, FontWeight.Thin),
-        Font(R.font.roboto_thin_italic, FontWeight.Thin, FontStyle.Italic),
+        Font(R.font.roboto_thin_italic, FontWeight.Thin, FontStyle.Italic)
     )
 }

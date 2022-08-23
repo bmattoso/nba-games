@@ -33,6 +33,10 @@ import br.com.nbagames.designsystem.components.loading.ImageLoader
 import br.com.nbagames.designsystem.extension.formatGameClock
 import br.com.nbagames.designsystem.extension.formatNumberTwoDigits
 import br.com.nbagames.designsystem.theme.NbaGamesTheme
+import br.com.nbagames.designsystem.theme.extraSmallPadding
+import br.com.nbagames.designsystem.theme.largePadding
+import br.com.nbagames.designsystem.theme.mediumPadding
+import br.com.nbagames.designsystem.theme.smallPadding
 import br.com.nbagames.game.R
 import br.com.nbagames.game.presentation.LiveGamePresentation
 import br.com.nbagames.model.Team
@@ -48,7 +52,7 @@ fun LiveGameCard(
         modifier = modifier.clickable(onClick = { onLiveGameClick(liveGame.id) })
     ) {
         Row(
-            modifier = Modifier.padding(12.dp),
+            modifier = Modifier.padding(mediumPadding),
             verticalAlignment = Alignment.CenterVertically
         ) {
             TeamIdentification(
@@ -60,9 +64,9 @@ fun LiveGameCard(
                 modifier = Modifier.weight(2f)
             ) {
                 GameScoreBoard(homePoints = liveGame.homePoints, visitantPoints = liveGame.visitantPoints)
-                Spacer(modifier = Modifier.size(6.dp))
+                Spacer(modifier = Modifier.size(extraSmallPadding))
                 liveGame.gameClock?.let { gameGlock -> GameClock(clockTime = gameGlock) }
-                Spacer(modifier = Modifier.size(6.dp))
+                Spacer(modifier = Modifier.size(extraSmallPadding))
                 GameQuarter(quarter = liveGame.quarter)
             }
             TeamIdentification(
@@ -89,7 +93,7 @@ private fun TeamIdentification(
             defaultContentResource = R.drawable.default_team_logo,
             modifier = Modifier.size(50.dp)
         )
-        Spacer(modifier = Modifier.height(8.dp))
+        Spacer(modifier = Modifier.height(smallPadding))
         Text(
             text = team.name,
             textAlign = TextAlign.Center,
@@ -145,9 +149,9 @@ private fun GameClock(
             Image(
                 painter = painterResource(id = R.drawable.ic_clock_grey),
                 contentDescription = null,
-                modifier = Modifier.size(16.dp)
+                modifier = Modifier.size(largePadding)
             )
-            Spacer(modifier = Modifier.size(8.dp))
+            Spacer(modifier = Modifier.size(smallPadding))
             TextField(
                 text = clockTime.formatGameClock(),
                 color = Color.Black,
@@ -161,12 +165,11 @@ private fun GameClock(
 
 @Composable
 fun GameQuarter(@StringRes quarter: Int) {
-    TextField(
+    Text(
         text = stringResource(id = quarter),
         color = Color.Black,
-        fontSize = 12.sp,
         textAlign = TextAlign.Center,
-        fontWeight = FontWeight.Light,
+        style = MaterialTheme.typography.bodySmall
     )
 }
 

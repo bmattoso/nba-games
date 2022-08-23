@@ -26,7 +26,6 @@ fun NavigationRoutes(
     val actions = remember(navController) { NavigationDestination(navController) }
 
     NavHost(navController = navController, startDestination = startDestination) {
-
         composable(Route.Splash.route) {
             Splash(
                 modifier = Modifier.background(blackCurrant),
@@ -36,7 +35,7 @@ fun NavigationRoutes(
 
         composable(
             route = Route.LiveGameDetail.route,
-            arguments = listOf(navArgument("gameId") { type = NavType.StringType }),
+            arguments = listOf(navArgument("gameId") { type = NavType.StringType })
         ) {
             LiveGameDetail()
         }

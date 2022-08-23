@@ -12,7 +12,7 @@ sealed class Route(val route: String, @StringRes val title: Int = 0) {
 sealed class HomeRoute(
     homeRoute: String,
     @StringRes val tabName: Int,
-    @DrawableRes val tabIcon: Int,
+    @DrawableRes val tabIcon: Int
 ) : Route(route = homeRoute, title = tabName) {
     object LiveGame : HomeRoute("liveGame", R.string.live_game_list, R.drawable.ic_ball)
     object Standings : HomeRoute("standings", R.string.standings, R.drawable.ic_standing)
