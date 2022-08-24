@@ -35,7 +35,7 @@ class LiveGameViewModel(
 
     fun loadLiveGameList() {
         mutableLiveGamesViewState.value = mutableLiveGamesViewState.value.copy(showLoading = true)
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO) {
             loadLiveGames()
                 .map { liveGameList -> liveGamePresentationMapper.mapLiveGamePresentation(liveGameList) }
                 .onEach { liveGameList ->
