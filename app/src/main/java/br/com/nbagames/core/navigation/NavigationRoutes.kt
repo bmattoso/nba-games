@@ -13,7 +13,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
 import br.com.nbagames.designsystem.color.CustomColors.blackCurrant
 import br.com.nbagames.designsystem.components.TextField
-import br.com.nbagames.game.view.LiveGameDetail
+import br.com.nbagames.game.view.GameDetail
 import br.com.nbagames.game.view.LiveGameList
 import br.com.nbagames.splash.Splash
 
@@ -34,10 +34,16 @@ fun NavigationRoutes(
         }
 
         composable(
-            route = Route.LiveGameDetail.route,
-            arguments = listOf(navArgument("gameId") { type = NavType.StringType })
+            route = Route.GameDetail.route,
+            arguments = listOf(navArgument(GAME_ID) { type = NavType.IntType })
         ) {
-            LiveGameDetail()
+            val gameId = it.arguments?.getInt(GAME_ID) ?: -1
+            GameDetail(
+                modifier = Modifier.fillMaxSize(),
+                gameId = gameId,
+                onPlayerClick = { playerId -> actions.onPlayerClick(playerId) },
+                onTeamClick = { teamId -> actions.onTeamClick(teamId) }
+            )
         }
 
         composable(HomeRoute.LiveGame.route) {
@@ -51,11 +57,27 @@ fun NavigationRoutes(
         composable(HomeRoute.Standings.route) {
             TextField(text = stringResource(id = HomeRoute.Standings.tabName))
         }
+
         composable(HomeRoute.Teams.route) {
             TextField(text = stringResource(id = HomeRoute.Teams.tabName))
         }
+
         composable(HomeRoute.Calendar.route) {
             TextField(text = stringResource(id = HomeRoute.Calendar.tabName))
+        }
+
+        composable(
+            route = Route.TeamDetail.route,
+            arguments = listOf(navArgument(TEAM_ID) { type = NavType.IntType })
+        ) {
+            val teamId = it.arguments?.getInt(TEAM_ID) ?: -1
+        }
+
+        composable(
+            route = Route.PlayerDetail.route,
+            arguments = listOf(navArgument(PLAYER_ID) { type = NavType.IntType })
+        ) {
+            val playerId = it.arguments?.getInt(PLAYER_ID) ?: -1
         }
     }
 }
@@ -71,10 +93,18 @@ internal class NavigationDestination(private val navController: NavHostControlle
     }
 
     fun onLiveGameClick(gameId: Int) {
-        navController.navigate("liveGame/$gameId")
+        navController.navigate(Route.GameDetail.route.replace("{$GAME_ID}", gameId.toString()))
     }
 
     fun onClickOpenCalendar() {
         navController.navigate(HomeRoute.Calendar.route)
+    }
+
+    fun onPlayerClick(playerId: Int) {
+        navController.navigate(Route.PlayerDetail.route.replace("{$PLAYER_ID}", playerId.toString()))
+    }
+
+    fun onTeamClick(teamId: Int) {
+        navController.navigate(Route.TeamDetail.route.replace("{$TEAM_ID}", teamId.toString()))
     }
 }

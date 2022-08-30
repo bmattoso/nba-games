@@ -48,7 +48,7 @@ private fun getTabFromRelatedNavigation(currentTab: Route): HomeRoute {
     }
 
     return when (currentTab) {
-        Route.LiveGameDetail -> HomeRoute.LiveGame
+        Route.GameDetail -> HomeRoute.LiveGame
         else -> HomeRoute.LiveGame
     }
 }

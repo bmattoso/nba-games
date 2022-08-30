@@ -4,9 +4,15 @@ import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import br.com.nbagames.R
 
+const val GAME_ID = "gameId"
+const val PLAYER_ID = "playerId"
+const val TEAM_ID = "teamId"
+
 sealed class Route(val route: String, @StringRes val title: Int = 0) {
     object Splash : Route("splash")
-    object LiveGameDetail : Route("liveGame/{gameId}", R.string.game_details)
+    object GameDetail : Route("game/{$GAME_ID}", R.string.game_details)
+    object PlayerDetail : Route("player/{$PLAYER_ID}", R.string.player_details)
+    object TeamDetail : Route("team/{$TEAM_ID}", R.string.team_details)
 }
 
 sealed class HomeRoute(
@@ -25,6 +31,6 @@ fun String.toRouteOrNull(): Route? = when (this) {
     HomeRoute.Standings.route -> HomeRoute.Standings
     HomeRoute.Teams.route -> HomeRoute.Teams
     HomeRoute.Calendar.route -> HomeRoute.Calendar
-    Route.LiveGameDetail.route -> Route.LiveGameDetail
+    Route.GameDetail.route -> Route.GameDetail
     else -> null
 }
