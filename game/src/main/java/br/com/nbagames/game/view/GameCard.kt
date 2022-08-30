@@ -38,39 +38,41 @@ import br.com.nbagames.designsystem.theme.largePadding
 import br.com.nbagames.designsystem.theme.mediumPadding
 import br.com.nbagames.designsystem.theme.smallPadding
 import br.com.nbagames.game.R
-import br.com.nbagames.game.presentation.LiveGamePresentation
+import br.com.nbagames.game.presentation.GamePresentation
 import br.com.nbagames.model.Team
 
 @Composable
-fun LiveGameCard(
+fun GameCard(
     modifier: Modifier = Modifier,
-    liveGame: LiveGamePresentation,
-    onLiveGameClick: (gameId: Int) -> Unit = {}
+    game: GamePresentation,
+    onGameClick: ((gameId: Int) -> Unit)? = null
 ) {
     Card(
         elevation = 4.dp,
-        modifier = modifier.clickable(onClick = { onLiveGameClick(liveGame.id) })
+        modifier = modifier.clickable(
+            enabled = onGameClick != null,
+            onClick = { onGameClick?.invoke(game.id) })
     ) {
         Row(
             modifier = Modifier.padding(mediumPadding),
             verticalAlignment = Alignment.CenterVertically
         ) {
             TeamIdentification(
-                team = liveGame.homeTeam,
+                team = game.homeTeam,
                 modifier = Modifier.weight(1f)
             )
             Column(
                 horizontalAlignment = Alignment.CenterHorizontally,
                 modifier = Modifier.weight(2f)
             ) {
-                GameScoreBoard(homePoints = liveGame.homePoints, visitantPoints = liveGame.visitantPoints)
+                GameScoreBoard(homePoints = game.homePoints, visitantPoints = game.visitantPoints)
                 Spacer(modifier = Modifier.size(extraSmallPadding))
-                liveGame.gameClock?.let { gameGlock -> GameClock(clockTime = gameGlock) }
+                game.gameClock?.let { gameGlock -> GameClock(clockTime = gameGlock) }
                 Spacer(modifier = Modifier.size(extraSmallPadding))
-                GameQuarter(quarter = liveGame.quarter)
+                GameQuarter(quarter = game.quarter)
             }
             TeamIdentification(
-                team = liveGame.visitantTeam,
+                team = game.visitantTeam,
                 modifier = Modifier.weight(1f)
             )
         }
@@ -177,7 +179,7 @@ fun GameQuarter(@StringRes quarter: Int) {
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
-    val liveGame = LiveGamePresentation(
+    val game = GamePresentation(
         id = 1,
         homeTeam = Team(
             id = 1,
@@ -200,8 +202,8 @@ fun DefaultPreview() {
 
     NbaGamesTheme {
         Surface(modifier = Modifier.padding(10.dp)) {
-            LiveGameCard(
-                liveGame = liveGame,
+            GameCard(
+                game = game,
                 modifier = Modifier.padding(12.dp)
             )
         }

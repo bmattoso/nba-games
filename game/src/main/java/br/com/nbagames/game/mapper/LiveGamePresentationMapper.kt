@@ -1,14 +1,14 @@
 package br.com.nbagames.game.mapper
 
-import br.com.nbagames.game.presentation.LiveGamePresentation
+import br.com.nbagames.game.presentation.GamePresentation
 import br.com.nbagames.game.view.extension.getResourceTextId
 import br.com.nbagames.model.Game
 
 class LiveGamePresentationMapper {
 
-    fun mapLiveGamePresentation(gameList: List<Game>): List<LiveGamePresentation> {
+    fun mapLiveGamePresentation(gameList: List<Game>): List<GamePresentation> {
         return gameList.map { liveGame ->
-            LiveGamePresentation(
+            GamePresentation(
                 id = liveGame.id,
                 homeTeam = liveGame.homeTeam,
                 visitantTeam = liveGame.visitorTeam,

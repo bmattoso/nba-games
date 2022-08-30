@@ -2,7 +2,7 @@ package br.com.nbagames.game.presentation
 
 import br.com.nbagames.model.Team
 
-data class LiveGamePresentation(
+data class GamePresentation(
     val id: Int,
     val homeTeam: Team,
     val visitantTeam: Team,
