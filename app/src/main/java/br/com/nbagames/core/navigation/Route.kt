@@ -32,5 +32,7 @@ fun String.toRouteOrNull(): Route? = when (this) {
     HomeRoute.Teams.route -> HomeRoute.Teams
     HomeRoute.Calendar.route -> HomeRoute.Calendar
     Route.GameDetail.route -> Route.GameDetail
+    Route.TeamDetail.route -> Route.TeamDetail
+    Route.PlayerDetail.route -> Route.PlayerDetail
     else -> null
 }
