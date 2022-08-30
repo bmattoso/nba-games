@@ -67,17 +67,19 @@ class LiveGameViewModel(
         }
     }
 
-    fun toggleCountdownTimer() {
-        val newIsCountdownAvailable = !uiState.value.isCountdownAvailable
+    fun onGameClick() {
+        resetTimer()
+    }
 
-        if (newIsCountdownAvailable) {
+    fun toggleCountdownTimer() {
+        val enableCountdown = !uiState.value.isCountdownAvailable
+
+        if (enableCountdown) {
+            loadLiveGameList()
             startTimer()
             mutableLiveGamesViewState.value = uiState.value.copy(isCountdownAvailable = true)
         } else {
-            mutableLiveGamesViewState.value = uiState.value.copy(
-                isCountdownAvailable = false,
-                countdownTimer = INITIAL_COUNTDOWN_TEXT
-            )
+            resetTimer()
         }
     }
 
@@ -96,6 +98,13 @@ class LiveGameViewModel(
                 }
             } while (uiState.value.isCountdownAvailable && countdownTimer > 0)
         }
+    }
+
+    private fun resetTimer() {
+        mutableLiveGamesViewState.value = uiState.value.copy(
+            isCountdownAvailable = false,
+            countdownTimer = INITIAL_COUNTDOWN_TEXT
+        )
     }
 
     private fun getLiveGameListErrorFromThrowable(throwable: Throwable): LiveGameListError {

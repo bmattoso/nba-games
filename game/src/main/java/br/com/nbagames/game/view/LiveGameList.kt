@@ -19,6 +19,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import br.com.nbagames.designsystem.components.CommunicationSection
 import br.com.nbagames.designsystem.components.loading.NbaProgressIndicator
 import br.com.nbagames.designsystem.theme.AppTypography
@@ -39,7 +40,7 @@ fun LiveGameList(
     val liveGameListUiState = liveGameViewModel.uiState.collectAsState().value
 
     when {
-        liveGameListUiState.showLoading -> NbaProgressIndicator(modifier = modifier)
+        liveGameListUiState.showLoading && liveGameListUiState.liveGameList.isEmpty() -> NbaProgressIndicator(modifier = modifier)
         liveGameListUiState.showEmptyState -> LiveGameListEmptyState(
             modifier = modifier.padding(largePadding),
             onClickOpenCalendar = onClickOpenCalendar
@@ -59,7 +60,10 @@ fun LiveGameList(
                 )
                 LiveGameListContent(
                     liveGames = liveGameListUiState.liveGameList,
-                    onLiveGameClick = onLiveGameClick
+                    onLiveGameClick = { gameId ->
+                        liveGameViewModel.onGameClick()
+                        onLiveGameClick(gameId)
+                    }
                 )
             }
     }
