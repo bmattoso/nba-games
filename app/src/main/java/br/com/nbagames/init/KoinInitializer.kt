@@ -3,7 +3,7 @@ package br.com.nbagames.init
 import android.content.Context
 import androidx.startup.Initializer
 import br.com.nbagames.BuildConfig
-import br.com.nbagames.game.di.liveGamePresentationModule
+import br.com.nbagames.game.di.gamePresentationModule
 import br.com.nbagames.remote.di.NetworkModule.getNetworkModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.KoinApplication
@@ -18,7 +18,7 @@ class KoinInitializer : Initializer<KoinApplication> {
             apiKey = BuildConfig.X_RAPID_API_KEY
         )
         val allModules = mutableListOf(networkModule).apply {
-            addAll(liveGamePresentationModule)
+            addAll(gamePresentationModule)
         }
 
         androidContext(context)
