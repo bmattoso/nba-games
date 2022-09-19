@@ -13,4 +13,7 @@ dependencies {
     testImplementation "org.junit.jupiter:junit-jupiter:$junit_jupiter"
     testImplementation "com.google.truth:truth:$google_truth"
     testImplementation "io.insert-koin:koin-test-junit5:$koin_version"
+    testImplementation "junit:junit:$junit4"
+    testImplementation "org.robolectric:robolectric:$robolectric"
+    testImplementation "org.junit.vintage:junit-vintage-engine:$junit_vintage"
 }

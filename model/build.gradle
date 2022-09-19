@@ -1,4 +1,1 @@
-plugins {
-    id 'kotlin'
-}
-apply from: rootProject.file("ktlint.gradle")
+apply from: rootProject.file("android_dependencies.gradle")
