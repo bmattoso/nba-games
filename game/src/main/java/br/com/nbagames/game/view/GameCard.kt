@@ -39,7 +39,6 @@ import br.com.nbagames.designsystem.theme.mediumPadding
 import br.com.nbagames.designsystem.theme.smallPadding
 import br.com.nbagames.game.R
 import br.com.nbagames.game.presentation.GamePresentation
-import br.com.nbagames.game.view.extension.getResourceTextId
 import br.com.nbagames.model.Quarter
 import br.com.nbagames.model.Team
 
@@ -53,7 +52,8 @@ fun GameCard(
         elevation = 4.dp,
         modifier = modifier.clickable(
             enabled = onGameClick != null,
-            onClick = { onGameClick?.invoke(game.id) })
+            onClick = { onGameClick?.invoke(game.id) }
+        )
     ) {
         Row(
             modifier = Modifier.padding(mediumPadding),
@@ -71,7 +71,7 @@ fun GameCard(
                 Spacer(modifier = Modifier.size(extraSmallPadding))
                 game.gameClock?.let { gameGlock -> GameClock(clockTime = gameGlock) }
                 Spacer(modifier = Modifier.size(extraSmallPadding))
-                GameQuarter(quarter = game.quarter.getResourceTextId())
+                GameQuarter(quarter = game.quarter.descriptionResId)
             }
             TeamIdentification(
                 team = game.visitantTeam,
@@ -111,7 +111,7 @@ private fun TeamIdentification(
 private fun GameScoreBoard(
     modifier: Modifier = Modifier,
     homePoints: Int,
-    visitantPoints: Int,
+    visitantPoints: Int
 ) {
     Row(
         modifier = modifier,
@@ -142,7 +142,7 @@ private fun GameScoreBoard(
 @Composable
 private fun GameClock(
     modifier: Modifier = Modifier,
-    clockTime: String,
+    clockTime: String
 ) {
     if (clockTime.isNotEmpty()) {
         Row(
@@ -161,7 +161,7 @@ private fun GameClock(
                 color = Color.Black,
                 fontSize = 18.sp,
                 textAlign = TextAlign.Center,
-                fontWeight = FontWeight.Light,
+                fontWeight = FontWeight.Light
             )
         }
     }

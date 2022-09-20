@@ -84,7 +84,7 @@ fun QuarterQuarterHistoryHead(
 
             SquareTextView(
                 modifier = modifier.weight(1f),
-                text = quarter.code,
+                text = quarter.shortDescription,
                 textColor = textColor,
                 backgroundColor = backgroundColor,
                 style = MaterialTheme.typography.titleMedium

@@ -1,7 +1,6 @@
 package br.com.nbagames.game.mapper
 
 import br.com.nbagames.game.presentation.GamePresentation
-import br.com.nbagames.game.view.extension.getResourceTextId
 import br.com.nbagames.model.Game
 
 class LiveGamePresentationMapper {

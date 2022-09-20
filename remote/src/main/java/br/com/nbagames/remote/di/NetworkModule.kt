@@ -17,7 +17,6 @@ object NetworkModule {
     @ExperimentalSerializationApi
     fun getNetworkModule(baseUrl: String, apiKey: String, apiHost: String): Module {
         return module {
-
             factory { AuthorizationInterceptor(apiKey = apiKey, apiHost = apiHost) }
 
             single {

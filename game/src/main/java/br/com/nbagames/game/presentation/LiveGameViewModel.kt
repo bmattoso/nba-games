@@ -23,7 +23,7 @@ private const val INITIAL_COUNTDOWN_VALUE = 180
 
 class LiveGameViewModel(
     private val loadLiveGames: LoadLiveGames,
-    private val liveGamePresentationMapper: LiveGamePresentationMapper,
+    private val liveGamePresentationMapper: LiveGamePresentationMapper
 ) : ViewModel() {
 
     private val mutableLiveGamesViewState = MutableStateFlow(LiveGameListUiState())

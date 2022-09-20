@@ -1,7 +1,6 @@
 package br.com.nbagames.game.presentation.detail
 
 import androidx.lifecycle.ViewModel
-import br.com.nbagames.game.R
 import br.com.nbagames.game.presentation.GameDetailPresentation
 import br.com.nbagames.model.Quarter
 import br.com.nbagames.model.QuarterScoreHistory

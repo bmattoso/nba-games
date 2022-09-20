@@ -3,7 +3,7 @@ package br.com.nbagames.remote.game.mapper
 import br.com.nbagames.model.Game
 import br.com.nbagames.model.GameStatus
 import br.com.nbagames.model.QuarterScoreHistory
-import br.com.nbagames.remote.common.extension.toQuarter
+import br.com.nbagames.model.toQuarter
 import br.com.nbagames.remote.game.response.GameResponse
 import br.com.nbagames.remote.game.response.GameScoreResponse
 import br.com.nbagames.remote.game.response.GameStatusResponse

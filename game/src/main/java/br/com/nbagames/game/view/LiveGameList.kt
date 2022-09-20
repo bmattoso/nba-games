@@ -93,7 +93,7 @@ fun CountdownUpdate(
         Text(
             text = stringResource(id = R.string.sync),
             color = MaterialTheme.colorScheme.onPrimaryContainer,
-            style = MaterialTheme.typography.bodySmall,
+            style = MaterialTheme.typography.bodySmall
         )
         Spacer(modifier = Modifier.size(smallPadding))
         Switch(
@@ -127,7 +127,7 @@ private fun LiveGameListErrorState(
     CommunicationSection(
         modifier = modifier,
         message = liveGameListError.message,
-        animationRes = liveGameListError.animationRes,
+        animationRes = liveGameListError.animationRes
     ) {
         Button(onClick = onClickTryAgain) {
             Text(text = stringResource(id = liveGameListError.actionMessage))

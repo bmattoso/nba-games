@@ -1,7 +1,6 @@
 package br.com.nbagames.model
 
 import android.net.Uri
-import java.net.URLEncoder
 
 private const val STORAGE_HOST_PATH =
     "https://firebasestorage.googleapis.com/v0/b/nba-games-c66b5.appspot.com/o/officials%2F"
