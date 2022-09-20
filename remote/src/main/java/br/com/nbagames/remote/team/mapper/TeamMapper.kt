@@ -8,7 +8,7 @@ class TeamMapper {
     fun mapTeamResponseToTeam(teamResponse: TeamResponse) = Team(
         id = teamResponse.id,
         name = teamResponse.name,
-        nickname = teamResponse.nickname,
+        nickname = teamResponse.code,
         logo = teamResponse.logo
     )
 }

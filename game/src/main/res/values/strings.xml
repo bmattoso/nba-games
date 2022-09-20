@@ -10,4 +10,6 @@
     <string name="countdown_timer_hint">Syncing in %1$s seconds</string>
     <string name="sync">Sync</string>
     <string name="countdown_timer_paused">Sync paused</string>
+    <string name="total">Total</string>
+    <string name="score_by_quarter">Score by quarter</string>
 </resources>

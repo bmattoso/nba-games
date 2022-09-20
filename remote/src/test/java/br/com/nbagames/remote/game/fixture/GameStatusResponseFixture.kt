@@ -7,6 +7,7 @@ object GameStatusResponseFixture {
     fun get() = GameStatusResponse(
         clock = "04:21",
         halftime = false,
+        statusCode = 2,
         description = "Running"
     )
 }

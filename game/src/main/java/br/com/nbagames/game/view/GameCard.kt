@@ -39,6 +39,8 @@ import br.com.nbagames.designsystem.theme.mediumPadding
 import br.com.nbagames.designsystem.theme.smallPadding
 import br.com.nbagames.game.R
 import br.com.nbagames.game.presentation.GamePresentation
+import br.com.nbagames.game.view.extension.getResourceTextId
+import br.com.nbagames.model.Quarter
 import br.com.nbagames.model.Team
 
 @Composable
@@ -69,7 +71,7 @@ fun GameCard(
                 Spacer(modifier = Modifier.size(extraSmallPadding))
                 game.gameClock?.let { gameGlock -> GameClock(clockTime = gameGlock) }
                 Spacer(modifier = Modifier.size(extraSmallPadding))
-                GameQuarter(quarter = game.quarter)
+                GameQuarter(quarter = game.quarter.getResourceTextId())
             }
             TeamIdentification(
                 team = game.visitantTeam,
@@ -197,7 +199,7 @@ fun DefaultPreview() {
         homePoints = 10,
         visitantPoints = 11,
         gameClock = "2:37",
-        quarter = R.string.first_quarter
+        quarter = Quarter.First
     )
 
     NbaGamesTheme {

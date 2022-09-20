@@ -20,7 +20,7 @@ internal class TeamMapperTest {
 
         assertThat(parsedGoldenState.id).isEqualTo(TeamResponseFixture.goldenStateWarriors.id)
         assertThat(parsedGoldenState.name).isEqualTo(TeamResponseFixture.goldenStateWarriors.name)
-        assertThat(parsedGoldenState.nickname).isEqualTo(TeamResponseFixture.goldenStateWarriors.nickname)
+        assertThat(parsedGoldenState.nickname).isEqualTo(TeamResponseFixture.goldenStateWarriors.code)
         assertThat(parsedGoldenState.logo).isEqualTo(TeamResponseFixture.goldenStateWarriors.logo)
     }
 }

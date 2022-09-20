@@ -15,7 +15,7 @@ class LiveGamePresentationMapper {
                 homePoints = liveGame.homePoints,
                 visitantPoints = liveGame.visitorPoints,
                 gameClock = liveGame.currentClock,
-                quarter = liveGame.quarter.getResourceTextId()
+                quarter = liveGame.quarter
             )
         }
     }

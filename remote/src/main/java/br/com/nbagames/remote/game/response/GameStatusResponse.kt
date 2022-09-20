@@ -7,5 +7,6 @@ import kotlinx.serialization.Serializable
 class GameStatusResponse(
     val clock: String?,
     val halftime: Boolean,
+    @SerialName("short") val statusCode: Int,
     @SerialName("long") val description: String
 )

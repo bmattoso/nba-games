@@ -5,7 +5,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class TeamResponse(
     val id: Int,
-    val nickname: String,
+    val code: String,
     val name: String,
     val logo: String
 )

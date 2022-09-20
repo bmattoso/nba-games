@@ -1,5 +1,6 @@
 package br.com.nbagames.game.presentation
 
+import br.com.nbagames.model.Quarter
 import br.com.nbagames.model.Team
 
 data class GamePresentation(
@@ -9,5 +10,5 @@ data class GamePresentation(
     val homePoints: Int,
     val visitantPoints: Int,
     val gameClock: String?,
-    val quarter: Int
+    val quarter: Quarter
 )

@@ -52,7 +52,7 @@ internal class GameMapperTest {
 
             assertThat(game.homeTeam.id).isEqualTo(expectedHomeTeam.id)
             assertThat(game.homeTeam.name).isEqualTo(expectedHomeTeam.name)
-            assertThat(game.homeTeam.nickname).isEqualTo(expectedHomeTeam.nickname)
+            assertThat(game.homeTeam.nickname).isEqualTo(expectedHomeTeam.code)
             assertThat(game.homeTeam.logo).isEqualTo(expectedHomeTeam.logo)
         }
     }
@@ -69,7 +69,7 @@ internal class GameMapperTest {
 
             assertThat(game.visitorTeam.id).isEqualTo(expectedVisitorTeam.id)
             assertThat(game.visitorTeam.name).isEqualTo(expectedVisitorTeam.name)
-            assertThat(game.visitorTeam.nickname).isEqualTo(expectedVisitorTeam.nickname)
+            assertThat(game.visitorTeam.nickname).isEqualTo(expectedVisitorTeam.code)
             assertThat(game.visitorTeam.logo).isEqualTo(expectedVisitorTeam.logo)
         }
     }

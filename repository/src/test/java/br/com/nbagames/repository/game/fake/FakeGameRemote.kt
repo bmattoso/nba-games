@@ -1,7 +1,9 @@
 package br.com.nbagames.repository.game.fake
 
 import br.com.nbagames.model.Game
+import br.com.nbagames.model.GameStatus
 import br.com.nbagames.model.Quarter
+import br.com.nbagames.model.QuarterScoreHistory
 import br.com.nbagames.model.Team
 import br.com.nbagames.remote.game.GameRemote
 
@@ -34,7 +36,12 @@ class FakeGameRemote : GameRemote {
                     homePoints = 130,
                     visitorPoints = 127,
                     currentClock = "00:23",
-                    quarter = Quarter.Fourth
+                    quarter = Quarter.Fourth,
+                    gameStatus = GameStatus.RUNNING,
+                    quarterScoreHistory = QuarterScoreHistory(
+                        homeScore = listOf(10, 20, 30, 40),
+                        visitorScore = listOf(11, 17, 23, 37)
+                    )
                 )
             )
         )
