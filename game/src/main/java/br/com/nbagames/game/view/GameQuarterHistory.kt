@@ -32,6 +32,7 @@ import br.com.nbagames.game.R
 import br.com.nbagames.model.Quarter
 import br.com.nbagames.model.QuarterScoreHistory
 import br.com.nbagames.model.Team
+import br.com.nbagames.model.toQuarter
 
 @Composable
 fun GameQuarterHistory(
@@ -51,7 +52,11 @@ fun GameQuarterHistory(
                 style = MaterialTheme.typography.titleMedium
             )
             Spacer(modifier.size(mediumPadding))
-            QuarterQuarterHistoryHead(currentQuarter = currentQuarter, isGameFinished = isGameFinished)
+            QuarterQuarterHistoryHeader(
+                currentQuarter = currentQuarter,
+                isGameFinished = isGameFinished,
+                totalQuarters = quarterScoreHistory.homeScore.size
+            )
             TeamQuarterHistory(
                 teamName = homeTeamName,
                 scoreHistory = quarterScoreHistory.homeScore,
@@ -71,27 +76,53 @@ fun GameQuarterHistory(
 }
 
 @Composable
-fun QuarterQuarterHistoryHead(
+fun QuarterQuarterHistoryHeader(
     modifier: Modifier = Modifier,
+    totalQuarters: Int,
     currentQuarter: Quarter,
     isGameFinished: Boolean
 ) {
     Row {
         Spacer(modifier = modifier.weight(1f))
-        Quarter.values().forEach { quarter ->
-            val textColor = if (currentQuarter == quarter && !isGameFinished) Color.White else Color.Black
-            val backgroundColor = if (currentQuarter == quarter && !isGameFinished) CustomColors.blackCurrant else Color.White
+
+        val hasOvertime = totalQuarters > Quarter.values().size
+        for (index in 1..totalQuarters) {
+            val isOvertime = index > Quarter.values().size
+            var textColor = Color.Black
+            var backgroundColor = Color.White
+
+            val headerText = if (isOvertime) {
+                if (index == totalQuarters && !isGameFinished) {
+                    textColor = Color.White
+                    backgroundColor = CustomColors.blackCurrant
+                }
+
+                val currentOvertime = index - Quarter.values().size
+                stringResource(id = R.string.overtime, currentOvertime)
+            } else {
+                if (!hasOvertime && index == currentQuarter.code && !isGameFinished) {
+                    textColor = Color.White
+                    backgroundColor = CustomColors.blackCurrant
+                }
+
+                index.toQuarter().shortDescription
+            }
 
             SquareTextView(
                 modifier = modifier.weight(1f),
-                text = quarter.shortDescription,
+                text = headerText,
                 textColor = textColor,
                 backgroundColor = backgroundColor,
                 style = MaterialTheme.typography.titleMedium
             )
         }
-        val totalTextColor = if (isGameFinished) Color.White else Color.Black
-        val totalBackgroundColor = if (isGameFinished) CustomColors.blackCurrant else Color.White
+
+        var totalTextColor = Color.Black
+        var totalBackgroundColor = Color.White
+        if (isGameFinished) {
+            totalTextColor = Color.White
+            totalBackgroundColor = CustomColors.blackCurrant
+        }
         SquareTextView(
             modifier = modifier.weight(1f),
             text = stringResource(id = R.string.total),
@@ -119,11 +150,22 @@ fun TeamQuarterHistory(
             text = teamName,
             style = MaterialTheme.typography.titleMedium
         )
-        Quarter.values().forEachIndexed { index, quarter ->
-            val score = if (index < scoreHistory.size) scoreHistory[index] else 0
-            val textColor = if (currentQuarter == quarter && !isGameFinished) Color.White else Color.Black
-            val backgroundColor =
-                if (currentQuarter == quarter && !isGameFinished) CustomColors.blackCurrant else Color.White
+
+        val hasOvertime = scoreHistory.size > Quarter.values().size
+        scoreHistory.forEachIndexed { index, score ->
+            val isOvertime = index >= Quarter.values().size
+            var textColor = Color.Black
+            var backgroundColor = Color.White
+
+            if (!isGameFinished) {
+                if (!hasOvertime && !isOvertime && currentQuarter.code == index + 1) {
+                    textColor = Color.White
+                    backgroundColor = CustomColors.blackCurrant
+                } else if (isOvertime && index + 1 == scoreHistory.size) {
+                    textColor = Color.White
+                    backgroundColor = CustomColors.blackCurrant
+                }
+            }
 
             SquareTextView(
                 modifier = modifier.weight(1f),
@@ -133,8 +175,13 @@ fun TeamQuarterHistory(
                 style = MaterialTheme.typography.bodyMedium
             )
         }
-        val totalTextColor = if (isGameFinished) Color.White else Color.Black
-        val totalBackgroundColor = if (isGameFinished) CustomColors.blackCurrant else Color.White
+
+        var totalTextColor = Color.Black
+        var totalBackgroundColor = Color.White
+        if (isGameFinished) {
+            totalTextColor = Color.White
+            totalBackgroundColor = CustomColors.blackCurrant
+        }
         SquareTextView(
             modifier = modifier.weight(1f),
             text = totalPoints.toString(),
@@ -186,10 +233,10 @@ fun GameQuarterHistoryPreview() {
         nickname = "BKN",
         logo = "https://upload.wikimedia.org/wikipedia/fr/8/89/Raptors2015.png"
     )
-    val quarter = Quarter.First
+    val quarter = Quarter.Second
     val quarterScoreHistory = QuarterScoreHistory(
-        homeScore = listOf(10, 15, 20),
-        visitorScore = listOf(12, 17, 11)
+        homeScore = listOf(10, 15, 20, 22, 11, 24),
+        visitorScore = listOf(12, 17, 11, 22, 10, 23)
     )
 
     NbaGamesTheme {
@@ -201,7 +248,7 @@ fun GameQuarterHistoryPreview() {
                 currentQuarter = quarter,
                 totalVisitorPoints = 40,
                 totalHomePoints = 45,
-                isGameFinished = true
+                isGameFinished = false
             )
         }
     }

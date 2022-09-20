@@ -8,4 +8,5 @@
     <string name="countdown_timer_paused">Sync paused</string>
     <string name="total">Total</string>
     <string name="score_by_quarter">Score by quarter</string>
+    <string name="overtime">OT%1$d</string>
 </resources>

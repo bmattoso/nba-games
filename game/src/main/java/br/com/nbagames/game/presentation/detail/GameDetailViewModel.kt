@@ -36,8 +36,8 @@ class GameDetailViewModel : ViewModel() {
                 gameClock = "2:37",
                 quarter = Quarter.Third,
                 quarterScoreHistory = QuarterScoreHistory(
-                    homeScore = listOf(20, 12, 30),
-                    visitorScore = listOf(10, 20, 27)
+                    homeScore = listOf(20, 12, 30, 10, 30, 5),
+                    visitorScore = listOf(10, 20, 27, 20, 15, 10)
                 ),
                 isGameFinished = false,
                 isHalftime = false
