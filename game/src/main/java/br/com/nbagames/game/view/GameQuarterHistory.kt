@@ -5,10 +5,12 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyHorizontalGrid
 import androidx.compose.material.Card
 import androidx.compose.material.Surface
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -46,32 +48,79 @@ fun GameQuarterHistory(
     quarterScoreHistory: QuarterScoreHistory
 ) {
     Card(elevation = defaultElevation) {
-        Column(modifier = modifier.padding(mediumPadding)) {
+        Column(modifier = modifier.padding(top = mediumPadding, start = mediumPadding)) {
+            val cellSize = 60.dp
+
             Text(
                 text = stringResource(id = R.string.score_by_quarter),
                 style = MaterialTheme.typography.titleMedium
             )
             Spacer(modifier.size(mediumPadding))
-            QuarterQuarterHistoryHeader(
-                currentQuarter = currentQuarter,
-                isGameFinished = isGameFinished,
-                totalQuarters = quarterScoreHistory.homeScore.size
-            )
-            TeamQuarterHistory(
-                teamName = homeTeamName,
-                scoreHistory = quarterScoreHistory.homeScore,
-                totalPoints = totalHomePoints,
-                currentQuarter = currentQuarter,
-                isGameFinished = isGameFinished
-            )
-            TeamQuarterHistory(
-                teamName = visitorTeamName,
-                scoreHistory = quarterScoreHistory.visitorScore,
-                totalPoints = totalVisitorPoints,
-                currentQuarter = currentQuarter,
-                isGameFinished = isGameFinished
-            )
+            Row {
+                TeamIdentification(
+                    homeTeamName = homeTeamName,
+                    visitorTeamName = visitorTeamName,
+                    itemWidth = cellSize,
+                    modifier = Modifier.width(cellSize)
+                )
+                LazyHorizontalGrid(
+                    modifier = Modifier.height(cellSize * 3),
+                    rows = GridCells.Fixed(3)
+                ) {
+                    item {
+                        QuarterQuarterHistoryHeader(
+                            modifier = Modifier.height(cellSize),
+                            currentQuarter = currentQuarter,
+                            isGameFinished = isGameFinished,
+                            totalQuarters = quarterScoreHistory.homeScore.size,
+                            itemWidth = cellSize
+                        )
+                    }
+                    item {
+                        TeamQuarterHistory(
+                            modifier = Modifier.height(cellSize),
+                            scoreHistory = quarterScoreHistory.homeScore,
+                            totalPoints = totalHomePoints,
+                            currentQuarter = currentQuarter,
+                            isGameFinished = isGameFinished,
+                            itemWidth = cellSize
+                        )
+                    }
+                    item {
+                        TeamQuarterHistory(
+                            modifier = Modifier.height(cellSize),
+                            scoreHistory = quarterScoreHistory.visitorScore,
+                            totalPoints = totalVisitorPoints,
+                            currentQuarter = currentQuarter,
+                            isGameFinished = isGameFinished,
+                            itemWidth = cellSize
+                        )
+                    }
+                }
+            }
         }
+    }
+}
+
+@Composable
+fun TeamIdentification(
+    modifier: Modifier = Modifier,
+    homeTeamName: String,
+    visitorTeamName: String,
+    itemWidth: Dp
+) {
+    Column(modifier = modifier) {
+        Spacer(modifier = Modifier.size(itemWidth))
+        SquareTextView(
+            modifier = Modifier.size(itemWidth),
+            text = homeTeamName,
+            style = MaterialTheme.typography.titleMedium
+        )
+        SquareTextView(
+            modifier = Modifier.size(itemWidth),
+            text = visitorTeamName,
+            style = MaterialTheme.typography.titleMedium
+        )
     }
 }
 
@@ -80,11 +129,10 @@ fun QuarterQuarterHistoryHeader(
     modifier: Modifier = Modifier,
     totalQuarters: Int,
     currentQuarter: Quarter,
-    isGameFinished: Boolean
+    isGameFinished: Boolean,
+    itemWidth: Dp
 ) {
-    Row {
-        Spacer(modifier = modifier.weight(1f))
-
+    Row(modifier = modifier) {
         val hasOvertime = totalQuarters > Quarter.values().size
         for (index in 1..totalQuarters) {
             val isOvertime = index > Quarter.values().size
@@ -109,7 +157,7 @@ fun QuarterQuarterHistoryHeader(
             }
 
             SquareTextView(
-                modifier = modifier.weight(1f),
+                modifier = Modifier.size(itemWidth),
                 text = headerText,
                 textColor = textColor,
                 backgroundColor = backgroundColor,
@@ -124,7 +172,7 @@ fun QuarterQuarterHistoryHeader(
             totalBackgroundColor = CustomColors.blackCurrant
         }
         SquareTextView(
-            modifier = modifier.weight(1f),
+            modifier = Modifier.size(itemWidth),
             text = stringResource(id = R.string.total),
             textColor = totalTextColor,
             backgroundColor = totalBackgroundColor,
@@ -136,21 +184,13 @@ fun QuarterQuarterHistoryHeader(
 @Composable
 fun TeamQuarterHistory(
     modifier: Modifier = Modifier,
-    teamName: String,
     currentQuarter: Quarter,
     totalPoints: Int,
     isGameFinished: Boolean,
-    scoreHistory: List<Int>
+    scoreHistory: List<Int>,
+    itemWidth: Dp
 ) {
-    Row(
-        modifier = modifier.fillMaxWidth()
-    ) {
-        SquareTextView(
-            modifier = modifier.weight(1f),
-            text = teamName,
-            style = MaterialTheme.typography.titleMedium
-        )
-
+    Row(modifier = modifier) {
         val hasOvertime = scoreHistory.size > Quarter.values().size
         scoreHistory.forEachIndexed { index, score ->
             val isOvertime = index >= Quarter.values().size
@@ -168,7 +208,7 @@ fun TeamQuarterHistory(
             }
 
             SquareTextView(
-                modifier = modifier.weight(1f),
+                modifier = Modifier.size(itemWidth),
                 text = score.toString(),
                 textColor = textColor,
                 backgroundColor = backgroundColor,
@@ -183,7 +223,7 @@ fun TeamQuarterHistory(
             totalBackgroundColor = CustomColors.blackCurrant
         }
         SquareTextView(
-            modifier = modifier.weight(1f),
+            modifier = Modifier.size(itemWidth),
             text = totalPoints.toString(),
             textColor = totalTextColor,
             backgroundColor = totalBackgroundColor,
@@ -196,15 +236,12 @@ fun TeamQuarterHistory(
 private fun SquareTextView(
     modifier: Modifier = Modifier,
     text: String,
-    height: Dp = 30.dp,
     textColor: Color = Color.Black,
     backgroundColor: Color = Color.White,
     style: TextStyle
 ) {
     Box(
-        modifier = modifier
-            .background(backgroundColor)
-            .height(height),
+        modifier = modifier.background(backgroundColor),
         contentAlignment = Alignment.Center
     ) {
         Text(
@@ -235,8 +272,8 @@ fun GameQuarterHistoryPreview() {
     )
     val quarter = Quarter.Second
     val quarterScoreHistory = QuarterScoreHistory(
-        homeScore = listOf(10, 15, 20, 22, 11, 24),
-        visitorScore = listOf(12, 17, 11, 22, 10, 23)
+        homeScore = listOf(10, 15, 20, 22),
+        visitorScore = listOf(12, 17, 11, 22)
     )
 
     NbaGamesTheme {
