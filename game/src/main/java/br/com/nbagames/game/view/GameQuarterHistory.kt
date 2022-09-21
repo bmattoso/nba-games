@@ -1,5 +1,7 @@
 package br.com.nbagames.game.view
 
+import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.foundation.LocalOverscrollConfiguration
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -17,6 +19,7 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -36,6 +39,7 @@ import br.com.nbagames.model.QuarterScoreHistory
 import br.com.nbagames.model.Team
 import br.com.nbagames.model.toQuarter
 
+@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun GameQuarterHistory(
     modifier: Modifier = Modifier,
@@ -63,38 +67,40 @@ fun GameQuarterHistory(
                     itemWidth = cellSize,
                     modifier = Modifier.width(cellSize)
                 )
-                LazyHorizontalGrid(
-                    modifier = Modifier.height(cellSize * 3),
-                    rows = GridCells.Fixed(3)
-                ) {
-                    item {
-                        QuarterQuarterHistoryHeader(
-                            modifier = Modifier.height(cellSize),
-                            currentQuarter = currentQuarter,
-                            isGameFinished = isGameFinished,
-                            totalQuarters = quarterScoreHistory.homeScore.size,
-                            itemWidth = cellSize
-                        )
-                    }
-                    item {
-                        TeamQuarterHistory(
-                            modifier = Modifier.height(cellSize),
-                            scoreHistory = quarterScoreHistory.homeScore,
-                            totalPoints = totalHomePoints,
-                            currentQuarter = currentQuarter,
-                            isGameFinished = isGameFinished,
-                            itemWidth = cellSize
-                        )
-                    }
-                    item {
-                        TeamQuarterHistory(
-                            modifier = Modifier.height(cellSize),
-                            scoreHistory = quarterScoreHistory.visitorScore,
-                            totalPoints = totalVisitorPoints,
-                            currentQuarter = currentQuarter,
-                            isGameFinished = isGameFinished,
-                            itemWidth = cellSize
-                        )
+                CompositionLocalProvider(LocalOverscrollConfiguration provides null) {
+                    LazyHorizontalGrid(
+                        modifier = Modifier.height(cellSize * 3),
+                        rows = GridCells.Fixed(3)
+                    ) {
+                        item {
+                            QuarterQuarterHistoryHeader(
+                                modifier = Modifier.height(cellSize),
+                                currentQuarter = currentQuarter,
+                                isGameFinished = isGameFinished,
+                                totalQuarters = quarterScoreHistory.homeScore.size,
+                                itemWidth = cellSize
+                            )
+                        }
+                        item {
+                            TeamQuarterHistory(
+                                modifier = Modifier.height(cellSize),
+                                scoreHistory = quarterScoreHistory.homeScore,
+                                totalPoints = totalHomePoints,
+                                currentQuarter = currentQuarter,
+                                isGameFinished = isGameFinished,
+                                itemWidth = cellSize
+                            )
+                        }
+                        item {
+                            TeamQuarterHistory(
+                                modifier = Modifier.height(cellSize),
+                                scoreHistory = quarterScoreHistory.visitorScore,
+                                totalPoints = totalVisitorPoints,
+                                currentQuarter = currentQuarter,
+                                isGameFinished = isGameFinished,
+                                itemWidth = cellSize
+                            )
+                        }
                     }
                 }
             }
