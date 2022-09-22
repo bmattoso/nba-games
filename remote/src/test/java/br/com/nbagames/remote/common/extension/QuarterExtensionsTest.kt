@@ -1,6 +1,7 @@
 package br.com.nbagames.remote.common.extension
 
 import br.com.nbagames.model.Quarter
+import br.com.nbagames.model.toQuarter
 import com.google.common.truth.Truth.assertThat
 import org.junit.jupiter.api.Test
 import kotlin.random.Random
