@@ -1,4 +1,5 @@
 ext {
+    accompanist = '0.19.0'
     androidx_compat = '1.4.2'
     androidx_lifecycle = '2.5.0'
     androidx_startup = '1.1.1'

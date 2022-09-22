@@ -24,6 +24,8 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-viewmodel-compose:$compose_viewmodel"
     implementation "com.google.android.material:material:$google_material"
     implementation "io.insert-koin:koin-androidx-compose:$koin_version"
+    implementation "com.google.accompanist:accompanist-pager:$accompanist"
+    implementation "com.google.accompanist:accompanist-pager-indicators:$accompanist"
 
     debugImplementation("androidx.compose.ui:ui-test-manifest:$compose_version")
     debugImplementation("androidx.customview:customview-poolingcontainer:$compose_custom_view")
