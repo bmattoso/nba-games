@@ -6,6 +6,6 @@ import kotlin.random.Random
 object ScoreResponseFixture {
     fun get() = ScoreResponse(
         points = Random(seed = 100).nextInt(),
-        linescore = listOf("10", "20", "30", "40")
+        lineScore = listOf("10", "20", "30", "40")
     )
 }

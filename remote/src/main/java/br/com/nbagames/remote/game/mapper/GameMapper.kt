@@ -38,10 +38,16 @@ class GameMapper(
         return GameStatus.FINISHED
     }
 
-    private fun mapQuarterScoreHistory(scores: GameScoreResponse) = QuarterScoreHistory(
-        homeScore = parseStringListToIntList(scores.home.linescore),
-        visitorScore = parseStringListToIntList(scores.visitors.linescore)
-    )
+    private fun mapQuarterScoreHistory(scores: GameScoreResponse): QuarterScoreHistory? {
+        if (scores.home.lineScore != null && scores.visitors.lineScore != null) {
+            QuarterScoreHistory(
+                homeScore = parseStringListToIntList(scores.home.lineScore),
+                visitorScore = parseStringListToIntList(scores.visitors.lineScore)
+            )
+        }
+
+        return null
+    }
 
     private fun parseStringListToIntList(list: List<String>) = list.map { string -> string.toInt() }
 }

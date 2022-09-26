@@ -9,5 +9,5 @@ data class Game(
     val currentClock: String?,
     val gameStatus: GameStatus,
     val quarter: Quarter,
-    val quarterScoreHistory: QuarterScoreHistory
+    val quarterScoreHistory: QuarterScoreHistory?
 )

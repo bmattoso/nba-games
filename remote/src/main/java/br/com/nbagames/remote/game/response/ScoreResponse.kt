@@ -5,5 +5,5 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class ScoreResponse(
     val points: Int,
-    val linescore: List<String>
+    val lineScore: List<String>?
 )
