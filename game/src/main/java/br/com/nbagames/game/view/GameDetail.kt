@@ -14,7 +14,9 @@ import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import br.com.nbagames.designsystem.theme.largePadding
 import br.com.nbagames.designsystem.theme.mediumPadding
+import br.com.nbagames.designsystem.theme.smallPadding
 import br.com.nbagames.game.presentation.detail.GameDetailViewModel
 import org.koin.androidx.compose.getViewModel
 
@@ -37,7 +39,9 @@ fun GameDetail(
             if (uiState.game != null) {
                 GameCard(
                     game = uiState.game.toGamePresentation(),
-                    modifier = Modifier.defaultMinSize(minHeight = 160.dp)
+                    modifier = Modifier
+                        .defaultMinSize(minHeight = 160.dp)
+                        .padding(top = smallPadding)
                 )
                 Spacer(modifier = Modifier.size(mediumPadding))
                 GameQuarterHistory(
