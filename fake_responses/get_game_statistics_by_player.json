@@ -1,0 +1,1141 @@
+{
+  "get": "players\/statistics",
+  "parameters": {
+    "game": "10972"
+  },
+  "errors": [],
+  "results": 29,
+  "response": [
+    {
+      "player": {
+        "id": 548,
+        "firstname": "Andrew",
+        "lastname": "Wiggins"
+      },
+      "team": {
+        "id": 11,
+        "name": "Golden State Warriors",
+        "nickname": "Warriors",
+        "code": "GSW",
+        "logo": "https:\/\/upload.wikimedia.org\/wikipedia\/fr\/thumb\/d\/de\/Warriors_de_Golden_State_logo.svg\/1200px-Warriors_de_Golden_State_logo.svg.png"
+      },
+      "game": {
+        "id": 10972
+      },
+      "points": 18,
+      "pos": "SF",
+      "min": "40:22",
+      "fgm": 7,
+      "fga": 16,
+      "fgp": "43.8",
+      "ftm": 3,
+      "fta": 4,
+      "ftp": "75.0",
+      "tpm": 1,
+      "tpa": 6,
+      "tpp": "16.7",
+      "offReb": 1,
+      "defReb": 6,
+      "totReb": 7,
+      "assists": 2,
+      "pFouls": 4,
+      "steals": 2,
+      "turnovers": 3,
+      "blocks": 2,
+      "plusMinus": "-16",
+      "comment": null
+    },
+    {
+      "player": {
+        "id": 204,
+        "firstname": "Draymond",
+        "lastname": "Green"
+      },
+      "team": {
+        "id": 11,
+        "name": "Golden State Warriors",
+        "nickname": "Warriors",
+        "code": "GSW",
+        "logo": "https:\/\/upload.wikimedia.org\/wikipedia\/fr\/thumb\/d\/de\/Warriors_de_Golden_State_logo.svg\/1200px-Warriors_de_Golden_State_logo.svg.png"
+      },
+      "game": {
+        "id": 10972
+      },
+      "points": 2,
+      "pos": "PF",
+      "min": "34:47",
+      "fgm": 1,
+      "fga": 4,
+      "fgp": "25.0",
+      "ftm": 0,
+      "fta": 0,
+      "ftp": "0.0",
+      "tpm": 0,
+      "tpa": 2,
+      "tpp": "0.0",
+      "offReb": 1,
+      "defReb": 3,
+      "totReb": 4,
+      "assists": 3,
+      "pFouls": 6,
+      "steals": 0,
+      "turnovers": 2,
+      "blocks": 1,
+      "plusMinus": "-13",
+      "comment": null
+    },
+    {
+      "player": {
+        "id": 322,
+        "firstname": "Kevon",
+        "lastname": "Looney"
+      },
+      "team": {
+        "id": 11,
+        "name": "Golden State Warriors",
+        "nickname": "Warriors",
+        "code": "GSW",
+        "logo": "https:\/\/upload.wikimedia.org\/wikipedia\/fr\/thumb\/d\/de\/Warriors_de_Golden_State_logo.svg\/1200px-Warriors_de_Golden_State_logo.svg.png"
+      },
+      "game": {
+        "id": 10972
+      },
+      "points": 6,
+      "pos": "C",
+      "min": "16:49",
+      "fgm": 3,
+      "fga": 4,
+      "fgp": "75.0",
+      "ftm": 0,
+      "fta": 0,
+      "ftp": "0.0",
+      "tpm": 0,
+      "tpa": 0,
+      "tpp": "0.0",
+      "offReb": 3,
+      "defReb": 4,
+      "totReb": 7,
+      "assists": 3,
+      "pFouls": 3,
+      "steals": 0,
+      "turnovers": 3,
+      "blocks": 0,
+      "plusMinus": "-7",
+      "comment": null
+    },
+    {
+      "player": {
+        "id": 514,
+        "firstname": "Klay",
+        "lastname": "Thompson"
+      },
+      "team": {
+        "id": 11,
+        "name": "Golden State Warriors",
+        "nickname": "Warriors",
+        "code": "GSW",
+        "logo": "https:\/\/upload.wikimedia.org\/wikipedia\/fr\/thumb\/d\/de\/Warriors_de_Golden_State_logo.svg\/1200px-Warriors_de_Golden_State_logo.svg.png"
+      },
+      "game": {
+        "id": 10972
+      },
+      "points": 25,
+      "pos": "SG",
+      "min": "39:02",
+      "fgm": 7,
+      "fga": 17,
+      "fgp": "41.2",
+      "ftm": 6,
+      "fta": 6,
+      "ftp": "100",
+      "tpm": 5,
+      "tpa": 13,
+      "tpp": "38.5",
+      "offReb": 0,
+      "defReb": 3,
+      "totReb": 3,
+      "assists": 3,
+      "pFouls": 1,
+      "steals": 1,
+      "turnovers": 0,
+      "blocks": 1,
+      "plusMinus": "-3",
+      "comment": null
+    },
+    {
+      "player": {
+        "id": 124,
+        "firstname": "Stephen",
+        "lastname": "Curry"
+      },
+      "team": {
+        "id": 11,
+        "name": "Golden State Warriors",
+        "nickname": "Warriors",
+        "code": "GSW",
+        "logo": "https:\/\/upload.wikimedia.org\/wikipedia\/fr\/thumb\/d\/de\/Warriors_de_Golden_State_logo.svg\/1200px-Warriors_de_Golden_State_logo.svg.png"
+      },
+      "game": {
+        "id": 10972
+      },
+      "points": 31,
+      "pos": "PG",
+      "min": "37:07",
+      "fgm": 12,
+      "fga": 22,
+      "fgp": "54.5",
+      "ftm": 1,
+      "fta": 1,
+      "ftp": "100",
+      "tpm": 6,
+      "tpa": 11,
+      "tpp": "54.5",
+      "offReb": 0,
+      "defReb": 4,
+      "totReb": 4,
+      "assists": 2,
+      "pFouls": 4,
+      "steals": 2,
+      "turnovers": 3,
+      "blocks": 0,
+      "plusMinus": "-14",
+      "comment": null
+    },
+    {
+      "player": {
+        "id": 55,
+        "firstname": "Nemanja",
+        "lastname": "Bjelica"
+      },
+      "team": {
+        "id": 11,
+        "name": "Golden State Warriors",
+        "nickname": "Warriors",
+        "code": "GSW",
+        "logo": "https:\/\/upload.wikimedia.org\/wikipedia\/fr\/thumb\/d\/de\/Warriors_de_Golden_State_logo.svg\/1200px-Warriors_de_Golden_State_logo.svg.png"
+      },
+      "game": {
+        "id": 10972
+      },
+      "points": 0,
+      "pos": null,
+      "min": "3:27",
+      "fgm": 0,
+      "fga": 1,
+      "fgp": "0.0",
+      "ftm": 0,
+      "fta": 0,
+      "ftp": "0.0",
+      "tpm": 0,
+      "tpa": 0,
+      "tpp": "0.0",
+      "offReb": 0,
+      "defReb": 0,
+      "totReb": 0,
+      "assists": 1,
+      "pFouls": 0,
+      "steals": 0,
+      "turnovers": 0,
+      "blocks": 0,
+      "plusMinus": "-2",
+      "comment": null
+    },
+    {
+      "player": {
+        "id": 256,
+        "firstname": "Andre",
+        "lastname": "Iguodala"
+      },
+      "team": {
+        "id": 11,
+        "name": "Golden State Warriors",
+        "nickname": "Warriors",
+        "code": "GSW",
+        "logo": "https:\/\/upload.wikimedia.org\/wikipedia\/fr\/thumb\/d\/de\/Warriors_de_Golden_State_logo.svg\/1200px-Warriors_de_Golden_State_logo.svg.png"
+      },
+      "game": {
+        "id": 10972
+      },
+      "points": 0,
+      "pos": null,
+      "min": "2:09",
+      "fgm": 0,
+      "fga": 0,
+      "fgp": "0.0",
+      "ftm": 0,
+      "fta": 0,
+      "ftp": "0.0",
+      "tpm": 0,
+      "tpa": 0,
+      "tpp": "0.0",
+      "offReb": 0,
+      "defReb": 0,
+      "totReb": 0,
+      "assists": 0,
+      "pFouls": 0,
+      "steals": 0,
+      "turnovers": 0,
+      "blocks": 0,
+      "plusMinus": "-2",
+      "comment": null
+    },
+    {
+      "player": {
+        "id": 2827,
+        "firstname": "Jonathan",
+        "lastname": "Kuminga"
+      },
+      "team": {
+        "id": 11,
+        "name": "Golden State Warriors",
+        "nickname": "Warriors",
+        "code": "GSW",
+        "logo": "https:\/\/upload.wikimedia.org\/wikipedia\/fr\/thumb\/d\/de\/Warriors_de_Golden_State_logo.svg\/1200px-Warriors_de_Golden_State_logo.svg.png"
+      },
+      "game": {
+        "id": 10972
+      },
+      "points": 0,
+      "pos": null,
+      "min": "2:19",
+      "fgm": 0,
+      "fga": 0,
+      "fgp": "0.0",
+      "ftm": 0,
+      "fta": 0,
+      "ftp": "0.0",
+      "tpm": 0,
+      "tpa": 0,
+      "tpp": "0.0",
+      "offReb": 0,
+      "defReb": 1,
+      "totReb": 1,
+      "assists": 0,
+      "pFouls": 0,
+      "steals": 0,
+      "turnovers": 0,
+      "blocks": 0,
+      "plusMinus": "-2",
+      "comment": null
+    },
+    {
+      "player": {
+        "id": 599,
+        "firstname": "Damion",
+        "lastname": "Lee"
+      },
+      "team": {
+        "id": 11,
+        "name": "Golden State Warriors",
+        "nickname": "Warriors",
+        "code": "GSW",
+        "logo": "https:\/\/upload.wikimedia.org\/wikipedia\/fr\/thumb\/d\/de\/Warriors_de_Golden_State_logo.svg\/1200px-Warriors_de_Golden_State_logo.svg.png"
+      },
+      "game": {
+        "id": 10972
+      },
+      "points": 0,
+      "pos": null,
+      "min": "2:19",
+      "fgm": 0,
+      "fga": 1,
+      "fgp": "0.0",
+      "ftm": 0,
+      "fta": 0,
+      "ftp": "0.0",
+      "tpm": 0,
+      "tpa": 1,
+      "tpp": "0.0",
+      "offReb": 0,
+      "defReb": 0,
+      "totReb": 0,
+      "assists": 0,
+      "pFouls": 0,
+      "steals": 0,
+      "turnovers": 0,
+      "blocks": 0,
+      "plusMinus": "-2",
+      "comment": null
+    },
+    {
+      "player": {
+        "id": 2836,
+        "firstname": "Moses",
+        "lastname": "Moody"
+      },
+      "team": {
+        "id": 11,
+        "name": "Golden State Warriors",
+        "nickname": "Warriors",
+        "code": "GSW",
+        "logo": "https:\/\/upload.wikimedia.org\/wikipedia\/fr\/thumb\/d\/de\/Warriors_de_Golden_State_logo.svg\/1200px-Warriors_de_Golden_State_logo.svg.png"
+      },
+      "game": {
+        "id": 10972
+      },
+      "points": 0,
+      "pos": null,
+      "min": "2:19",
+      "fgm": 0,
+      "fga": 0,
+      "fgp": "0.0",
+      "ftm": 0,
+      "fta": 0,
+      "ftp": "0.0",
+      "tpm": 0,
+      "tpa": 0,
+      "tpp": "0.0",
+      "offReb": 0,
+      "defReb": 0,
+      "totReb": 0,
+      "assists": 0,
+      "pFouls": 0,
+      "steals": 0,
+      "turnovers": 0,
+      "blocks": 1,
+      "plusMinus": "-2",
+      "comment": null
+    },
+    {
+      "player": {
+        "id": 593,
+        "firstname": "Gary",
+        "lastname": "Payton II"
+      },
+      "team": {
+        "id": 11,
+        "name": "Golden State Warriors",
+        "nickname": "Warriors",
+        "code": "GSW",
+        "logo": "https:\/\/upload.wikimedia.org\/wikipedia\/fr\/thumb\/d\/de\/Warriors_de_Golden_State_logo.svg\/1200px-Warriors_de_Golden_State_logo.svg.png"
+      },
+      "game": {
+        "id": 10972
+      },
+      "points": 2,
+      "pos": null,
+      "min": "11:25",
+      "fgm": 0,
+      "fga": 2,
+      "fgp": "0.0",
+      "ftm": 2,
+      "fta": 2,
+      "ftp": "100",
+      "tpm": 0,
+      "tpa": 0,
+      "tpp": "0.0",
+      "offReb": 0,
+      "defReb": 1,
+      "totReb": 1,
+      "assists": 1,
+      "pFouls": 2,
+      "steals": 1,
+      "turnovers": 0,
+      "blocks": 0,
+      "plusMinus": "-13",
+      "comment": null
+    },
+    {
+      "player": {
+        "id": 1887,
+        "firstname": "Jordan",
+        "lastname": "Poole"
+      },
+      "team": {
+        "id": 11,
+        "name": "Golden State Warriors",
+        "nickname": "Warriors",
+        "code": "GSW",
+        "logo": "https:\/\/upload.wikimedia.org\/wikipedia\/fr\/thumb\/d\/de\/Warriors_de_Golden_State_logo.svg\/1200px-Warriors_de_Golden_State_logo.svg.png"
+      },
+      "game": {
+        "id": 10972
+      },
+      "points": 10,
+      "pos": null,
+      "min": "24:27",
+      "fgm": 4,
+      "fga": 8,
+      "fgp": "50.0",
+      "ftm": 1,
+      "fta": 2,
+      "ftp": "50.0",
+      "tpm": 1,
+      "tpa": 4,
+      "tpp": "25.0",
+      "offReb": 0,
+      "defReb": 3,
+      "totReb": 3,
+      "assists": 3,
+      "pFouls": 2,
+      "steals": 0,
+      "turnovers": 3,
+      "blocks": 0,
+      "plusMinus": "-6",
+      "comment": null
+    },
+    {
+      "player": {
+        "id": 430,
+        "firstname": "Otto",
+        "lastname": "Porter Jr."
+      },
+      "team": {
+        "id": 11,
+        "name": "Golden State Warriors",
+        "nickname": "Warriors",
+        "code": "GSW",
+        "logo": "https:\/\/upload.wikimedia.org\/wikipedia\/fr\/thumb\/d\/de\/Warriors_de_Golden_State_logo.svg\/1200px-Warriors_de_Golden_State_logo.svg.png"
+      },
+      "game": {
+        "id": 10972
+      },
+      "points": 6,
+      "pos": null,
+      "min": "21:06",
+      "fgm": 2,
+      "fga": 3,
+      "fgp": "66.7",
+      "ftm": 0,
+      "fta": 0,
+      "ftp": "0.0",
+      "tpm": 2,
+      "tpa": 3,
+      "tpp": "66.7",
+      "offReb": 1,
+      "defReb": 0,
+      "totReb": 1,
+      "assists": 4,
+      "pFouls": 1,
+      "steals": 1,
+      "turnovers": 1,
+      "blocks": 0,
+      "plusMinus": "4",
+      "comment": null
+    },
+    {
+      "player": {
+        "id": 1934,
+        "firstname": "Juan",
+        "lastname": "Toscano-Anderson"
+      },
+      "team": {
+        "id": 11,
+        "name": "Golden State Warriors",
+        "nickname": "Warriors",
+        "code": "GSW",
+        "logo": "https:\/\/upload.wikimedia.org\/wikipedia\/fr\/thumb\/d\/de\/Warriors_de_Golden_State_logo.svg\/1200px-Warriors_de_Golden_State_logo.svg.png"
+      },
+      "game": {
+        "id": 10972
+      },
+      "points": 0,
+      "pos": null,
+      "min": "2:19",
+      "fgm": 0,
+      "fga": 0,
+      "fgp": "0.0",
+      "ftm": 0,
+      "fta": 0,
+      "ftp": "0.0",
+      "tpm": 0,
+      "tpa": 0,
+      "tpp": "0.0",
+      "offReb": 0,
+      "defReb": 0,
+      "totReb": 0,
+      "assists": 0,
+      "pFouls": 0,
+      "steals": 0,
+      "turnovers": 1,
+      "blocks": 0,
+      "plusMinus": "-2",
+      "comment": null
+    },
+    {
+      "player": {
+        "id": 882,
+        "firstname": "Jayson",
+        "lastname": "Tatum"
+      },
+      "team": {
+        "id": 2,
+        "name": "Boston Celtics",
+        "nickname": "Celtics",
+        "code": "BOS",
+        "logo": "https:\/\/upload.wikimedia.org\/wikipedia\/fr\/thumb\/6\/65\/Celtics_de_Boston_logo.svg\/1024px-Celtics_de_Boston_logo.svg.png"
+      },
+      "game": {
+        "id": 10972
+      },
+      "points": 26,
+      "pos": "SF",
+      "min": "41:18",
+      "fgm": 9,
+      "fga": 23,
+      "fgp": "39.1",
+      "ftm": 5,
+      "fta": 6,
+      "ftp": "83.3",
+      "tpm": 3,
+      "tpa": 9,
+      "tpp": "33.3",
+      "offReb": 1,
+      "defReb": 5,
+      "totReb": 6,
+      "assists": 9,
+      "pFouls": 2,
+      "steals": 1,
+      "turnovers": 2,
+      "blocks": 0,
+      "plusMinus": "13",
+      "comment": null
+    },
+    {
+      "player": {
+        "id": 248,
+        "firstname": "Al",
+        "lastname": "Horford"
+      },
+      "team": {
+        "id": 2,
+        "name": "Boston Celtics",
+        "nickname": "Celtics",
+        "code": "BOS",
+        "logo": "https:\/\/upload.wikimedia.org\/wikipedia\/fr\/thumb\/6\/65\/Celtics_de_Boston_logo.svg\/1024px-Celtics_de_Boston_logo.svg.png"
+      },
+      "game": {
+        "id": 10972
+      },
+      "points": 11,
+      "pos": "PF",
+      "min": "30:07",
+      "fgm": 5,
+      "fga": 7,
+      "fgp": "71.4",
+      "ftm": 0,
+      "fta": 2,
+      "ftp": "0.0",
+      "tpm": 1,
+      "tpa": 2,
+      "tpp": "50.0",
+      "offReb": 3,
+      "defReb": 5,
+      "totReb": 8,
+      "assists": 6,
+      "pFouls": 3,
+      "steals": 1,
+      "turnovers": 0,
+      "blocks": 1,
+      "plusMinus": "7",
+      "comment": null
+    },
+    {
+      "player": {
+        "id": 1045,
+        "firstname": "Robert",
+        "lastname": "Williams III"
+      },
+      "team": {
+        "id": 2,
+        "name": "Boston Celtics",
+        "nickname": "Celtics",
+        "code": "BOS",
+        "logo": "https:\/\/upload.wikimedia.org\/wikipedia\/fr\/thumb\/6\/65\/Celtics_de_Boston_logo.svg\/1024px-Celtics_de_Boston_logo.svg.png"
+      },
+      "game": {
+        "id": 10972
+      },
+      "points": 8,
+      "pos": "C",
+      "min": "25:57",
+      "fgm": 4,
+      "fga": 5,
+      "fgp": "80.0",
+      "ftm": 0,
+      "fta": 0,
+      "ftp": "0.0",
+      "tpm": 0,
+      "tpa": 0,
+      "tpp": "0.0",
+      "offReb": 3,
+      "defReb": 7,
+      "totReb": 10,
+      "assists": 0,
+      "pFouls": 3,
+      "steals": 3,
+      "turnovers": 0,
+      "blocks": 4,
+      "plusMinus": "21",
+      "comment": null
+    },
+    {
+      "player": {
+        "id": 75,
+        "firstname": "Jaylen",
+        "lastname": "Brown"
+      },
+      "team": {
+        "id": 2,
+        "name": "Boston Celtics",
+        "nickname": "Celtics",
+        "code": "BOS",
+        "logo": "https:\/\/upload.wikimedia.org\/wikipedia\/fr\/thumb\/6\/65\/Celtics_de_Boston_logo.svg\/1024px-Celtics_de_Boston_logo.svg.png"
+      },
+      "game": {
+        "id": 10972
+      },
+      "points": 27,
+      "pos": "SG",
+      "min": "39:40",
+      "fgm": 9,
+      "fga": 16,
+      "fgp": "56.2",
+      "ftm": 5,
+      "fta": 6,
+      "ftp": "83.3",
+      "tpm": 4,
+      "tpa": 8,
+      "tpp": "50.0",
+      "offReb": 3,
+      "defReb": 6,
+      "totReb": 9,
+      "assists": 5,
+      "pFouls": 2,
+      "steals": 0,
+      "turnovers": 2,
+      "blocks": 1,
+      "plusMinus": "7",
+      "comment": null
+    },
+    {
+      "player": {
+        "id": 486,
+        "firstname": "Marcus",
+        "lastname": "Smart"
+      },
+      "team": {
+        "id": 2,
+        "name": "Boston Celtics",
+        "nickname": "Celtics",
+        "code": "BOS",
+        "logo": "https:\/\/upload.wikimedia.org\/wikipedia\/fr\/thumb\/6\/65\/Celtics_de_Boston_logo.svg\/1024px-Celtics_de_Boston_logo.svg.png"
+      },
+      "game": {
+        "id": 10972
+      },
+      "points": 24,
+      "pos": "PG",
+      "min": "39:23",
+      "fgm": 8,
+      "fga": 17,
+      "fgp": "47.1",
+      "ftm": 5,
+      "fta": 7,
+      "ftp": "71.4",
+      "tpm": 3,
+      "tpa": 7,
+      "tpp": "42.9",
+      "offReb": 2,
+      "defReb": 5,
+      "totReb": 7,
+      "assists": 5,
+      "pFouls": 3,
+      "steals": 0,
+      "turnovers": 5,
+      "blocks": 0,
+      "plusMinus": "19",
+      "comment": null
+    },
+    {
+      "player": {
+        "id": 2586,
+        "firstname": "Malik",
+        "lastname": "Fitts"
+      },
+      "team": {
+        "id": 2,
+        "name": "Boston Celtics",
+        "nickname": "Celtics",
+        "code": "BOS",
+        "logo": "https:\/\/upload.wikimedia.org\/wikipedia\/fr\/thumb\/6\/65\/Celtics_de_Boston_logo.svg\/1024px-Celtics_de_Boston_logo.svg.png"
+      },
+      "game": {
+        "id": 10972
+      },
+      "points": 0,
+      "pos": null,
+      "min": "2:00",
+      "fgm": 0,
+      "fga": 0,
+      "fgp": "0.0",
+      "ftm": 0,
+      "fta": 0,
+      "ftp": "0.0",
+      "tpm": 0,
+      "tpa": 0,
+      "tpp": "0.0",
+      "offReb": 0,
+      "defReb": 0,
+      "totReb": 0,
+      "assists": 0,
+      "pFouls": 0,
+      "steals": 0,
+      "turnovers": 0,
+      "blocks": 0,
+      "plusMinus": "0",
+      "comment": null
+    },
+    {
+      "player": {
+        "id": 2812,
+        "firstname": "Sam",
+        "lastname": "Hauser"
+      },
+      "team": {
+        "id": 2,
+        "name": "Boston Celtics",
+        "nickname": "Celtics",
+        "code": "BOS",
+        "logo": "https:\/\/upload.wikimedia.org\/wikipedia\/fr\/thumb\/6\/65\/Celtics_de_Boston_logo.svg\/1024px-Celtics_de_Boston_logo.svg.png"
+      },
+      "game": {
+        "id": 10972
+      },
+      "points": 0,
+      "pos": null,
+      "min": "2:02",
+      "fgm": 0,
+      "fga": 1,
+      "fgp": "0.0",
+      "ftm": 0,
+      "fta": 0,
+      "ftp": "0.0",
+      "tpm": 0,
+      "tpa": 0,
+      "tpp": "0.0",
+      "offReb": 0,
+      "defReb": 0,
+      "totReb": 0,
+      "assists": 0,
+      "pFouls": 0,
+      "steals": 0,
+      "turnovers": 0,
+      "blocks": 0,
+      "plusMinus": "0",
+      "comment": null
+    },
+    {
+      "player": {
+        "id": 819,
+        "firstname": "Luke",
+        "lastname": "Kornet"
+      },
+      "team": {
+        "id": 2,
+        "name": "Boston Celtics",
+        "nickname": "Celtics",
+        "code": "BOS",
+        "logo": "https:\/\/upload.wikimedia.org\/wikipedia\/fr\/thumb\/6\/65\/Celtics_de_Boston_logo.svg\/1024px-Celtics_de_Boston_logo.svg.png"
+      },
+      "game": {
+        "id": 10972
+      },
+      "points": 0,
+      "pos": null,
+      "min": "0:00",
+      "fgm": 0,
+      "fga": 0,
+      "fgp": "0.0",
+      "ftm": 0,
+      "fta": 0,
+      "ftp": "0.0",
+      "tpm": 0,
+      "tpa": 0,
+      "tpp": "0.0",
+      "offReb": 0,
+      "defReb": 0,
+      "totReb": 0,
+      "assists": 0,
+      "pFouls": 0,
+      "steals": 0,
+      "turnovers": 0,
+      "blocks": 0,
+      "plusMinus": "0",
+      "comment": null
+    },
+    {
+      "player": {
+        "id": 2438,
+        "firstname": "Juwan",
+        "lastname": "Morgan"
+      },
+      "team": {
+        "id": 2,
+        "name": "Boston Celtics",
+        "nickname": "Celtics",
+        "code": "BOS",
+        "logo": "https:\/\/upload.wikimedia.org\/wikipedia\/fr\/thumb\/6\/65\/Celtics_de_Boston_logo.svg\/1024px-Celtics_de_Boston_logo.svg.png"
+      },
+      "game": {
+        "id": 10972
+      },
+      "points": 0,
+      "pos": null,
+      "min": "2:00",
+      "fgm": 0,
+      "fga": 0,
+      "fgp": "0.0",
+      "ftm": 0,
+      "fta": 0,
+      "ftp": "0.0",
+      "tpm": 0,
+      "tpa": 0,
+      "tpp": "0.0",
+      "offReb": 0,
+      "defReb": 0,
+      "totReb": 0,
+      "assists": 0,
+      "pFouls": 0,
+      "steals": 0,
+      "turnovers": 0,
+      "blocks": 0,
+      "plusMinus": "0",
+      "comment": null
+    },
+    {
+      "player": {
+        "id": 2626,
+        "firstname": "Aaron",
+        "lastname": "Nesmith"
+      },
+      "team": {
+        "id": 2,
+        "name": "Boston Celtics",
+        "nickname": "Celtics",
+        "code": "BOS",
+        "logo": "https:\/\/upload.wikimedia.org\/wikipedia\/fr\/thumb\/6\/65\/Celtics_de_Boston_logo.svg\/1024px-Celtics_de_Boston_logo.svg.png"
+      },
+      "game": {
+        "id": 10972
+      },
+      "points": 0,
+      "pos": null,
+      "min": "2:02",
+      "fgm": 0,
+      "fga": 1,
+      "fgp": "0.0",
+      "ftm": 0,
+      "fta": 0,
+      "ftp": "0.0",
+      "tpm": 0,
+      "tpa": 0,
+      "tpp": "0.0",
+      "offReb": 0,
+      "defReb": 1,
+      "totReb": 1,
+      "assists": 0,
+      "pFouls": 0,
+      "steals": 0,
+      "turnovers": 0,
+      "blocks": 0,
+      "plusMinus": "0",
+      "comment": null
+    },
+    {
+      "player": {
+        "id": 2635,
+        "firstname": "Payton",
+        "lastname": "Pritchard"
+      },
+      "team": {
+        "id": 2,
+        "name": "Boston Celtics",
+        "nickname": "Celtics",
+        "code": "BOS",
+        "logo": "https:\/\/upload.wikimedia.org\/wikipedia\/fr\/thumb\/6\/65\/Celtics_de_Boston_logo.svg\/1024px-Celtics_de_Boston_logo.svg.png"
+      },
+      "game": {
+        "id": 10972
+      },
+      "points": 3,
+      "pos": null,
+      "min": "9:47",
+      "fgm": 1,
+      "fga": 2,
+      "fgp": "50.0",
+      "ftm": 0,
+      "fta": 0,
+      "ftp": "0.0",
+      "tpm": 1,
+      "tpa": 1,
+      "tpp": "100",
+      "offReb": 0,
+      "defReb": 0,
+      "totReb": 0,
+      "assists": 1,
+      "pFouls": 0,
+      "steals": 0,
+      "turnovers": 1,
+      "blocks": 0,
+      "plusMinus": "15",
+      "comment": null
+    },
+    {
+      "player": {
+        "id": 496,
+        "firstname": "Nik",
+        "lastname": "Stauskas"
+      },
+      "team": {
+        "id": 2,
+        "name": "Boston Celtics",
+        "nickname": "Celtics",
+        "code": "BOS",
+        "logo": "https:\/\/upload.wikimedia.org\/wikipedia\/fr\/thumb\/6\/65\/Celtics_de_Boston_logo.svg\/1024px-Celtics_de_Boston_logo.svg.png"
+      },
+      "game": {
+        "id": 10972
+      },
+      "points": 0,
+      "pos": null,
+      "min": "2:00",
+      "fgm": 0,
+      "fga": 1,
+      "fgp": "0.0",
+      "ftm": 0,
+      "fta": 0,
+      "ftp": "0.0",
+      "tpm": 0,
+      "tpa": 1,
+      "tpp": "0.0",
+      "offReb": 0,
+      "defReb": 0,
+      "totReb": 0,
+      "assists": 0,
+      "pFouls": 0,
+      "steals": 0,
+      "turnovers": 0,
+      "blocks": 0,
+      "plusMinus": "0",
+      "comment": null
+    },
+    {
+      "player": {
+        "id": 886,
+        "firstname": "Daniel",
+        "lastname": "Theis"
+      },
+      "team": {
+        "id": 2,
+        "name": "Boston Celtics",
+        "nickname": "Celtics",
+        "code": "BOS",
+        "logo": "https:\/\/upload.wikimedia.org\/wikipedia\/fr\/thumb\/6\/65\/Celtics_de_Boston_logo.svg\/1024px-Celtics_de_Boston_logo.svg.png"
+      },
+      "game": {
+        "id": 10972
+      },
+      "points": 0,
+      "pos": null,
+      "min": "0:00",
+      "fgm": 0,
+      "fga": 0,
+      "fgp": "0.0",
+      "ftm": 0,
+      "fta": 0,
+      "ftp": "0.0",
+      "tpm": 0,
+      "tpa": 0,
+      "tpp": "0.0",
+      "offReb": 0,
+      "defReb": 0,
+      "totReb": 0,
+      "assists": 0,
+      "pFouls": 0,
+      "steals": 0,
+      "turnovers": 0,
+      "blocks": 0,
+      "plusMinus": "0",
+      "comment": null
+    },
+    {
+      "player": {
+        "id": 897,
+        "firstname": "Derrick",
+        "lastname": "White"
+      },
+      "team": {
+        "id": 2,
+        "name": "Boston Celtics",
+        "nickname": "Celtics",
+        "code": "BOS",
+        "logo": "https:\/\/upload.wikimedia.org\/wikipedia\/fr\/thumb\/6\/65\/Celtics_de_Boston_logo.svg\/1024px-Celtics_de_Boston_logo.svg.png"
+      },
+      "game": {
+        "id": 10972
+      },
+      "points": 7,
+      "pos": null,
+      "min": "23:35",
+      "fgm": 3,
+      "fga": 9,
+      "fgp": "33.3",
+      "ftm": 1,
+      "fta": 1,
+      "ftp": "100",
+      "tpm": 0,
+      "tpa": 3,
+      "tpp": "0.0",
+      "offReb": 0,
+      "defReb": 1,
+      "totReb": 1,
+      "assists": 2,
+      "pFouls": 2,
+      "steals": 1,
+      "turnovers": 1,
+      "blocks": 1,
+      "plusMinus": "-12",
+      "comment": null
+    },
+    {
+      "player": {
+        "id": 1901,
+        "firstname": "Grant",
+        "lastname": "Williams"
+      },
+      "team": {
+        "id": 2,
+        "name": "Boston Celtics",
+        "nickname": "Celtics",
+        "code": "BOS",
+        "logo": "https:\/\/upload.wikimedia.org\/wikipedia\/fr\/thumb\/6\/65\/Celtics_de_Boston_logo.svg\/1024px-Celtics_de_Boston_logo.svg.png"
+      },
+      "game": {
+        "id": 10972
+      },
+      "points": 10,
+      "pos": null,
+      "min": "20:08",
+      "fgm": 4,
+      "fga": 7,
+      "fgp": "57.1",
+      "ftm": 1,
+      "fta": 2,
+      "ftp": "50.0",
+      "tpm": 1,
+      "tpa": 4,
+      "tpp": "25.0",
+      "offReb": 3,
+      "defReb": 2,
+      "totReb": 5,
+      "assists": 0,
+      "pFouls": 2,
+      "steals": 1,
+      "turnovers": 1,
+      "blocks": 0,
+      "plusMinus": "10",
+      "comment": null
+    }
+  ]
+}

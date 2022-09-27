@@ -1,0 +1,94 @@
+{
+  "get": "games\/",
+  "parameters": {
+    "id": "10972"
+  },
+  "errors": [],
+  "results": 1,
+  "response": [
+    {
+      "id": 10972,
+      "league": "standard",
+      "season": 2021,
+      "date": {
+        "start": "2022-06-09T01:00:00.000Z",
+        "end": "2022-06-09T03:36:00.000Z",
+        "duration": "2:26"
+      },
+      "stage": 4,
+      "status": {
+        "clock": null,
+        "halftime": false,
+        "short": 3,
+        "long": "Finished"
+      },
+      "periods": {
+        "current": 4,
+        "total": 4,
+        "endOfPeriod": false
+      },
+      "arena": {
+        "name": "TD Garden",
+        "city": "Boston",
+        "state": "MA",
+        "country": "USA"
+      },
+      "teams": {
+        "visitors": {
+          "id": 11,
+          "name": "Golden State Warriors",
+          "nickname": "Warriors",
+          "code": "GSW",
+          "logo": "https:\/\/upload.wikimedia.org\/wikipedia\/fr\/thumb\/d\/de\/Warriors_de_Golden_State_logo.svg\/1200px-Warriors_de_Golden_State_logo.svg.png"
+        },
+        "home": {
+          "id": 2,
+          "name": "Boston Celtics",
+          "nickname": "Celtics",
+          "code": "BOS",
+          "logo": "https:\/\/upload.wikimedia.org\/wikipedia\/fr\/thumb\/6\/65\/Celtics_de_Boston_logo.svg\/1024px-Celtics_de_Boston_logo.svg.png"
+        }
+      },
+      "scores": {
+        "visitors": {
+          "win": 53,
+          "loss": 29,
+          "series": {
+            "win": 1,
+            "loss": 1
+          },
+          "linescore": [
+            "22",
+            "34",
+            "33",
+            "11"
+          ],
+          "points": 100
+        },
+        "home": {
+          "win": 51,
+          "loss": 31,
+          "series": {
+            "win": 1,
+            "loss": 1
+          },
+          "linescore": [
+            "33",
+            "35",
+            "25",
+            "23"
+          ],
+          "points": 116
+        }
+      },
+      "officials": [
+        "Scott Foster",
+        "Courtney Kirkland",
+        "David Guthrie"
+      ],
+      "timesTied": 0,
+      "leadChanges": 3,
+      "nugget": null
+    }
+  ]
+}
