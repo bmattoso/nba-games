@@ -177,7 +177,7 @@ fun StatisticsByPlayer(
             ) {
                 item { StatisticsHeader(cellSize = cellSize) }
                 playersStatistics.forEachIndexed { index, playerStatistics ->
-                    val lineColor = if (index % 2 == 0) LightColors.secondaryContainer else Color.White
+                    val lineColor = if (index % 2 == 0) CustomColors.primary70 else Color.White
                     item {
                         PlayerStatisticsRow(
                             modifier = Modifier
@@ -241,7 +241,7 @@ fun PlayersIdentification(
     Column {
         UnderlineText(modifier = modifier, text = "")
         players.forEachIndexed { index, playerStatistic ->
-            val lineColor = if (index % 2 == 0) LightColors.secondaryContainer else Color.White
+            val lineColor = if (index % 2 == 0) CustomColors.primary70 else Color.White
             UnderlineText(modifier = modifier.background(lineColor), text = playerStatistic.playerName)
         }
     }
