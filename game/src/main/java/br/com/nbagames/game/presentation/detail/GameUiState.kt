@@ -4,5 +4,6 @@ import br.com.nbagames.game.presentation.GameDetailPresentation
 
 data class GameUiState(
     val showLoadingStatistics: Boolean = true,
-    val game: GameDetailPresentation? = null
+    val game: GameDetailPresentation? = null,
+    val gameStatistics: GameStatisticsPresentation? = null
 )

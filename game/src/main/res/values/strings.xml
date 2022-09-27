@@ -10,4 +10,11 @@
     <string name="score_by_quarter">Score by quarter</string>
     <string name="overtime">OT%1$d</string>
     <string name="players_statistics">Players statistics</string>
+    <string name="points_abbreviation">PTS</string>
+    <string name="minutes_abbreviation">Min.</string>
+    <string name="fouls">Fouls</string>
+    <string name="field_goals">Field Goals</string>
+    <string name="free_throws_abbreviation">FTs</string>
+    <string name="three_points_abbreviation">3 PTS</string>
+
 </resources>

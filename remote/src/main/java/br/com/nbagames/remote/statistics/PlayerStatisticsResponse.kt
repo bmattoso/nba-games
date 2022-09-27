@@ -5,7 +5,7 @@ import br.com.nbagames.remote.team.response.TeamResponse
 import kotlinx.serialization.SerialName
 
 @kotlinx.serialization.Serializable
-data class StatisticsPlayerResponse(
+data class PlayerStatisticsResponse(
     val team: TeamResponse,
     val player: PlayerResponse,
     val points: Int,

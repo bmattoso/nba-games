@@ -41,7 +41,50 @@ class GameDetailViewModel : ViewModel() {
                 ),
                 isGameFinished = false,
                 isHalftime = false
+            ),
+            gameStatistics = mapGameStatisticsPresentation()
+        )
+    }
+
+    private fun mapGameStatisticsPresentation(): GameStatisticsPresentation {
+        val playersStatistics = listOf(
+            PlayerStatisticsPresentation(
+                playerId = 1,
+                playerName = "D. Booker",
+                points = 11,
+                steals = 1,
+                assists = 2,
+                turnovers = 3,
+                blocks = 0,
+                personalFouls = 1,
+                minutesPlayed = "6:33",
+                playerPosition = "ST",
+                fieldGoals = "6/10 (60%)",
+                freeThrows = "2/2 (100%)",
+                threePoints = "0/1 (0%)",
+                rebounds = "1/0 (1)"
+            ),
+            PlayerStatisticsPresentation(
+                playerId = 2,
+                playerName = "J. Tatum",
+                points = 11,
+                steals = 1,
+                assists = 2,
+                turnovers = 3,
+                blocks = 0,
+                personalFouls = 1,
+                minutesPlayed = "6:33",
+                playerPosition = "ST",
+                fieldGoals = "6/10 (60%)",
+                freeThrows = "2/2 (100%)",
+                threePoints = "0/1 (0%)",
+                rebounds = "1/3 (2)"
             )
+        )
+
+        return GameStatisticsPresentation(
+            homePlayersStatistics = playersStatistics,
+            visitorPlayersStatistics = playersStatistics
         )
     }
 }

@@ -53,13 +53,15 @@ fun GameDetail(
                     totalVisitorPoints = uiState.game.visitantPoints,
                     isGameFinished = uiState.game.isGameFinished
                 )
-                Spacer(modifier = Modifier.size(mediumPadding))
-                GameBoxScore(
-                    modifier = Modifier.padding(mediumPadding),
-                    homeTeamName = uiState.game.homeTeam.name,
-                    visitorTeamName = uiState.game.visitantTeam.name,
-                    onPlayerClick = onPlayerClick
-                )
+                Spacer(modifier = Modifier.size(largePadding))
+                if (uiState.gameStatistics != null) {
+                    GameBoxScore(
+                        homeTeamName = uiState.game.homeTeam.name,
+                        visitorTeamName = uiState.game.visitantTeam.name,
+                        gameStatistics = uiState.gameStatistics,
+                        onPlayerClick = onPlayerClick
+                    )
+                }
             } else {
                 viewModel.loadGameDetails(gameId)
             }

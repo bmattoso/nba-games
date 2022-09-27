@@ -10,3 +10,5 @@ val largePadding = 16.dp
 val smallLineHeight = 2.dp
 
 val defaultElevation = 4.dp
+
+val defaultCellSize = 40.dp
