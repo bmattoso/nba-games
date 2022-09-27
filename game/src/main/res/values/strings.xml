@@ -16,5 +16,10 @@
     <string name="field_goals">Field Goals</string>
     <string name="free_throws_abbreviation">FTs</string>
     <string name="three_points_abbreviation">3 PTS</string>
+    <string name="assists">Assists</string>
+    <string name="steals">Steals</string>
+    <string name="turnover_abbreviation">TO</string>
+    <string name="blocks">Blocks</string>
+    <string name="rebounds">Rebounds</string>
 
 </resources>

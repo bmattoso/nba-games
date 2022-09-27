@@ -32,7 +32,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import br.com.nbagames.designsystem.color.CustomColors
-import br.com.nbagames.designsystem.color.LightColors
 import br.com.nbagames.designsystem.theme.NbaGamesTheme
 import br.com.nbagames.designsystem.theme.defaultCellSize
 import br.com.nbagames.designsystem.theme.extraSmallPadding
@@ -176,9 +175,10 @@ fun StatisticsByPlayer(
                 rows = GridCells.Fixed(totalRows)
             ) {
                 item { StatisticsHeader(cellSize = cellSize) }
+
                 playersStatistics.forEachIndexed { index, playerStatistics ->
-                    val lineColor = if (index % 2 == 0) CustomColors.primary70 else Color.White
                     item {
+                        val lineColor = if (index % 2 == 0) CustomColors.primary70 else Color.White
                         PlayerStatisticsRow(
                             modifier = Modifier
                                 .background(lineColor)
@@ -230,6 +230,31 @@ fun StatisticsHeader(
             text = stringResource(id = R.string.free_throws_abbreviation),
             textStyle = headerTextStyle
         )
+        UnderlineText(
+            modifier = Modifier.size(cellSize),
+            text = stringResource(id = R.string.rebounds),
+            textStyle = headerTextStyle
+        )
+        UnderlineText(
+            modifier = Modifier.size(cellSize),
+            text = stringResource(id = R.string.assists),
+            textStyle = headerTextStyle
+        )
+        UnderlineText(
+            modifier = Modifier.size(cellSize),
+            text = stringResource(id = R.string.steals),
+            textStyle = headerTextStyle
+        )
+        UnderlineText(
+            modifier = Modifier.size(cellSize),
+            text = stringResource(id = R.string.turnover_abbreviation),
+            textStyle = headerTextStyle
+        )
+        UnderlineText(
+            modifier = Modifier.size(cellSize),
+            text = stringResource(id = R.string.blocks),
+            textStyle = headerTextStyle
+        )
     }
 }
 
@@ -242,7 +267,8 @@ fun PlayersIdentification(
         UnderlineText(modifier = modifier, text = "")
         players.forEachIndexed { index, playerStatistic ->
             val lineColor = if (index % 2 == 0) CustomColors.primary70 else Color.White
-            UnderlineText(modifier = modifier.background(lineColor), text = playerStatistic.playerName)
+            val playerName = "${playerStatistic.playerName} (${playerStatistic.playerPosition})"
+            UnderlineText(modifier = modifier.background(lineColor), text = playerName)
         }
     }
 }
@@ -259,6 +285,11 @@ fun PlayerStatisticsRow(
         UnderlineText(modifier = modifier, text = statistics.fieldGoals)
         UnderlineText(modifier = modifier, text = statistics.threePoints)
         UnderlineText(modifier = modifier, text = statistics.freeThrows)
+        UnderlineText(modifier = modifier, text = statistics.rebounds)
+        UnderlineText(modifier = modifier, text = statistics.assists.toString())
+        UnderlineText(modifier = modifier, text = statistics.steals.toString())
+        UnderlineText(modifier = modifier, text = statistics.turnovers.toString())
+        UnderlineText(modifier = modifier, text = statistics.blocks.toString())
     }
 }
 
