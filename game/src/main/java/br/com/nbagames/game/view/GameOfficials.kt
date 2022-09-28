@@ -60,7 +60,7 @@ fun OfficialCard(
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         ImageLoader(
-            imageUrl = official.getStoragePath(),
+            imageUrl = official.profilePictureUrl,
             contentDescription = official.id,
             defaultContentResource = R.drawable.default_team_logo,
             modifier = Modifier
@@ -80,9 +80,11 @@ fun OfficialCard(
 @Preview(showBackground = true)
 fun GameOfficialsPreview() {
     NbaGamesTheme {
+        val official = Official(id = "Scott Foster", profilePictureUrl = "")
+
         GameOfficials(
             modifier = Modifier.padding(smallPadding),
-            officials = listOf(Official.ScottFoster, Official.ScottFoster, Official.ScottFoster)
+            officials = listOf(official, official, official)
         )
     }
 }

@@ -1,6 +1,9 @@
 package br.com.nbagames.remote.di
 
 import br.com.nbagames.remote.common.AuthorizationInterceptor
+import br.com.nbagames.remote.firebase.FirebaseRealTimeDatabase
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.json.Json
@@ -35,6 +38,10 @@ object NetworkModule {
                     .client(get())
                     .build()
             }
+
+            single { Firebase.database.reference }
+
+            factory { FirebaseRealTimeDatabase(database = get()) }
         }
     }
 }

@@ -8,12 +8,13 @@ apply from: rootProject.file("dependencies_versions.gradle")
 dependencies {
     implementation project(":model")
 
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutine_version")
+    implementation "com.squareup.retrofit2:retrofit:$retrofit"
     implementation "com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:$kotlinx_serialization_converter"
     implementation "com.squareup.okhttp3:okhttp:$okhttp"
-    implementation "com.squareup.retrofit2:retrofit:$retrofit"
-    implementation "org.jetbrains.kotlinx:kotlinx-serialization-json:$kotlinx_serialization"
     implementation "com.squareup.okhttp3:logging-interceptor:$okhttp"
+    implementation "org.jetbrains.kotlinx:kotlinx-serialization-json:$kotlinx_serialization"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutine_version"
+    implementation "com.google.firebase:firebase-database-ktx"
 
-    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutine_test_version")
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutine_test_version"
 }

@@ -8,6 +8,7 @@ ext {
     compose_custom_view = '1.0.0'
     core_ktx = '1.8.0'
     espresso = '3.4.0'
+    firebase = '30.4.1'
     google_material = '1.6.1'
     google_material_3 = '1.0.0-alpha14'
     google_truth = '1.1.2'

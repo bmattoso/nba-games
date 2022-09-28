@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "19525595194",
+    "project_id": "nba-games-c66b5",
+    "storage_bucket": "nba-games-c66b5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:19525595194:android:a1a43745b6747ed6ba8503",
+        "android_client_info": {
+          "package_name": "br.com.nbagames"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "19525595194-8ogierl5m0d6hlh94hc8a4rfavbn64c5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDAqQiBD6hYcpmfqnVxG6_n0PKXX89doqY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "19525595194-8ogierl5m0d6hlh94hc8a4rfavbn64c5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
