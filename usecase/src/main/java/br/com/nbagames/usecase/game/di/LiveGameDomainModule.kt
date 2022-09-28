@@ -1,4 +1,4 @@
-package br.com.nbagames.usecase.game.module
+package br.com.nbagames.usecase.game.di
 
 import br.com.nbagames.repository.game.di.gameRepositoryModule
 import br.com.nbagames.usecase.game.LoadLiveGames
