@@ -64,5 +64,7 @@ dependencies {
     implementation "androidx.startup:startup-runtime:$androidx_startup"
     implementation "io.insert-koin:koin-android:$koin_version"
 
+    testImplementation "com.google.firebase:firebase-database-ktx"
+
     androidTestImplementation "androidx.test.espresso:espresso-core:$espresso"
 }

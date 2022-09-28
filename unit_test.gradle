@@ -16,4 +16,5 @@ dependencies {
     testImplementation "junit:junit:$junit4"
     testImplementation "org.robolectric:robolectric:$robolectric"
     testImplementation "org.junit.vintage:junit-vintage-engine:$junit_vintage"
+    testImplementation "io.mockk:mockk:$mockk"
 }

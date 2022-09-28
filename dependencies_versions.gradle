@@ -29,4 +29,5 @@ ext {
     ktlint_version = '0.46.1'
     coroutine_version = '1.5.2'
     coroutine_test_version = '1.6.3'
+    mockk = '1.13.1'
 }
