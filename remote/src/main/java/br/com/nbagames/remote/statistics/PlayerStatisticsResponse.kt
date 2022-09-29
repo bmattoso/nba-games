@@ -17,7 +17,7 @@ data class PlayerStatisticsResponse(
     val plusMinus: String,
     @SerialName("pFouls") val personalFouls: Int,
     @SerialName("min") val minutesPlayed: String,
-    @SerialName("pos") val playerPosition: String,
+    @SerialName("pos") val playerPosition: String?,
     @SerialName("fga") val fieldGoalsAttempted: Int,
     @SerialName("fgm") val fieldGoalsMade: Int,
     @SerialName("fgp") val fieldGoalsPercentage: String,

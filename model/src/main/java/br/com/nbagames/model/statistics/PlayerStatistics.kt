@@ -13,7 +13,6 @@ data class PlayerStatistics(
     val plusMinus: String,
     val personalFouls: Int,
     val minutesPlayed: String,
-    val playerPosition: String,
     val fieldGoalsAttempted: Int,
     val fieldGoalsMade: Int,
     val fieldGoalsPercentage: String,

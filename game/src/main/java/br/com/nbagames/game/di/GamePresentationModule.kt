@@ -19,7 +19,7 @@ val gamePresentationModule: List<Module> = mutableListOf(
         }
 
         viewModel {
-            GameDetailViewModel()
+            GameDetailViewModel(loadGameDetail = get())
         }
 
         factory { LiveGamePresentationMapper() }

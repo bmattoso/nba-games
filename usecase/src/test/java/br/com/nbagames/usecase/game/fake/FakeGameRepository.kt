@@ -48,7 +48,8 @@ class FakeGameRepository : GameRepository {
                     quarterScoreHistory = QuarterScoreHistory(
                         homeScore = listOf(10, 20, 30, 40),
                         visitorScore = listOf(11, 17, 23, 37)
-                    )
+                    ),
+                    gameStatistics = null
                 )
             )
         )

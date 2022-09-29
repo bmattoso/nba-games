@@ -1,6 +1,8 @@
 package br.com.nbagames.remote.statistics
 
+import kotlinx.serialization.SerialName
+
 @kotlinx.serialization.Serializable
 data class GameStatisticsResponse(
-    val playerStatisticsResponseList: List<PlayerStatisticsResponse>
+    @SerialName("response") val playerStatisticsResponseList: List<PlayerStatisticsResponse>
 )

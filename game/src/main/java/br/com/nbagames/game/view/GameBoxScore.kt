@@ -1,6 +1,5 @@
 package br.com.nbagames.game.view
 
-import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -23,7 +22,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
@@ -38,8 +36,9 @@ import br.com.nbagames.designsystem.theme.extraSmallPadding
 import br.com.nbagames.designsystem.theme.mediumPadding
 import br.com.nbagames.designsystem.theme.smallLineHeight
 import br.com.nbagames.game.R
-import br.com.nbagames.game.presentation.detail.GameStatisticsPresentation
-import br.com.nbagames.game.presentation.detail.PlayerStatisticsPresentation
+import br.com.nbagames.model.player.Player
+import br.com.nbagames.model.statistics.GameStatistics
+import br.com.nbagames.model.statistics.PlayerStatistics
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.PagerState
@@ -53,7 +52,7 @@ fun GameBoxScore(
     modifier: Modifier = Modifier,
     homeTeamName: String,
     visitorTeamName: String,
-    gameStatistics: GameStatisticsPresentation,
+    gameStatistics: GameStatistics,
     onPlayerClick: (playerId: Int) -> Unit
 ) {
     val pagerState = rememberPagerState()
@@ -128,7 +127,7 @@ fun BoxHeader(
 fun BoxContent(
     modifier: Modifier = Modifier,
     pagerState: PagerState,
-    statistics: GameStatisticsPresentation
+    statistics: GameStatistics
 ) {
     HorizontalPager(
         modifier = modifier,
@@ -152,7 +151,7 @@ fun BoxContent(
 @Composable
 fun StatisticsByPlayer(
     modifier: Modifier = Modifier,
-    playersStatistics: List<PlayerStatisticsPresentation>
+    playersStatistics: List<PlayerStatistics>
 ) {
     Column(
         modifier = modifier,
@@ -261,14 +260,31 @@ fun StatisticsHeader(
 @Composable
 fun PlayersIdentification(
     modifier: Modifier = Modifier,
-    players: List<PlayerStatisticsPresentation>
+    players: List<PlayerStatistics>
 ) {
     Column {
         UnderlineText(modifier = modifier, text = "")
         players.forEachIndexed { index, playerStatistic ->
             val lineColor = if (index % 2 == 0) CustomColors.primary70 else Color.White
-            val playerName = "${playerStatistic.playerName} (${playerStatistic.playerPosition})"
-            UnderlineText(modifier = modifier.background(lineColor), text = playerName)
+            val playerPosition = playerStatistic.player.position
+            val playerIdentification = if (playerPosition == null) {
+                stringResource(
+                    id = R.string.player_name_abbreviation,
+                    playerStatistic.player.firstName[0],
+                    playerStatistic.player.lastName
+                )
+            } else {
+                stringResource(
+                    id = R.string.player_name_position_abbreviation,
+                    playerStatistic.player.firstName[0],
+                    playerStatistic.player.lastName,
+                    playerPosition
+                )
+            }
+            UnderlineText(
+                modifier = modifier.background(lineColor),
+                text = playerIdentification
+            )
         }
     }
 }
@@ -276,16 +292,48 @@ fun PlayersIdentification(
 @Composable
 fun PlayerStatisticsRow(
     modifier: Modifier = Modifier,
-    statistics: PlayerStatisticsPresentation
+    statistics: PlayerStatistics
 ) {
     Row {
         UnderlineText(modifier = modifier, text = statistics.points.toString())
         UnderlineText(modifier = modifier, text = statistics.minutesPlayed)
         UnderlineText(modifier = modifier, text = statistics.personalFouls.toString())
-        UnderlineText(modifier = modifier, text = statistics.fieldGoals)
-        UnderlineText(modifier = modifier, text = statistics.threePoints)
-        UnderlineText(modifier = modifier, text = statistics.freeThrows)
-        UnderlineText(modifier = modifier, text = statistics.rebounds)
+        UnderlineText(
+            modifier = modifier,
+            text = stringResource(
+                id = R.string.player_stats_pattern,
+                statistics.fieldGoalsMade,
+                statistics.fieldGoalsMade,
+                statistics.fieldGoalsPercentage
+            )
+        )
+        UnderlineText(
+            modifier = modifier,
+            text = stringResource(
+                id = R.string.player_stats_pattern,
+                statistics.threePointsMade,
+                statistics.threePointsAttempted,
+                statistics.threePointsPercentage
+            )
+        )
+        UnderlineText(
+            modifier = modifier,
+            text = stringResource(
+                id = R.string.player_stats_pattern,
+                statistics.freeThrowsAttempted,
+                statistics.freeThrowsMade,
+                statistics.freeThrowsPercentage
+            )
+        )
+        UnderlineText(
+            modifier = modifier,
+            text = stringResource(
+                id = R.string.player_stats_pattern,
+                statistics.offensiveRebound,
+                statistics.defensiveRebounds,
+                statistics.totalRebounds
+            )
+        )
         UnderlineText(modifier = modifier, text = statistics.assists.toString())
         UnderlineText(modifier = modifier, text = statistics.steals.toString())
         UnderlineText(modifier = modifier, text = statistics.turnovers.toString())
@@ -300,14 +348,14 @@ fun UnderlineText(
     textStyle: TextStyle = MaterialTheme.typography.bodyMedium
 ) {
     Box(modifier, contentAlignment = Alignment.Center) {
-        Canvas(modifier = Modifier.matchParentSize()) {
-            drawLine(
-                strokeWidth = 2f,
-                start = Offset(x = 0f, y = size.height - 2),
-                end = Offset(x = size.width, y = size.height - 2),
-                color = Color.Black
-            )
-        }
+        // Canvas(modifier = Modifier.matchParentSize()) {
+        //     drawLine(
+        //         strokeWidth = 2f,
+        //         start = Offset(x = 0f, y = size.height - 2),
+        //         end = Offset(x = size.width, y = size.height - 2),
+        //         color = Color.Black
+        //     )
+        // }
 
         Text(
             text = text,
@@ -322,9 +370,8 @@ fun UnderlineText(
 @Composable
 fun GameBoxScorePreview() {
     val playersStatistics = listOf(
-        PlayerStatisticsPresentation(
-            playerId = 1,
-            playerName = "D. Booker",
+        PlayerStatistics(
+            player = Player(1, "Devin", "Booker", position = "FG"),
             points = 11,
             steals = 1,
             assists = 2,
@@ -332,15 +379,23 @@ fun GameBoxScorePreview() {
             blocks = 0,
             personalFouls = 1,
             minutesPlayed = "6:33",
-            playerPosition = "ST",
-            fieldGoals = "6/10 (60%)",
-            freeThrows = "2/2 (100%)",
-            threePoints = "0/1 (0%)",
-            rebounds = "1/0 (1)"
+            comment = "",
+            plusMinus = "",
+            fieldGoalsAttempted = 0,
+            fieldGoalsMade = 0,
+            fieldGoalsPercentage = "",
+            freeThrowsAttempted = 0,
+            freeThrowsMade = 0,
+            freeThrowsPercentage = "",
+            threePointsAttempted = 0,
+            threePointsMade = 0,
+            threePointsPercentage = "",
+            offensiveRebound = 0,
+            defensiveRebounds = 0,
+            totalRebounds = 0
         ),
-        PlayerStatisticsPresentation(
-            playerId = 2,
-            playerName = "J. Tatum",
+        PlayerStatistics(
+            player = Player(2, "Jason", "Tatum", position = "SG"),
             points = 11,
             steals = 1,
             assists = 2,
@@ -348,15 +403,24 @@ fun GameBoxScorePreview() {
             blocks = 0,
             personalFouls = 1,
             minutesPlayed = "6:33",
-            playerPosition = "ST",
-            fieldGoals = "6/10 (60%)",
-            freeThrows = "2/2 (100%)",
-            threePoints = "0/1 (0%)",
-            rebounds = "1/3 (2)"
+            comment = "",
+            plusMinus = "",
+            fieldGoalsAttempted = 0,
+            fieldGoalsMade = 0,
+            fieldGoalsPercentage = "",
+            freeThrowsAttempted = 0,
+            freeThrowsMade = 0,
+            freeThrowsPercentage = "",
+            threePointsAttempted = 0,
+            threePointsMade = 0,
+            threePointsPercentage = "",
+            offensiveRebound = 0,
+            defensiveRebounds = 0,
+            totalRebounds = 0
         )
     )
 
-    val gameStatistics = GameStatisticsPresentation(
+    val gameStatistics = GameStatistics(
         homePlayersStatistics = playersStatistics,
         visitorPlayersStatistics = playersStatistics
     )

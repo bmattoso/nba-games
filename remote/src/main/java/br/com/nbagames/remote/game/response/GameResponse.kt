@@ -8,5 +8,6 @@ data class GameResponse(
     val status: GameStatusResponse,
     val periods: GamePeriodsResponse,
     val teams: GameTeamsResponse,
-    val scores: GameScoreResponse
+    val scores: GameScoreResponse,
+    val officials: List<String>
 )

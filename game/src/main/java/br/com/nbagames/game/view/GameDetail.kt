@@ -44,25 +44,27 @@ fun GameDetail(
                         .padding(top = smallPadding)
                 )
                 Spacer(modifier = Modifier.size(mediumPadding))
-                GameQuarterHistory(
-                    homeTeamName = uiState.game.homeTeam.nickname,
-                    visitorTeamName = uiState.game.visitantTeam.nickname,
-                    quarterScoreHistory = uiState.game.quarterScoreHistory,
-                    currentQuarter = uiState.game.quarter,
-                    totalHomePoints = uiState.game.homePoints,
-                    totalVisitorPoints = uiState.game.visitantPoints,
-                    isGameFinished = uiState.game.isGameFinished
-                )
-                Spacer(modifier = Modifier.size(largePadding))
-                if (uiState.gameStatistics != null) {
+                if (uiState.game.quarterScoreHistory != null) {
+                    GameQuarterHistory(
+                        homeTeamName = uiState.game.homeTeam.nickname,
+                        visitorTeamName = uiState.game.visitantTeam.nickname,
+                        quarterScoreHistory = uiState.game.quarterScoreHistory,
+                        currentQuarter = uiState.game.quarter,
+                        totalHomePoints = uiState.game.homePoints,
+                        totalVisitorPoints = uiState.game.visitantPoints,
+                        isGameFinished = uiState.game.isGameFinished
+                    )
+                    Spacer(modifier = Modifier.size(largePadding))
+                }
+                if (uiState.game.gameStatistics != null) {
                     GameBoxScore(
                         homeTeamName = uiState.game.homeTeam.name,
                         visitorTeamName = uiState.game.visitantTeam.name,
-                        gameStatistics = uiState.gameStatistics,
+                        gameStatistics = uiState.game.gameStatistics,
                         onPlayerClick = onPlayerClick
                     )
                 }
-            } else {
+            } else if (!uiState.showLoading) {
                 viewModel.loadGameDetails(gameId)
             }
         }
