@@ -2,9 +2,11 @@ package br.com.nbagames.game.view
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.LocalOverscrollConfiguration
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.defaultMinSize
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
@@ -14,6 +16,7 @@ import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import br.com.nbagames.designsystem.components.loading.NbaProgressIndicator
 import br.com.nbagames.designsystem.theme.largePadding
 import br.com.nbagames.designsystem.theme.mediumPadding
 import br.com.nbagames.designsystem.theme.smallPadding
@@ -34,8 +37,12 @@ fun GameDetail(
         Column(
             modifier = modifier
                 .padding(mediumPadding)
-                .verticalScroll(rememberScrollState())
+                .verticalScroll(rememberScrollState()),
+            verticalArrangement = Arrangement.Center
         ) {
+            if (uiState.showLoading) {
+                NbaProgressIndicator(modifier = Modifier.fillMaxSize())
+            }
             if (uiState.game != null) {
                 GameCard(
                     game = uiState.game.toGamePresentation(),
@@ -64,7 +71,6 @@ fun GameDetail(
                         onPlayerClick = onPlayerClick
                     )
                 }
-                Spacer(modifier = Modifier.size(mediumPadding))
                 if (uiState.game.officials.isNotEmpty()) {
                     GameOfficials(
                         modifier = Modifier.padding(bottom = smallPadding),
