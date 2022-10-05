@@ -15,9 +15,14 @@ class LoadGameDetailImpl(
     override suspend operator fun invoke(gameId: Int): Flow<Game> {
         return flow {
             val game = gameRepository.getGameDetailById(gameId)
-            val gameStatistics = gameRepository.getGameStatistics(gameId)
-            val officials = game.officials.map { official -> officialRepository.getOfficialImageByName(official.id) }
 
+            val gameStatistics = try {
+                gameRepository.getGameStatistics(gameId)
+            } catch (ex: IllegalStateException) {
+                null
+            }
+
+            val officials = game.officials.map { official -> officialRepository.getOfficialImageByName(official.id) }
             emit(game.copy(gameStatistics = gameStatistics, officials = officials))
         }.catch { throwable -> throw throwable }
     }
