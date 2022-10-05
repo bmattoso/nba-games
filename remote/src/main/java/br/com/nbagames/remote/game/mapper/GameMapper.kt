@@ -10,6 +10,8 @@ import br.com.nbagames.remote.game.response.GameScoreResponse
 import br.com.nbagames.remote.game.response.GameStatusResponse
 import br.com.nbagames.remote.team.mapper.TeamMapper
 
+private const val TOTAL_QUARTERS = 4
+
 class GameMapper(private val teamMapper: TeamMapper) {
 
     fun mapGame(gameResponse: GameResponse): Game = Game(
@@ -46,14 +48,29 @@ class GameMapper(private val teamMapper: TeamMapper) {
 
     private fun mapQuarterScoreHistory(scores: GameScoreResponse): QuarterScoreHistory? {
         if (scores.home.lineScore != null && scores.visitors.lineScore != null) {
-            QuarterScoreHistory(
-                homeScore = parseStringListToIntList(scores.home.lineScore),
-                visitorScore = parseStringListToIntList(scores.visitors.lineScore)
+            return QuarterScoreHistory(
+                homeScore = setupLineScoreByQuarter(scores.home.lineScore.parseToInt()),
+                visitorScore = setupLineScoreByQuarter(scores.visitors.lineScore.parseToInt())
             )
         }
 
         return null
     }
 
-    private fun parseStringListToIntList(list: List<String>) = list.map { string -> string.toInt() }
+    private fun List<String>.parseToInt() = this.map { string -> string.toInt() }
+
+    private fun setupLineScoreByQuarter(quarterList: List<Int>): List<Int> {
+        if (quarterList.size >= TOTAL_QUARTERS) return quarterList
+
+        val scoreByQuarter = mutableListOf<Int>()
+        repeat(4) { index ->
+            if (index > quarterList.size - 1) {
+                scoreByQuarter.add(0)
+            } else {
+                scoreByQuarter.add(quarterList[index])
+            }
+        }
+
+        return scoreByQuarter
+    }
 }

@@ -1,6 +1,7 @@
 package br.com.nbagames.game.presentation.detail
 
 import br.com.nbagames.game.presentation.GamePresentation
+import br.com.nbagames.model.Official
 import br.com.nbagames.model.Quarter
 import br.com.nbagames.model.QuarterScoreHistory
 import br.com.nbagames.model.Team
@@ -17,7 +18,8 @@ data class GameDetailPresentation(
     val isGameFinished: Boolean,
     val isHalftime: Boolean,
     val quarterScoreHistory: QuarterScoreHistory?,
-    val gameStatistics: GameStatistics?
+    val gameStatistics: GameStatistics?,
+    val officials: List<Official>
 ) {
 
     fun toGamePresentation() = GamePresentation(

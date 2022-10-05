@@ -54,7 +54,8 @@ class GameDetailViewModel(
             isGameFinished = false,
             isHalftime = false,
             quarterScoreHistory = game.quarterScoreHistory,
-            gameStatistics = game.gameStatistics
+            gameStatistics = game.gameStatistics,
+            officials = game.officials
         )
     }
 }

@@ -24,4 +24,5 @@
     <string name="player_stats_pattern">%1$d/%2$d (%3$d%%)</string>
     <string name="starters">Starters</string>
     <string name="bench">Bench</string>
+    <string name="officials">Officials</string>
 </resources>

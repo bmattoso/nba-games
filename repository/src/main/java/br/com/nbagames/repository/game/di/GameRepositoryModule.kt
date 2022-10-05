@@ -10,7 +10,6 @@ import org.koin.dsl.module
 
 val gameRepositoryModule: List<Module> = mutableListOf(
     gameRemoteModule,
-    officialRemoteModule,
     playerRemoteModule,
     module {
         factory<GameRepository> {

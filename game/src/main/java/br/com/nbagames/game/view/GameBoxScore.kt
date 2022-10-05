@@ -158,7 +158,7 @@ private fun BoxScoreTeamTab(
     val biggerName = if (biggerBenchName.length >= biggerPlayingName.length) biggerBenchName else biggerPlayingName
     val density = LocalDensity.current
     val maxWidthDp = remember { mutableStateOf(80.dp) }
-    val maxHeightDp = remember { mutableStateOf(35.dp) }
+    val maxHeightDp = remember { mutableStateOf(45.dp) }
 
     Box {
         UnderlineText(
@@ -284,7 +284,7 @@ fun PlayerStatisticsRow(
         stringResource(
             id = R.string.player_stats_pattern,
             statistics.fieldGoalsMade,
-            statistics.fieldGoalsMade,
+            statistics.fieldGoalsAttempted,
             statistics.fieldGoalsPercentage.toInt()
         ),
         stringResource(

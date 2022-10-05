@@ -64,6 +64,13 @@ fun GameDetail(
                         onPlayerClick = onPlayerClick
                     )
                 }
+                Spacer(modifier = Modifier.size(mediumPadding))
+                if (uiState.game.officials.isNotEmpty()) {
+                    GameOfficials(
+                        modifier = Modifier.padding(bottom = smallPadding),
+                        officials = uiState.game.officials
+                    )
+                }
             } else if (!uiState.showLoading) {
                 viewModel.loadGameDetails(gameId)
             }

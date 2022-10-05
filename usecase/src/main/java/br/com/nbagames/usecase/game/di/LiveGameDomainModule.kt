@@ -1,6 +1,7 @@
 package br.com.nbagames.usecase.game.di
 
 import br.com.nbagames.repository.game.di.gameRepositoryModule
+import br.com.nbagames.repository.official.di.officialRepositoryModule
 import br.com.nbagames.usecase.game.LoadGameDetail
 import br.com.nbagames.usecase.game.LoadGameDetailImpl
 import br.com.nbagames.usecase.game.LoadLiveGames
@@ -12,6 +13,9 @@ val liveGameUseCaseModule: List<Module> = mutableListOf(
     module {
         factory<LoadLiveGames> { LoadLiveGamesImpl(gameRepository = get()) }
 
-        factory<LoadGameDetail> { LoadGameDetailImpl(gameRepository = get()) }
+        factory<LoadGameDetail> { LoadGameDetailImpl(gameRepository = get(), officialRepository = get()) }
     }
-).apply { addAll(gameRepositoryModule) }
+).apply {
+    addAll(gameRepositoryModule)
+    addAll(officialRepositoryModule)
+}
