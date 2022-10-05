@@ -137,11 +137,11 @@ fun BoxContent(
         when (page) {
             0 -> BoxScoreTeamTab(
                 playingPlayers = statistics.homePlayingPlayers,
-                benchPlayers = statistics.homeBenchPlayers,
+                benchPlayers = statistics.homeBenchPlayers
             )
             1 -> BoxScoreTeamTab(
                 playingPlayers = statistics.visitorPlayingPlayers,
-                benchPlayers = statistics.visitorBenchPlayers,
+                benchPlayers = statistics.visitorBenchPlayers
             )
         }
     }
@@ -250,7 +250,7 @@ fun StatisticsHeader(
             stringResource(id = R.string.assists),
             stringResource(id = R.string.steals),
             stringResource(id = R.string.turnover_abbreviation),
-            stringResource(id = R.string.blocks),
+            stringResource(id = R.string.blocks)
         )
 
         UnderlineText(
@@ -385,7 +385,7 @@ fun GameBoxScorePreview() {
         homePlayingPlayers = playersStatistics,
         homeBenchPlayers = playersStatistics,
         visitorPlayingPlayers = playersStatistics,
-        visitorBenchPlayers = playersStatistics,
+        visitorBenchPlayers = playersStatistics
     )
 
     NbaGamesTheme {
