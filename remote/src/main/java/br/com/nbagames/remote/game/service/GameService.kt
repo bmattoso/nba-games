@@ -7,6 +7,9 @@ import retrofit2.http.Query
 
 interface GameService {
 
+    @GET("games?live=all")
+    suspend fun getLiveGames(): GameListResponse
+
     @GET("games/")
     suspend fun getGamesFromDate(@Query("date") date: String): GameListResponse
 

@@ -33,6 +33,8 @@ class GameMapper(private val teamMapper: TeamMapper) {
     }
 
     private fun mapGameStatus(gameStatusResponse: GameStatusResponse): GameStatus {
+        if (gameStatusResponse.halftime) return GameStatus.HALF_TIME
+
         GameStatus.values().forEach { gameStatus ->
             if (gameStatus.code == gameStatusResponse.statusCode) {
                 return gameStatus
