@@ -5,6 +5,7 @@ import br.com.nbagames.model.GameStatus
 import br.com.nbagames.model.Quarter
 import br.com.nbagames.model.QuarterScoreHistory
 import br.com.nbagames.model.Team
+import br.com.nbagames.model.statistics.GameStatistics
 import br.com.nbagames.repository.game.GameRepository
 
 class FakeGameRepository : GameRepository {
@@ -19,6 +20,14 @@ class FakeGameRepository : GameRepository {
     }
 
     override suspend fun getLiveGamesFromCache(): List<Game> = gameList
+
+    override suspend fun getGameDetailById(gameId: Int): Game {
+        TODO("Not yet implemented")
+    }
+
+    override suspend fun getGameStatistics(gameId: Int): GameStatistics? {
+        TODO("Not yet implemented")
+    }
 
     fun populateGameList(): List<Game> {
         val homeTeam = Team(
@@ -49,7 +58,8 @@ class FakeGameRepository : GameRepository {
                         homeScore = listOf(10, 20, 30, 40),
                         visitorScore = listOf(11, 17, 23, 37)
                     ),
-                    gameStatistics = null
+                    gameStatistics = null,
+                    officials = listOf()
                 )
             )
         )

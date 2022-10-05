@@ -12,7 +12,8 @@ object GameResponseFixture {
         status = GameStatusResponseFixture.get(),
         periods = GamePeriodsResponseFixture.get(),
         teams = GameTeamsResponseFixture.get(),
-        scores = GameScoreResponseFixture.get()
+        scores = GameScoreResponseFixture.get(),
+        officials = listOf()
     )
 
     fun getList(totalGames: Int = 5): List<GameResponse> {

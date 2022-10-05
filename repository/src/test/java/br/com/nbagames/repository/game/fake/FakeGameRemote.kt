@@ -14,7 +14,7 @@ class FakeGameRemote : GameRemote {
 
     override suspend fun getLiveGameList(): List<Game> = gameList
 
-    override suspend fun getGameDetail(): Game {
+    override suspend fun getGameDetail(gameId: Int): Game {
         val homeTeam = Team(
             id = 100,
             name = "Brooklyn Nets",
@@ -31,7 +31,7 @@ class FakeGameRemote : GameRemote {
         return createGame(homeTeam, visitorTeam)
     }
 
-    override suspend fun getGameStatistics(): GameStatistics {
+    override suspend fun getGameStatistics(gameId: Int): GameStatistics {
         TODO("Not yet implemented")
     }
 

@@ -4,6 +4,8 @@ import br.com.nbagames.model.Quarter
 import br.com.nbagames.remote.game.fake.FakeGameService
 import br.com.nbagames.remote.game.fixture.GameListResponseFixture
 import br.com.nbagames.remote.game.mapper.GameMapper
+import br.com.nbagames.remote.game.mapper.GameStatisticsMapper
+import br.com.nbagames.remote.player.mapper.PlayerMapper
 import br.com.nbagames.remote.team.mapper.TeamMapper
 import com.google.common.truth.Truth.assertThat
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -28,6 +30,7 @@ internal class GameRemoteImplTest {
 
         gameRemote = GameRemoteImpl(
             gameMapper = GameMapper(TeamMapper()),
+            gameStatisticsMapper = GameStatisticsMapper(PlayerMapper()),
             gameService = gameService
         )
     }
