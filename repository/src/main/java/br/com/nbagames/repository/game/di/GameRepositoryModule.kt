@@ -1,7 +1,6 @@
 package br.com.nbagames.repository.game.di
 
 import br.com.nbagames.remote.game.di.gameRemoteModule
-import br.com.nbagames.remote.official.di.officialRemoteModule
 import br.com.nbagames.remote.player.di.playerRemoteModule
 import br.com.nbagames.repository.game.GameRepository
 import br.com.nbagames.repository.game.GameRepositoryImpl
