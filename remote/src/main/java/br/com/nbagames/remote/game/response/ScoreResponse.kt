@@ -5,6 +5,6 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class ScoreResponse(
-    val points: Int,
+    val points: Int?,
     @SerialName("linescore") val lineScore: List<String>?
 )

@@ -13,7 +13,7 @@
     <string name="points_abbreviation">PTS</string>
     <string name="minutes_abbreviation">Min.</string>
     <string name="fouls">Fouls</string>
-    <string name="field_goals">Field Goals</string>
+    <string name="field_goals_abbreviation">FG</string>
     <string name="free_throws_abbreviation">FTs</string>
     <string name="three_points_abbreviation">3 PTS</string>
     <string name="assists">Assists</string>
@@ -21,8 +21,7 @@
     <string name="turnover_abbreviation">TO</string>
     <string name="blocks">Blocks</string>
     <string name="rebounds">Rebounds</string>
-    <string name="player_name_position_abbreviation">%1$s. %2$s (%3$s)</string>
-    <string name="player_name_abbreviation">%1$s. %2$s</string>
-    <string name="player_stats_pattern">%1$d/%2$d (%3$s)</string>
-
+    <string name="player_stats_pattern">%1$d/%2$d (%3$d%%)</string>
+    <string name="starters">Starters</string>
+    <string name="bench">Bench</string>
 </resources>

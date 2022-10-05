@@ -6,28 +6,39 @@ import br.com.nbagames.remote.player.mapper.PlayerMapper
 import br.com.nbagames.remote.statistics.GameStatisticsResponse
 import br.com.nbagames.remote.statistics.PlayerStatisticsResponse
 
-class GameStatisticsMapper(
-    private val playerMapper: PlayerMapper
-) {
+class GameStatisticsMapper(private val playerMapper: PlayerMapper) {
 
     fun mapGameStatistics(gameStatisticsResponse: GameStatisticsResponse): GameStatistics {
-        val homePlayerStatistics = mutableListOf<PlayerStatistics>()
-        val visitorPlayerStatistics = mutableListOf<PlayerStatistics>()
+        val homePlayingPlayerStatistics = mutableListOf<PlayerStatistics>()
+        val homeBenchPlayerStatistics = mutableListOf<PlayerStatistics>()
+        val visitorPlayingPlayerStatistics = mutableListOf<PlayerStatistics>()
+        val visitorBenchPlayerStatistics = mutableListOf<PlayerStatistics>()
 
         var firstTeamId = -1
         gameStatisticsResponse.playerStatisticsResponseList.forEach { playerStatisticsResponse ->
             val playerStatistics = mapPlayerStatistics(playerStatisticsResponse)
             if (firstTeamId < 0 || firstTeamId == playerStatisticsResponse.team.id) {
                 firstTeamId = playerStatisticsResponse.team.id
-                homePlayerStatistics.add(playerStatistics)
+
+                if (playerStatisticsResponse.playerPosition.isNullOrBlank()) {
+                    homeBenchPlayerStatistics.add(playerStatistics)
+                } else {
+                    homePlayingPlayerStatistics.add(playerStatistics)
+                }
             } else {
-                visitorPlayerStatistics.add(playerStatistics)
+                if (playerStatisticsResponse.playerPosition.isNullOrBlank()) {
+                    visitorBenchPlayerStatistics.add(playerStatistics)
+                } else {
+                    visitorPlayingPlayerStatistics.add(playerStatistics)
+                }
             }
         }
 
         return GameStatistics(
-            homePlayersStatistics = homePlayerStatistics,
-            visitorPlayersStatistics = visitorPlayerStatistics
+            homePlayingPlayers = homePlayingPlayerStatistics,
+            homeBenchPlayers = homeBenchPlayerStatistics,
+            visitorPlayingPlayers = visitorPlayingPlayerStatistics,
+            visitorBenchPlayers = visitorBenchPlayerStatistics
         )
     }
 
@@ -49,16 +60,23 @@ class GameStatisticsMapper(
             minutesPlayed = playerStatisticsResponse.minutesPlayed,
             fieldGoalsAttempted = playerStatisticsResponse.fieldGoalsAttempted,
             fieldGoalsMade = playerStatisticsResponse.fieldGoalsMade,
-            fieldGoalsPercentage = playerStatisticsResponse.fieldGoalsPercentage,
+            fieldGoalsPercentage = playerStatisticsResponse.fieldGoalsPercentage.toDoubleOrZero(),
             freeThrowsAttempted = playerStatisticsResponse.freeThrowsAttempted,
             freeThrowsMade = playerStatisticsResponse.freeThrowsMade,
-            freeThrowsPercentage = playerStatisticsResponse.freeThrowsPercentage,
+            freeThrowsPercentage = playerStatisticsResponse.freeThrowsPercentage.toDoubleOrZero(),
             threePointsAttempted = playerStatisticsResponse.threePointsAttempted,
             threePointsMade = playerStatisticsResponse.threePointsMade,
-            threePointsPercentage = playerStatisticsResponse.threePointsPercentage,
+            threePointsPercentage = playerStatisticsResponse.threePointsPercentage.toDoubleOrZero(),
             offensiveRebound = playerStatisticsResponse.offensiveRebound,
             defensiveRebounds = playerStatisticsResponse.defensiveRebounds,
             totalRebounds = playerStatisticsResponse.totalRebounds
         )
+    }
+
+    private fun String.toDoubleOrZero(): Double = try {
+        this.toDouble()
+    } catch (ex: NumberFormatException) {
+        // TODO Log error
+        0.0
     }
 }

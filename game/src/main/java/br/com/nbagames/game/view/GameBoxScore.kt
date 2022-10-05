@@ -1,16 +1,16 @@
 package br.com.nbagames.game.view
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.requiredWidthIn
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyHorizontalGrid
 import androidx.compose.material.Tab
@@ -19,22 +19,29 @@ import androidx.compose.material.TabRowDefaults
 import androidx.compose.material.Text
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.onSizeChanged
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.max
+import androidx.compose.ui.unit.min
 import br.com.nbagames.designsystem.color.CustomColors
 import br.com.nbagames.designsystem.theme.NbaGamesTheme
 import br.com.nbagames.designsystem.theme.defaultCellSize
-import br.com.nbagames.designsystem.theme.extraSmallPadding
 import br.com.nbagames.designsystem.theme.mediumPadding
 import br.com.nbagames.designsystem.theme.smallLineHeight
+import br.com.nbagames.designsystem.theme.smallPadding
 import br.com.nbagames.game.R
 import br.com.nbagames.model.player.Player
 import br.com.nbagames.model.statistics.GameStatistics
@@ -91,34 +98,25 @@ fun BoxHeader(
         contentColor = Color.White,
         indicator = { tabPositions ->
             TabRowDefaults.Indicator(
-                Modifier.pagerTabIndicatorOffset(pagerState, tabPositions),
+                modifier = Modifier.pagerTabIndicatorOffset(pagerState, tabPositions),
                 height = smallLineHeight,
                 color = Color.White
             )
         }
     ) {
-        Tab(
-            text = {
-                Text(
-                    text = homeTeamName,
-                    color = if (pagerState.currentPage == 0) Color.White else Color.Gray,
-                    textAlign = TextAlign.Center
-                )
-            },
-            selected = pagerState.currentPage == 0,
-            onClick = { scope.launch { pagerState.animateScrollToPage(0) } }
-        )
-        Tab(
-            text = {
-                Text(
-                    text = visitorTeamName,
-                    color = if (pagerState.currentPage == 1) Color.White else Color.Gray,
-                    textAlign = TextAlign.Center
-                )
-            },
-            selected = pagerState.currentPage == 1,
-            onClick = { scope.launch { pagerState.animateScrollToPage(1) } }
-        )
+        repeat(2) { pageIndex ->
+            Tab(
+                text = {
+                    Text(
+                        text = if (pageIndex == 0) homeTeamName else visitorTeamName,
+                        color = if (pagerState.currentPage == pageIndex) Color.White else Color.Gray,
+                        textAlign = TextAlign.Center
+                    )
+                },
+                selected = pagerState.currentPage == pageIndex,
+                onClick = { scope.launch { pagerState.animateScrollToPage(pageIndex) } }
+            )
+        }
     }
 }
 
@@ -130,19 +128,69 @@ fun BoxContent(
     statistics: GameStatistics
 ) {
     HorizontalPager(
-        modifier = modifier,
+        modifier = modifier.padding(top = smallPadding),
         count = 2,
         state = pagerState,
+        verticalAlignment = Alignment.Top,
         userScrollEnabled = false
     ) { page ->
         when (page) {
-            0 -> StatisticsByPlayer(
-                modifier = Modifier.padding(top = extraSmallPadding, start = extraSmallPadding),
-                playersStatistics = statistics.homePlayersStatistics
+            0 -> BoxScoreTeamTab(
+                playingPlayers = statistics.homePlayingPlayers,
+                benchPlayers = statistics.homeBenchPlayers,
             )
-            1 -> StatisticsByPlayer(
-                modifier = Modifier.padding(top = extraSmallPadding, start = extraSmallPadding),
-                playersStatistics = statistics.visitorPlayersStatistics
+            1 -> BoxScoreTeamTab(
+                playingPlayers = statistics.visitorPlayingPlayers,
+                benchPlayers = statistics.visitorBenchPlayers,
+            )
+        }
+    }
+}
+
+@Composable
+private fun BoxScoreTeamTab(
+    modifier: Modifier = Modifier,
+    playingPlayers: List<PlayerStatistics>,
+    benchPlayers: List<PlayerStatistics>
+) {
+    val biggerPlayingName = getBiggerPlayerIdentification(playingPlayers)
+    val biggerBenchName = getBiggerPlayerIdentification(benchPlayers)
+    val biggerName = if (biggerBenchName.length >= biggerPlayingName.length) biggerBenchName else biggerPlayingName
+    val density = LocalDensity.current
+    val maxWidthDp = remember { mutableStateOf(80.dp) }
+    val maxHeightDp = remember { mutableStateOf(35.dp) }
+
+    Box {
+        UnderlineText(
+            text = biggerName,
+            modifier = Modifier
+                .requiredWidthIn(max = Dp.Infinity)
+                .onSizeChanged {
+                    maxWidthDp.value = with(density) { (it.width + 10).toDp() }
+                    maxHeightDp.value = with(density) { max(maxHeightDp.value, it.height.toDp()) }
+                }
+                .alpha(0f)
+        )
+
+        Column(modifier = modifier) {
+            StatisticsByPlayer(
+                title = stringResource(id = R.string.starters),
+                playersStatistics = playingPlayers,
+                minCellHeight = maxHeightDp.value,
+                minCellWidth = maxWidthDp.value
+            )
+            Spacer(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(smallLineHeight)
+                    .background(Color.Black)
+            )
+            StatisticsByPlayer(
+                modifier = Modifier.padding(top = mediumPadding),
+                title = stringResource(id = R.string.bench),
+                playersStatistics = benchPlayers,
+                minCellHeight = maxHeightDp.value,
+                minCellWidth = maxWidthDp.value
             )
         }
     }
@@ -151,41 +199,34 @@ fun BoxContent(
 @Composable
 fun StatisticsByPlayer(
     modifier: Modifier = Modifier,
+    title: String = "",
+    minCellHeight: Dp,
+    minCellWidth: Dp,
     playersStatistics: List<PlayerStatistics>
 ) {
-    Column(
-        modifier = modifier,
-        verticalArrangement = Arrangement.Top
-    ) {
-        val cellSize = 60.dp
-        val firstColumnWidth = 100.dp
+    Column(modifier = modifier) {
+        val totalRows = playersStatistics.size + 1
 
-        Row {
-            PlayersIdentification(
-                modifier = Modifier
-                    .width(firstColumnWidth)
-                    .height(cellSize),
-                players = playersStatistics
-            )
+        LazyHorizontalGrid(
+            modifier = Modifier.height(minCellHeight * totalRows),
+            rows = GridCells.Fixed(totalRows)
+        ) {
+            item {
+                StatisticsHeader(
+                    modifier = Modifier.background(MaterialTheme.colorScheme.primary),
+                    minCellWidth = minCellWidth,
+                    title = title
+                )
+            }
 
-            val totalRows = playersStatistics.size + 1
-            LazyHorizontalGrid(
-                modifier = Modifier.height(cellSize * totalRows),
-                rows = GridCells.Fixed(totalRows)
-            ) {
-                item { StatisticsHeader(cellSize = cellSize) }
-
-                playersStatistics.forEachIndexed { index, playerStatistics ->
-                    item {
-                        val lineColor = if (index % 2 == 0) CustomColors.primary70 else Color.White
-                        PlayerStatisticsRow(
-                            modifier = Modifier
-                                .background(lineColor)
-                                .size(cellSize),
-                            statistics = playerStatistics
-                        )
-                    }
-                }
+            items(playersStatistics.size) { index: Int ->
+                val lineColor = if (index % 2 != 0) CustomColors.primary70 else Color.White
+                PlayerStatisticsRow(
+                    modifier = Modifier.background(lineColor),
+                    minCellWidth = minCellWidth,
+                    minCellHeight = minCellHeight,
+                    statistics = playersStatistics[index]
+                )
             }
         }
     }
@@ -194,96 +235,36 @@ fun StatisticsByPlayer(
 @Composable
 fun StatisticsHeader(
     modifier: Modifier = Modifier,
-    cellSize: Dp = defaultCellSize
+    minCellWidth: Dp = defaultCellSize,
+    title: String
 ) {
-    Row(modifier = modifier) {
-        val headerTextStyle = MaterialTheme.typography.titleMedium
+    Row(modifier = modifier, verticalAlignment = Alignment.CenterVertically) {
+        val headers = listOf(
+            stringResource(id = R.string.points_abbreviation),
+            stringResource(id = R.string.minutes_abbreviation),
+            stringResource(id = R.string.fouls),
+            stringResource(id = R.string.field_goals_abbreviation),
+            stringResource(id = R.string.three_points_abbreviation),
+            stringResource(id = R.string.free_throws_abbreviation),
+            stringResource(id = R.string.rebounds),
+            stringResource(id = R.string.assists),
+            stringResource(id = R.string.steals),
+            stringResource(id = R.string.turnover_abbreviation),
+            stringResource(id = R.string.blocks),
+        )
 
         UnderlineText(
-            modifier = Modifier.size(cellSize),
-            text = stringResource(id = R.string.points_abbreviation),
-            textStyle = headerTextStyle
+            modifier = Modifier.size(width = minCellWidth, height = 60.dp),
+            text = title,
+            color = Color.White,
+            textStyle = MaterialTheme.typography.titleMedium
         )
-        UnderlineText(
-            modifier = Modifier.size(cellSize),
-            text = stringResource(id = R.string.minutes_abbreviation),
-            textStyle = headerTextStyle
-        )
-        UnderlineText(
-            modifier = Modifier.size(cellSize),
-            text = stringResource(id = R.string.fouls),
-            textStyle = headerTextStyle
-        )
-        UnderlineText(
-            modifier = Modifier.size(cellSize),
-            text = stringResource(id = R.string.field_goals),
-            textStyle = headerTextStyle
-        )
-        UnderlineText(
-            modifier = Modifier.size(cellSize),
-            text = stringResource(id = R.string.three_points_abbreviation),
-            textStyle = headerTextStyle
-        )
-        UnderlineText(
-            modifier = Modifier.size(cellSize),
-            text = stringResource(id = R.string.free_throws_abbreviation),
-            textStyle = headerTextStyle
-        )
-        UnderlineText(
-            modifier = Modifier.size(cellSize),
-            text = stringResource(id = R.string.rebounds),
-            textStyle = headerTextStyle
-        )
-        UnderlineText(
-            modifier = Modifier.size(cellSize),
-            text = stringResource(id = R.string.assists),
-            textStyle = headerTextStyle
-        )
-        UnderlineText(
-            modifier = Modifier.size(cellSize),
-            text = stringResource(id = R.string.steals),
-            textStyle = headerTextStyle
-        )
-        UnderlineText(
-            modifier = Modifier.size(cellSize),
-            text = stringResource(id = R.string.turnover_abbreviation),
-            textStyle = headerTextStyle
-        )
-        UnderlineText(
-            modifier = Modifier.size(cellSize),
-            text = stringResource(id = R.string.blocks),
-            textStyle = headerTextStyle
-        )
-    }
-}
-
-@Composable
-fun PlayersIdentification(
-    modifier: Modifier = Modifier,
-    players: List<PlayerStatistics>
-) {
-    Column {
-        UnderlineText(modifier = modifier, text = "")
-        players.forEachIndexed { index, playerStatistic ->
-            val lineColor = if (index % 2 == 0) CustomColors.primary70 else Color.White
-            val playerPosition = playerStatistic.player.position
-            val playerIdentification = if (playerPosition == null) {
-                stringResource(
-                    id = R.string.player_name_abbreviation,
-                    playerStatistic.player.firstName[0],
-                    playerStatistic.player.lastName
-                )
-            } else {
-                stringResource(
-                    id = R.string.player_name_position_abbreviation,
-                    playerStatistic.player.firstName[0],
-                    playerStatistic.player.lastName,
-                    playerPosition
-                )
-            }
+        headers.forEach { headerTitle ->
             UnderlineText(
-                modifier = modifier.background(lineColor),
-                text = playerIdentification
+                modifier = Modifier.size(width = min(80.dp, minCellWidth), height = 60.dp),
+                text = headerTitle,
+                color = Color.White,
+                textStyle = MaterialTheme.typography.titleMedium
             )
         }
     }
@@ -292,52 +273,58 @@ fun PlayersIdentification(
 @Composable
 fun PlayerStatisticsRow(
     modifier: Modifier = Modifier,
+    minCellWidth: Dp,
+    minCellHeight: Dp,
     statistics: PlayerStatistics
 ) {
+    val statisticsList = listOf(
+        statistics.points.toString(),
+        statistics.minutesPlayed,
+        statistics.personalFouls.toString(),
+        stringResource(
+            id = R.string.player_stats_pattern,
+            statistics.fieldGoalsMade,
+            statistics.fieldGoalsMade,
+            statistics.fieldGoalsPercentage.toInt()
+        ),
+        stringResource(
+            id = R.string.player_stats_pattern,
+            statistics.threePointsMade,
+            statistics.threePointsAttempted,
+            statistics.threePointsPercentage.toInt()
+        ),
+        stringResource(
+            id = R.string.player_stats_pattern,
+            statistics.freeThrowsAttempted,
+            statistics.freeThrowsMade,
+            statistics.freeThrowsPercentage.toInt()
+        ),
+        stringResource(
+            id = R.string.player_stats_pattern,
+            statistics.offensiveRebound,
+            statistics.defensiveRebounds,
+            statistics.totalRebounds
+        ),
+        statistics.assists.toString(),
+        statistics.steals.toString(),
+        statistics.turnovers.toString(),
+        statistics.blocks.toString()
+    )
+
     Row {
-        UnderlineText(modifier = modifier, text = statistics.points.toString())
-        UnderlineText(modifier = modifier, text = statistics.minutesPlayed)
-        UnderlineText(modifier = modifier, text = statistics.personalFouls.toString())
         UnderlineText(
-            modifier = modifier,
-            text = stringResource(
-                id = R.string.player_stats_pattern,
-                statistics.fieldGoalsMade,
-                statistics.fieldGoalsMade,
-                statistics.fieldGoalsPercentage
-            )
+            modifier = modifier
+                .size(width = minCellWidth, height = minCellHeight)
+                .padding(start = smallPadding),
+            text = statistics.player.getCompletePlayerIdentification(),
+            contentAlign = Alignment.CenterStart
         )
-        UnderlineText(
-            modifier = modifier,
-            text = stringResource(
-                id = R.string.player_stats_pattern,
-                statistics.threePointsMade,
-                statistics.threePointsAttempted,
-                statistics.threePointsPercentage
+        statisticsList.forEach { contentText: String ->
+            UnderlineText(
+                modifier = modifier.size(width = min(80.dp, minCellWidth), height = minCellHeight),
+                text = contentText
             )
-        )
-        UnderlineText(
-            modifier = modifier,
-            text = stringResource(
-                id = R.string.player_stats_pattern,
-                statistics.freeThrowsAttempted,
-                statistics.freeThrowsMade,
-                statistics.freeThrowsPercentage
-            )
-        )
-        UnderlineText(
-            modifier = modifier,
-            text = stringResource(
-                id = R.string.player_stats_pattern,
-                statistics.offensiveRebound,
-                statistics.defensiveRebounds,
-                statistics.totalRebounds
-            )
-        )
-        UnderlineText(modifier = modifier, text = statistics.assists.toString())
-        UnderlineText(modifier = modifier, text = statistics.steals.toString())
-        UnderlineText(modifier = modifier, text = statistics.turnovers.toString())
-        UnderlineText(modifier = modifier, text = statistics.blocks.toString())
+        }
     }
 }
 
@@ -345,25 +332,23 @@ fun PlayerStatisticsRow(
 fun UnderlineText(
     modifier: Modifier = Modifier,
     text: String,
+    color: Color = Color.Black,
+    contentAlign: Alignment = Alignment.Center,
     textStyle: TextStyle = MaterialTheme.typography.bodyMedium
 ) {
-    Box(modifier, contentAlignment = Alignment.Center) {
-        // Canvas(modifier = Modifier.matchParentSize()) {
-        //     drawLine(
-        //         strokeWidth = 2f,
-        //         start = Offset(x = 0f, y = size.height - 2),
-        //         end = Offset(x = size.width, y = size.height - 2),
-        //         color = Color.Black
-        //     )
-        // }
-
+    Box(modifier, contentAlignment = contentAlign) {
         Text(
             text = text,
-            color = Color.Black,
+            color = color,
             textAlign = TextAlign.Center,
             style = textStyle
         )
     }
+}
+
+private fun getBiggerPlayerIdentification(playersStatistics: List<PlayerStatistics>): String {
+    val biggerPlayerStatistic = playersStatistics.maxByOrNull { it.player.getCompletePlayerIdentification().length }
+    return biggerPlayerStatistic?.player?.getCompletePlayerIdentification() ?: ""
 }
 
 @Preview(showBackground = true)
@@ -383,37 +368,13 @@ fun GameBoxScorePreview() {
             plusMinus = "",
             fieldGoalsAttempted = 0,
             fieldGoalsMade = 0,
-            fieldGoalsPercentage = "",
+            fieldGoalsPercentage = 80.0,
             freeThrowsAttempted = 0,
             freeThrowsMade = 0,
-            freeThrowsPercentage = "",
+            freeThrowsPercentage = 90.0,
             threePointsAttempted = 0,
             threePointsMade = 0,
-            threePointsPercentage = "",
-            offensiveRebound = 0,
-            defensiveRebounds = 0,
-            totalRebounds = 0
-        ),
-        PlayerStatistics(
-            player = Player(2, "Jason", "Tatum", position = "SG"),
-            points = 11,
-            steals = 1,
-            assists = 2,
-            turnovers = 3,
-            blocks = 0,
-            personalFouls = 1,
-            minutesPlayed = "6:33",
-            comment = "",
-            plusMinus = "",
-            fieldGoalsAttempted = 0,
-            fieldGoalsMade = 0,
-            fieldGoalsPercentage = "",
-            freeThrowsAttempted = 0,
-            freeThrowsMade = 0,
-            freeThrowsPercentage = "",
-            threePointsAttempted = 0,
-            threePointsMade = 0,
-            threePointsPercentage = "",
+            threePointsPercentage = 80.0,
             offensiveRebound = 0,
             defensiveRebounds = 0,
             totalRebounds = 0
@@ -421,8 +382,10 @@ fun GameBoxScorePreview() {
     )
 
     val gameStatistics = GameStatistics(
-        homePlayersStatistics = playersStatistics,
-        visitorPlayersStatistics = playersStatistics
+        homePlayingPlayers = playersStatistics,
+        homeBenchPlayers = playersStatistics,
+        visitorPlayingPlayers = playersStatistics,
+        visitorBenchPlayers = playersStatistics,
     )
 
     NbaGamesTheme {

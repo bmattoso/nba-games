@@ -1,6 +1,8 @@
 package br.com.nbagames.model.statistics
 
 data class GameStatistics(
-    val homePlayersStatistics: List<PlayerStatistics>,
-    val visitorPlayersStatistics: List<PlayerStatistics>
+    val homePlayingPlayers: List<PlayerStatistics>,
+    val homeBenchPlayers: List<PlayerStatistics>,
+    val visitorPlayingPlayers: List<PlayerStatistics>,
+    val visitorBenchPlayers: List<PlayerStatistics>
 )

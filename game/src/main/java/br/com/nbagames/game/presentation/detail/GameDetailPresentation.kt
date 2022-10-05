@@ -1,5 +1,6 @@
-package br.com.nbagames.game.presentation
+package br.com.nbagames.game.presentation.detail
 
+import br.com.nbagames.game.presentation.GamePresentation
 import br.com.nbagames.model.Quarter
 import br.com.nbagames.model.QuarterScoreHistory
 import br.com.nbagames.model.Team
