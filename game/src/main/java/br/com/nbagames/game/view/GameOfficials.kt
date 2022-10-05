@@ -1,5 +1,6 @@
 package br.com.nbagames.game.view
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -14,6 +15,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -41,10 +43,7 @@ fun GameOfficials(
                 style = MaterialTheme.typography.titleMedium
             )
             Spacer(modifier = Modifier.padding(smallPadding))
-            Row(
-                horizontalArrangement = Arrangement.SpaceEvenly,
-                verticalAlignment = Alignment.CenterVertically
-            ) {
+            Row {
                 officials.forEach { official ->
                     OfficialCard(
                         modifier = Modifier
@@ -68,14 +67,22 @@ fun OfficialCard(
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        ImageLoader(
-            imageUrl = official.profilePictureUrl,
-            contentDescription = official.id,
-            defaultContentResource = R.drawable.default_team_logo,
-            modifier = Modifier
-                .size(50.dp)
-                .clip(CircleShape)
-        )
+        if (official.profilePictureUrl.isEmpty()) {
+            Image(
+                painter = painterResource(id = R.drawable.ic_user_black),
+                contentDescription = official.id,
+                modifier = Modifier.size(70.dp).clip(CircleShape)
+            )
+        } else {
+            ImageLoader(
+                imageUrl = official.profilePictureUrl,
+                contentDescription = official.id,
+                defaultContentResource = R.drawable.ic_user_black,
+                modifier = Modifier
+                    .size(70.dp)
+                    .clip(CircleShape)
+            )
+        }
         Text(
             modifier = Modifier.padding(mediumPadding),
             text = official.id,
