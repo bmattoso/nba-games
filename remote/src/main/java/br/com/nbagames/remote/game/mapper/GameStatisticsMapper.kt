@@ -21,7 +21,6 @@ class GameStatisticsMapper(private val playerMapper: PlayerMapper) {
         gameStatisticsResponse.playerStatisticsResponseList.forEach { playerStatisticsResponse ->
             val playerStatistics = mapPlayerStatistics(playerStatisticsResponse)
             if (homeTeamId == playerStatisticsResponse.team.id) {
-
                 if (playerStatisticsResponse.playerPosition.isNullOrBlank()) {
                     homeBenchPlayerStatistics.add(playerStatistics)
                 } else {

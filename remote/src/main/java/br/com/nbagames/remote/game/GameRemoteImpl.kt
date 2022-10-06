@@ -33,10 +33,16 @@ class GameRemoteImpl(
         }
     }
 
-    override suspend fun getGameStatistics(gameId: Int, homeTeamId: Int, visitorTeamId: Int): GameStatistics {
-        return withContext(IO) {
-            val gameStatisticsResponse = gameService.getGameStatistics(gameId)
-            gameStatisticsMapper.mapGameStatistics(gameStatisticsResponse, homeTeamId, visitorTeamId)
+    override suspend fun getGameStatistics(gameId: Int, homeTeamId: Int, visitorTeamId: Int): GameStatistics? {
+        val gameStatisticsResponse = withContext(IO) { gameService.getGameStatistics(gameId) }
+        if (gameStatisticsResponse.playerStatisticsResponseList.isNotEmpty()) {
+            return gameStatisticsMapper.mapGameStatistics(
+                gameStatisticsResponse = gameStatisticsResponse,
+                homeTeamId = homeTeamId,
+                visitorTeamId = visitorTeamId
+            )
         }
+
+        return null
     }
 }

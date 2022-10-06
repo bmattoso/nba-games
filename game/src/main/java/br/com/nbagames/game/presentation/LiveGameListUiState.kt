@@ -5,7 +5,7 @@ data class LiveGameListUiState(
     val showEmptyState: Boolean = false,
     val liveGameList: List<GamePresentation> = emptyList(),
     val showError: Boolean = false,
-    val liveGameListError: LiveGameListError? = null,
+    val liveGameListError: CommonError? = null,
     val isCountdownAvailable: Boolean = true,
     val countdownTimer: String = ""
 )

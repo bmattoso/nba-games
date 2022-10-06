@@ -7,19 +7,25 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.defaultMinSize
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.Button
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import br.com.nbagames.designsystem.components.CommunicationSection
 import br.com.nbagames.designsystem.components.loading.NbaProgressIndicator
 import br.com.nbagames.designsystem.theme.largePadding
 import br.com.nbagames.designsystem.theme.mediumPadding
 import br.com.nbagames.designsystem.theme.smallPadding
+import br.com.nbagames.game.presentation.CommonError
 import br.com.nbagames.game.presentation.detail.GameDetailViewModel
 import org.koin.androidx.compose.getViewModel
 
@@ -43,6 +49,11 @@ fun GameDetail(
             if (uiState.showLoading) {
                 NbaProgressIndicator(modifier = Modifier.fillMaxSize())
             }
+            if (uiState.error != null) {
+                ErrorState(commonError = uiState.error) {
+                    viewModel.loadGameDetails(gameId)
+                }
+            }
             if (uiState.game != null) {
                 GameCard(
                     game = uiState.game.toGamePresentation(),
@@ -53,6 +64,7 @@ fun GameDetail(
                 Spacer(modifier = Modifier.size(mediumPadding))
                 if (uiState.game.quarterScoreHistory != null) {
                     GameQuarterHistory(
+                        modifier = Modifier.fillMaxWidth(),
                         homeTeamName = uiState.game.homeTeam.nickname,
                         visitorTeamName = uiState.game.visitantTeam.nickname,
                         quarterScoreHistory = uiState.game.quarterScoreHistory,
@@ -81,6 +93,23 @@ fun GameDetail(
             } else if (!uiState.showLoading) {
                 viewModel.loadGameDetails(gameId)
             }
+        }
+    }
+}
+
+@Composable
+private fun ErrorState(
+    modifier: Modifier = Modifier,
+    commonError: CommonError,
+    onClickTryAgain: () -> Unit
+) {
+    CommunicationSection(
+        modifier = modifier,
+        message = commonError.message,
+        animationRes = commonError.animationRes
+    ) {
+        Button(onClick = onClickTryAgain) {
+            Text(text = stringResource(id = commonError.actionMessage))
         }
     }
 }

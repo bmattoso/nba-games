@@ -22,7 +22,7 @@ import br.com.nbagames.designsystem.components.loading.NbaProgressIndicator
 import br.com.nbagames.designsystem.theme.largePadding
 import br.com.nbagames.designsystem.theme.smallPadding
 import br.com.nbagames.game.R
-import br.com.nbagames.game.presentation.LiveGameListError
+import br.com.nbagames.game.presentation.CommonError
 import br.com.nbagames.game.presentation.LiveGameViewModel
 import org.koin.androidx.compose.getViewModel
 
@@ -121,7 +121,7 @@ private fun LiveGameListEmptyState(
 @Composable
 private fun LiveGameListErrorState(
     modifier: Modifier = Modifier,
-    liveGameListError: LiveGameListError,
+    liveGameListError: CommonError,
     onClickTryAgain: () -> Unit
 ) {
     CommunicationSection(

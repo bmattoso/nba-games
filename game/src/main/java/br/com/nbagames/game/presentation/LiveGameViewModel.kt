@@ -60,7 +60,7 @@ class LiveGameViewModel(
                         showEmptyState = false,
                         liveGameList = emptyList(),
                         showError = true,
-                        liveGameListError = getLiveGameListErrorFromThrowable(throwable)
+                        liveGameListError = throwable.toCommonError()
                     )
                     mutableLiveGamesViewState.value = newState
                 }.flowOn(Dispatchers.IO).collect()
@@ -105,13 +105,6 @@ class LiveGameViewModel(
             isCountdownAvailable = false,
             countdownTimer = INITIAL_COUNTDOWN_TEXT
         )
-    }
-
-    private fun getLiveGameListErrorFromThrowable(throwable: Throwable): LiveGameListError {
-        return when (throwable) {
-            is RuntimeException -> LiveGameListError.Server
-            else -> LiveGameListError.Unknown
-        }
     }
 
     private fun formatCountdownTimer(value: Int): String = value.seconds.toString()

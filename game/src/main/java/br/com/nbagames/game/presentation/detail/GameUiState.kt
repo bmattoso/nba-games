@@ -1,6 +1,9 @@
 package br.com.nbagames.game.presentation.detail
 
+import br.com.nbagames.game.presentation.CommonError
+
 data class GameUiState(
     val showLoading: Boolean = false,
-    val game: GameDetailPresentation? = null
+    val game: GameDetailPresentation? = null,
+    val error: CommonError? = null
 )

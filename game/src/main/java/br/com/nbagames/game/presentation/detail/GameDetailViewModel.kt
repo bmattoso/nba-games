@@ -3,6 +3,7 @@ package br.com.nbagames.game.presentation.detail
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import br.com.nbagames.game.presentation.toCommonError
 import br.com.nbagames.model.Game
 import br.com.nbagames.usecase.game.LoadGameDetail
 import kotlinx.coroutines.Dispatchers.IO
@@ -35,7 +36,14 @@ class GameDetailViewModel(
                     )
                 }
                 .catch { throwable ->
-                    Log.e("BLA", throwable.toString(), throwable)
+                    Log.e("Exception", Log.getStackTraceString(throwable))
+
+                    val currentState = uiState.value
+                    val newState = currentState.copy(
+                        showLoading = false,
+                        error = throwable.toCommonError()
+                    )
+                    mutableGameViewState.value = newState
                 }
                 .flowOn(IO)
                 .collect()

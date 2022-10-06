@@ -4,7 +4,7 @@ import androidx.annotation.RawRes
 import androidx.annotation.StringRes
 import br.com.nbagames.game.R
 
-enum class LiveGameListError(
+enum class CommonError(
     @StringRes val message: Int,
     @RawRes val animationRes: Int,
     @StringRes val actionMessage: Int
@@ -19,4 +19,11 @@ enum class LiveGameListError(
         animationRes = R.raw.questioning,
         actionMessage = R.string.load_again
     )
+}
+
+fun Throwable.toCommonError(): CommonError {
+    return when (this) {
+        is RuntimeException -> CommonError.Server
+        else -> CommonError.Unknown
+    }
 }
