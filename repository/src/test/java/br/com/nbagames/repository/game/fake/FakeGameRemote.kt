@@ -7,12 +7,15 @@ import br.com.nbagames.model.QuarterScoreHistory
 import br.com.nbagames.model.Team
 import br.com.nbagames.model.statistics.GameStatistics
 import br.com.nbagames.remote.game.GameRemote
+import java.util.Date
 
 class FakeGameRemote : GameRemote {
 
     var gameList: MutableList<Game> = mutableListOf()
 
     override suspend fun getLiveGameList(): List<Game> = gameList
+
+    override suspend fun getGamesFromDate(date: Date): List<Game> = gameList
 
     override suspend fun getGameDetail(gameId: Int): Game {
         val homeTeam = Team(
@@ -31,7 +34,7 @@ class FakeGameRemote : GameRemote {
         return createGame(homeTeam, visitorTeam)
     }
 
-    override suspend fun getGameStatistics(gameId: Int): GameStatistics {
+    override suspend fun getGameStatistics(gameId: Int, homeTeamId: Int, visitorTeamId: Int): GameStatistics? {
         TODO("Not yet implemented")
     }
 

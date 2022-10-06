@@ -51,7 +51,7 @@ internal class GameRemoteImplTest {
         val currentMonth = twoDigitsFormat.format(Calendar.getInstance().get(Calendar.MONTH) + 1)
         val currentDay = twoDigitsFormat.format(Calendar.getInstance().get(Calendar.DAY_OF_MONTH))
 
-        gameRemote.getLiveGameList()
+        gameRemote.getGamesFromDate(Calendar.getInstance().time)
 
         assertThat(gameService.requestedDate).matches("2\\d\\d\\d-[0-1]\\d-[0-3]\\d") // 0000-00-00 date pattern
         assertThat(gameService.requestedDate).isEqualTo("$currentYear-$currentMonth-$currentDay")

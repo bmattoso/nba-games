@@ -25,7 +25,7 @@ class FakeGameRepository : GameRepository {
         TODO("Not yet implemented")
     }
 
-    override suspend fun getGameStatistics(gameId: Int): GameStatistics? {
+    override suspend fun getGameStatistics(gameId: Int, homeTeamId: Int, visitorTeamId: Int): GameStatistics? {
         TODO("Not yet implemented")
     }
 

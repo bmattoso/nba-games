@@ -22,6 +22,14 @@ class FakeGameService : GameService {
         return gameListResponse
     }
 
+    override suspend fun getLiveGames(): GameListResponse {
+        if (throwException) {
+            throw SerializationException()
+        }
+
+        return gameListResponse
+    }
+
     override suspend fun getGameDetail(gameId: Int): GameListResponse {
         TODO("Not yet implemented")
     }
