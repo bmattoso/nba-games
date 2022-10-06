@@ -16,6 +16,8 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.DisposableEffect
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
@@ -39,30 +41,34 @@ fun GameDetail(
     viewModel: GameDetailViewModel = getViewModel()
 ) {
     val uiState = viewModel.uiState.collectAsState().value
-    CompositionLocalProvider(LocalOverscrollConfiguration provides null) {
-        Column(
-            modifier = modifier
-                .padding(mediumPadding)
-                .verticalScroll(rememberScrollState()),
-            verticalArrangement = Arrangement.Center
-        ) {
-            if (uiState.showLoading) {
-                NbaProgressIndicator(modifier = Modifier.fillMaxSize())
+    LaunchedEffect(Unit) {
+        viewModel.loadGameDetails(gameId)
+    }
+
+    Column(
+        modifier = modifier
+            .padding(mediumPadding)
+            .verticalScroll(rememberScrollState()),
+        verticalArrangement = Arrangement.Center
+    ) {
+        if (uiState.showLoading) {
+            NbaProgressIndicator(modifier = Modifier.fillMaxSize())
+        }
+        if (uiState.error != null) {
+            ErrorState(commonError = uiState.error) {
+                viewModel.loadGameDetails(gameId)
             }
-            if (uiState.error != null) {
-                ErrorState(commonError = uiState.error) {
-                    viewModel.loadGameDetails(gameId)
-                }
-            }
-            if (uiState.game != null) {
-                GameCard(
-                    game = uiState.game.toGamePresentation(),
-                    modifier = Modifier
-                        .defaultMinSize(minHeight = 160.dp)
-                        .padding(top = smallPadding)
-                )
-                Spacer(modifier = Modifier.size(mediumPadding))
+        }
+        if (uiState.game != null) {
+            GameCard(
+                game = uiState.game.toGamePresentation(),
+                modifier = Modifier
+                    .defaultMinSize(minHeight = 160.dp)
+                    .padding(top = smallPadding)
+            )
+            CompositionLocalProvider(LocalOverscrollConfiguration provides null) {
                 if (uiState.game.quarterScoreHistory != null) {
+                    Spacer(modifier = Modifier.size(mediumPadding))
                     GameQuarterHistory(
                         modifier = Modifier.fillMaxWidth(),
                         homeTeamName = uiState.game.homeTeam.nickname,
@@ -83,15 +89,13 @@ fun GameDetail(
                         onPlayerClick = onPlayerClick
                     )
                 }
-                if (uiState.game.officials.isNotEmpty()) {
-                    Spacer(modifier = Modifier.size(mediumPadding))
-                    GameOfficials(
-                        modifier = Modifier.padding(bottom = smallPadding),
-                        officials = uiState.game.officials
-                    )
-                }
-            } else if (!uiState.showLoading) {
-                viewModel.loadGameDetails(gameId)
+            }
+            if (uiState.game.officials.isNotEmpty()) {
+                Spacer(modifier = Modifier.size(mediumPadding))
+                GameOfficials(
+                    modifier = Modifier.padding(bottom = smallPadding),
+                    officials = uiState.game.officials
+                )
             }
         }
     }
