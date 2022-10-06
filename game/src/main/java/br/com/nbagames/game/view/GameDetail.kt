@@ -72,6 +72,7 @@ fun GameDetail(
                     )
                 }
                 if (uiState.game.officials.isNotEmpty()) {
+                    Spacer(modifier = Modifier.size(mediumPadding))
                     GameOfficials(
                         modifier = Modifier.padding(bottom = smallPadding),
                         officials = uiState.game.officials

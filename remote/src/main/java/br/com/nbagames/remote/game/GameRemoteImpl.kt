@@ -33,10 +33,10 @@ class GameRemoteImpl(
         }
     }
 
-    override suspend fun getGameStatistics(gameId: Int): GameStatistics {
+    override suspend fun getGameStatistics(gameId: Int, homeTeamId: Int, visitorTeamId: Int): GameStatistics {
         return withContext(IO) {
             val gameStatisticsResponse = gameService.getGameStatistics(gameId)
-            gameStatisticsMapper.mapGameStatistics(gameStatisticsResponse)
+            gameStatisticsMapper.mapGameStatistics(gameStatisticsResponse, homeTeamId, visitorTeamId)
         }
     }
 }

@@ -20,11 +20,7 @@ class GameRepositoryImpl(
         return gameRemote.getGameDetail(gameId)
     }
 
-    override suspend fun getGameStatistics(gameId: Int): GameStatistics? {
-        return try {
-            gameRemote.getGameStatistics(gameId)
-        } catch (e: Exception) {
-            null
-        }
+    override suspend fun getGameStatistics(gameId: Int, homeTeamId: Int, visitorTeamId: Int): GameStatistics? {
+        return gameRemote.getGameStatistics(gameId, homeTeamId, visitorTeamId)
     }
 }

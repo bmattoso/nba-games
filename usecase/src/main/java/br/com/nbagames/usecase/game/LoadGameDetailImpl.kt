@@ -17,7 +17,7 @@ class LoadGameDetailImpl(
             val game = gameRepository.getGameDetailById(gameId)
 
             val gameStatistics = try {
-                gameRepository.getGameStatistics(gameId)
+                gameRepository.getGameStatistics(gameId, game.homeTeam.id, game.visitorTeam.id)
             } catch (ex: IllegalStateException) {
                 null
             }

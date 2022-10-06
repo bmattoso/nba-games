@@ -7,5 +7,5 @@ interface GameRepository {
     suspend fun getLiveGamesFromRemote(): List<Game>
     suspend fun getLiveGamesFromCache(): List<Game>
     suspend fun getGameDetailById(gameId: Int): Game
-    suspend fun getGameStatistics(gameId: Int): GameStatistics?
+    suspend fun getGameStatistics(gameId: Int, homeTeamId: Int, visitorTeamId: Int): GameStatistics?
 }

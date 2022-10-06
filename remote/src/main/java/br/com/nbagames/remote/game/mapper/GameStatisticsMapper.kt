@@ -8,24 +8,26 @@ import br.com.nbagames.remote.statistics.PlayerStatisticsResponse
 
 class GameStatisticsMapper(private val playerMapper: PlayerMapper) {
 
-    fun mapGameStatistics(gameStatisticsResponse: GameStatisticsResponse): GameStatistics {
+    fun mapGameStatistics(
+        gameStatisticsResponse: GameStatisticsResponse,
+        homeTeamId: Int,
+        visitorTeamId: Int
+    ): GameStatistics {
         val homePlayingPlayerStatistics = mutableListOf<PlayerStatistics>()
         val homeBenchPlayerStatistics = mutableListOf<PlayerStatistics>()
         val visitorPlayingPlayerStatistics = mutableListOf<PlayerStatistics>()
         val visitorBenchPlayerStatistics = mutableListOf<PlayerStatistics>()
 
-        var firstTeamId = -1
         gameStatisticsResponse.playerStatisticsResponseList.forEach { playerStatisticsResponse ->
             val playerStatistics = mapPlayerStatistics(playerStatisticsResponse)
-            if (firstTeamId < 0 || firstTeamId == playerStatisticsResponse.team.id) {
-                firstTeamId = playerStatisticsResponse.team.id
+            if (homeTeamId == playerStatisticsResponse.team.id) {
 
                 if (playerStatisticsResponse.playerPosition.isNullOrBlank()) {
                     homeBenchPlayerStatistics.add(playerStatistics)
                 } else {
                     homePlayingPlayerStatistics.add(playerStatistics)
                 }
-            } else {
+            } else if (visitorTeamId == playerStatisticsResponse.team.id) {
                 if (playerStatisticsResponse.playerPosition.isNullOrBlank()) {
                     visitorBenchPlayerStatistics.add(playerStatistics)
                 } else {
