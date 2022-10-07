@@ -11,8 +11,9 @@ import org.junit.jupiter.api.Test
 import org.koin.core.KoinApplication
 import org.koin.core.context.startKoin
 import org.koin.test.check.checkModules
+import org.koin.test.junit5.AutoCloseKoinTest
 
-class NetworkModuleTest {
+class NetworkModuleTest : AutoCloseKoinTest() {
 
     private lateinit var koinApplication: KoinApplication
     private val firebaseDatabase: FirebaseDatabase = mockk(relaxed = true)

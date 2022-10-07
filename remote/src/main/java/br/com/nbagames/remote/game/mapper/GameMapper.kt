@@ -1,5 +1,6 @@
 package br.com.nbagames.remote.game.mapper
 
+import br.com.nbagames.core.extension.formatToDate
 import br.com.nbagames.model.Game
 import br.com.nbagames.model.GameStatus
 import br.com.nbagames.model.Official
@@ -16,11 +17,12 @@ class GameMapper(private val teamMapper: TeamMapper) {
 
     fun mapGame(gameResponse: GameResponse): Game = Game(
         id = gameResponse.id,
+        startDate = gameResponse.scheduleDate.start.formatToDate(),
         homeTeam = teamMapper.mapTeamResponseToTeam(gameResponse.teams.home),
         visitorTeam = teamMapper.mapTeamResponseToTeam(gameResponse.teams.visitor),
         homePoints = gameResponse.scores.home.points ?: 0,
         visitorPoints = gameResponse.scores.visitors.points ?: 0,
-        currentClock = gameResponse.status.clock,
+        currentClock = parseClock(gameResponse.status.clock),
         gameStatus = mapGameStatus(gameResponse.status),
         quarter = gameResponse.periods.current.toQuarter(),
         officials = mapOfficials(gameResponse.officials),
@@ -31,6 +33,8 @@ class GameMapper(private val teamMapper: TeamMapper) {
     fun mapLiveGameList(liveGameList: List<GameResponse>): List<Game> {
         return liveGameList.map { gameResponse -> mapGame(gameResponse) }
     }
+
+    private fun parseClock(clock: Any?): String? = if (clock is String) clock.toString() else null
 
     private fun mapGameStatus(gameStatusResponse: GameStatusResponse): GameStatus {
         if (gameStatusResponse.halftime) return GameStatus.HALF_TIME
@@ -59,7 +63,7 @@ class GameMapper(private val teamMapper: TeamMapper) {
         return null
     }
 
-    private fun List<String>.parseToInt() = this.map { string -> string.toInt() }
+    private fun List<String>.parseToInt() = this.map { string -> if (string.isEmpty()) 0 else string.toInt() }
 
     private fun setupLineScoreByQuarter(quarterList: List<Int>): List<Int> {
         if (quarterList.size >= TOTAL_QUARTERS) return quarterList

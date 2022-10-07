@@ -5,7 +5,6 @@ import br.com.nbagames.remote.game.GameRemoteImpl
 import br.com.nbagames.remote.game.mapper.GameMapper
 import br.com.nbagames.remote.game.mapper.GameStatisticsMapper
 import br.com.nbagames.remote.game.service.GameService
-import org.koin.core.scope.get
 import org.koin.dsl.module
 import retrofit2.Retrofit
 

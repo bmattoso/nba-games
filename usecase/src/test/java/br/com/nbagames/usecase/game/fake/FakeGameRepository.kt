@@ -7,6 +7,7 @@ import br.com.nbagames.model.QuarterScoreHistory
 import br.com.nbagames.model.Team
 import br.com.nbagames.model.statistics.GameStatistics
 import br.com.nbagames.repository.game.GameRepository
+import java.util.Date
 
 class FakeGameRepository : GameRepository {
 
@@ -59,7 +60,8 @@ class FakeGameRepository : GameRepository {
                         visitorScore = listOf(11, 17, 23, 37)
                     ),
                     gameStatistics = null,
-                    officials = listOf()
+                    officials = listOf(),
+                    startDate = Date()
                 )
             )
         )

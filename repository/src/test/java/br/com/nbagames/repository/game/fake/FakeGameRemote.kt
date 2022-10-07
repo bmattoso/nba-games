@@ -74,6 +74,7 @@ class FakeGameRemote : GameRemote {
             visitorScore = listOf(11, 17, 23, 37)
         ),
         officials = emptyList(),
-        gameStatistics = null
+        gameStatistics = null,
+        startDate = Date()
     )
 }

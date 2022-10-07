@@ -1,6 +1,7 @@
 package br.com.nbagames.game.presentation.detail
 
 import br.com.nbagames.game.presentation.GamePresentation
+import br.com.nbagames.model.GameStatus
 import br.com.nbagames.model.Official
 import br.com.nbagames.model.Quarter
 import br.com.nbagames.model.QuarterScoreHistory
@@ -15,6 +16,8 @@ data class GameDetailPresentation(
     val visitantPoints: Int,
     val gameClock: String?,
     val quarter: Quarter,
+    val status: GameStatus,
+    val startTime: String?,
     val isGameFinished: Boolean,
     val isHalftime: Boolean,
     val quarterScoreHistory: QuarterScoreHistory?,
@@ -23,12 +26,14 @@ data class GameDetailPresentation(
 ) {
 
     fun toGamePresentation() = GamePresentation(
-        id = this.id,
-        homeTeam = this.homeTeam,
-        visitantTeam = this.visitantTeam,
-        homePoints = this.homePoints,
-        visitantPoints = this.visitantPoints,
-        gameClock = this.gameClock,
-        quarter = this.quarter
+        id = id,
+        homeTeam = homeTeam,
+        visitantTeam = visitantTeam,
+        homePoints = homePoints,
+        visitantPoints = visitantPoints,
+        gameClock = gameClock,
+        quarter = quarter,
+        status = status,
+        startTime = startTime
     )
 }

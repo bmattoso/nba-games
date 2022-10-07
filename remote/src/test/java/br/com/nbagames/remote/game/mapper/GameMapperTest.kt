@@ -6,14 +6,22 @@ import br.com.nbagames.remote.team.mapper.TeamMapper
 import com.google.common.truth.Truth.assertThat
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
+import org.koin.core.context.startKoin
+import org.koin.dsl.module
+import org.koin.test.junit5.AutoCloseKoinTest
+import java.util.Locale
 
-internal class GameMapperTest {
+internal class GameMapperTest : AutoCloseKoinTest() {
 
     private lateinit var gameMapper: GameMapper
 
     @BeforeEach
     fun setup() {
         gameMapper = GameMapper(teamMapper = TeamMapper())
+
+        startKoin {
+            modules(module { factory<Locale> { Locale.CANADA } })
+        }
     }
 
     @Test

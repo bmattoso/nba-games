@@ -1,15 +1,20 @@
 package br.com.nbagames.init
 
 import android.app.Application
+import android.content.res.Configuration
+import android.content.res.Resources
+import android.os.LocaleList
 import com.google.common.truth.Truth.assertThat
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.mockkStatic
+import io.mockk.spyk
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.koin.test.check.checkModules
+import java.util.Locale
 
 internal class KoinInitializerTest {
 
@@ -28,7 +33,11 @@ internal class KoinInitializerTest {
 
     @Test
     fun `Guarantee modules definitions`() {
-        val koinApplication = koinInitializer.create(FakeApplication())
+        mockkStatic(Application::class)
+        val fakeApplication = spyk(FakeApplication())
+        mockApplicationLocale(fakeApplication)
+
+        val koinApplication = koinInitializer.create(fakeApplication)
         koinApplication.checkModules()
     }
 
@@ -38,4 +47,13 @@ internal class KoinInitializerTest {
     }
 
     private class FakeApplication : Application()
+
+    private fun mockApplicationLocale(application: Application) {
+        val resources = mockk<Resources>(relaxed = true)
+        val configuration = mockk<Configuration>(relaxed = true)
+
+        every { application.resources } answers { resources }
+        every { resources.configuration } answers { configuration }
+        every { configuration.locales } answers { LocaleList(Locale.CANADA) }
+    }
 }

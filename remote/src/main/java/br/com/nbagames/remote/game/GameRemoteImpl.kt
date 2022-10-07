@@ -1,8 +1,8 @@
 package br.com.nbagames.remote.game
 
+import br.com.nbagames.core.extension.formatToRequest
 import br.com.nbagames.model.Game
 import br.com.nbagames.model.statistics.GameStatistics
-import br.com.nbagames.remote.common.extension.formatToRequest
 import br.com.nbagames.remote.game.mapper.GameMapper
 import br.com.nbagames.remote.game.mapper.GameStatisticsMapper
 import br.com.nbagames.remote.game.service.GameService

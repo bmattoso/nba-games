@@ -15,11 +15,15 @@ import kotlinx.serialization.SerializationException
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
+import org.koin.core.context.startKoin
+import org.koin.dsl.module
+import org.koin.test.junit5.AutoCloseKoinTest
 import java.text.DecimalFormat
 import java.util.Calendar
+import java.util.Locale
 
 @ExperimentalCoroutinesApi
-internal class GameRemoteImplTest {
+internal class GameRemoteImplTest : AutoCloseKoinTest() {
 
     private lateinit var gameRemote: GameRemote
     private lateinit var gameService: FakeGameService
@@ -33,6 +37,10 @@ internal class GameRemoteImplTest {
             gameStatisticsMapper = GameStatisticsMapper(PlayerMapper()),
             gameService = gameService
         )
+
+        startKoin {
+            modules(module { factory<Locale> { Locale.CANADA } })
+        }
     }
 
     @Test

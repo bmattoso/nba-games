@@ -1,6 +1,5 @@
 package br.com.nbagames.game.view
 
-import androidx.annotation.StringRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -39,6 +38,7 @@ import br.com.nbagames.designsystem.theme.mediumPadding
 import br.com.nbagames.designsystem.theme.smallPadding
 import br.com.nbagames.game.R
 import br.com.nbagames.game.presentation.GamePresentation
+import br.com.nbagames.model.GameStatus
 import br.com.nbagames.model.Quarter
 import br.com.nbagames.model.Team
 
@@ -71,7 +71,7 @@ fun GameCard(
                 Spacer(modifier = Modifier.size(extraSmallPadding))
                 game.gameClock?.let { gameGlock -> GameClock(clockTime = gameGlock) }
                 Spacer(modifier = Modifier.size(extraSmallPadding))
-                GameQuarter(quarter = game.quarter.descriptionResId)
+                GameStatusDescription(quarter = game.quarter, status = game.status, startTime = game.startTime)
             }
             TeamIdentification(
                 team = game.visitantTeam,
@@ -168,13 +168,38 @@ private fun GameClock(
 }
 
 @Composable
-fun GameQuarter(@StringRes quarter: Int) {
-    Text(
-        text = stringResource(id = quarter),
-        color = Color.Black,
-        textAlign = TextAlign.Center,
-        style = MaterialTheme.typography.bodySmall
-    )
+fun GameStatusDescription(
+    modifier: Modifier = Modifier,
+    quarter: Quarter,
+    status: GameStatus,
+    startTime: String?
+) {
+    val statusDescription = if (status == GameStatus.RUNNING) {
+        quarter.descriptionResId
+    } else {
+        status.descriptionResId
+    }
+
+    Column(
+        modifier = modifier,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Text(
+            text = stringResource(id = statusDescription),
+            color = Color.Black,
+            textAlign = TextAlign.Center,
+            style = MaterialTheme.typography.bodySmall
+        )
+
+        if (status == GameStatus.SCHEDULED && !startTime.isNullOrEmpty()) {
+            Text(
+                text = startTime,
+                color = Color.Black,
+                textAlign = TextAlign.Center,
+                style = MaterialTheme.typography.labelSmall
+            )
+        }
+    }
 }
 
 @ExperimentalMaterial3Api
@@ -199,7 +224,9 @@ fun DefaultPreview() {
         homePoints = 10,
         visitantPoints = 11,
         gameClock = "2:37",
-        quarter = Quarter.First
+        quarter = Quarter.First,
+        status = GameStatus.RUNNING,
+        startTime = "01/08 - 22:00"
     )
 
     NbaGamesTheme {

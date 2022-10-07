@@ -3,4 +3,8 @@
     <string name="second_quarter">Second Quarter</string>
     <string name="third_quarter">Third Quarter</string>
     <string name="fourth_quarter">Fourth Quarter</string>
+    <string name="scheduled">Scheduled</string>
+    <string name="finished">Finished</string>
+    <string name="half_time">Half Time</string>
+    <string name="in_game">In Game</string>
 </resources>
