@@ -1,10 +1,10 @@
 package br.com.nbagames.remote.team.service
 
-import br.com.nbagames.remote.team.response.TeamResponse
+import br.com.nbagames.remote.team.response.TeamListResponse
 import retrofit2.http.GET
 
 interface TeamService {
 
     @GET("teams/")
-    fun getAllNbaTeams(): List<TeamResponse>
+    suspend fun getAllNbaTeams(): TeamListResponse
 }

@@ -11,7 +11,7 @@ import coil.compose.rememberAsyncImagePainter
 @Composable
 fun ImageLoader(
     modifier: Modifier = Modifier,
-    imageUrl: String,
+    imageUrl: String?,
     contentDescription: String,
     @DrawableRes defaultContentResource: Int
 ) {

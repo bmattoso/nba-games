@@ -8,7 +8,7 @@ import org.koin.dsl.module
 
 val teamPresentationModule: List<Module> = mutableListOf(module {
 
-    viewModel { TeamListViewModel() }
+    viewModel { TeamListViewModel(loadFranchiseTeams = get()) }
 
 }).apply {
     addAll(teamUseCaseModule)

@@ -16,6 +16,7 @@ import br.com.nbagames.designsystem.components.TextField
 import br.com.nbagames.game.view.GameDetail
 import br.com.nbagames.game.view.LiveGameList
 import br.com.nbagames.splash.Splash
+import br.com.nbagames.team.list.view.FranchiseTeamListScreen
 
 @Composable
 fun NavigationRoutes(
@@ -41,8 +42,8 @@ fun NavigationRoutes(
             GameDetail(
                 modifier = Modifier.fillMaxSize(),
                 gameId = gameId,
-                onPlayerClick = { playerId -> actions.onPlayerClick(playerId) },
-                onTeamClick = { teamId -> actions.onTeamClick(teamId) },
+                onPlayerClick = actions::onPlayerClick,
+                onTeamClick = actions::onTeamClick,
                 onBackPressed = actions::onBackPressed
             )
         }
@@ -60,7 +61,10 @@ fun NavigationRoutes(
         }
 
         composable(HomeRoute.Teams.route) {
-            TextField(text = stringResource(id = HomeRoute.Teams.tabName))
+            FranchiseTeamListScreen(
+                modifier = Modifier.fillMaxSize(),
+                onTeamClick = actions::onTeamClick
+            )
         }
 
         composable(HomeRoute.Calendar.route) {

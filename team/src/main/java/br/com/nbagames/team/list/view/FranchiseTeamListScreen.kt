@@ -6,16 +6,16 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
-import androidx.lifecycle.viewmodel.compose.viewModel
 import br.com.nbagames.designsystem.components.error.CommonErrorContent
 import br.com.nbagames.designsystem.components.loading.NbaProgressIndicator
 import br.com.nbagames.team.list.presentation.TeamListViewModel
+import org.koin.androidx.compose.getViewModel
 
 @Composable
 fun FranchiseTeamListScreen(
     modifier: Modifier = Modifier,
     onTeamClick: (teamId: Int) -> Unit,
-    teamListViewModel: TeamListViewModel = viewModel()
+    teamListViewModel: TeamListViewModel = getViewModel()
 ) {
     LaunchedEffect(Unit) {
         teamListViewModel.loadFranchiseTeams()

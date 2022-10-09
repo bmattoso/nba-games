@@ -17,7 +17,7 @@ class TeamRemoteImpl(
 
     override suspend fun getTeams(): List<Team> {
         val allTeamsResponse = withContext(IO) { teamService.getAllNbaTeams() }
-        return teamMapper.mapTeamResponseList(allTeamsResponse)
+        return teamMapper.mapTeamResponseList(allTeamsResponse.teams)
     }
 
     override suspend fun getTeamColor(teamId: Int): String? {
