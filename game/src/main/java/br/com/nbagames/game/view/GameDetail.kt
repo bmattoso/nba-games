@@ -14,8 +14,6 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Surface
-import androidx.compose.material3.Button
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.LaunchedEffect
@@ -23,8 +21,6 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import br.com.nbagames.core.error.CommonError
-import br.com.nbagames.designsystem.components.CommunicationSection
 import br.com.nbagames.designsystem.components.appbar.DefaultTopBar
 import br.com.nbagames.designsystem.components.error.CommonErrorContent
 import br.com.nbagames.designsystem.components.loading.NbaProgressIndicator
