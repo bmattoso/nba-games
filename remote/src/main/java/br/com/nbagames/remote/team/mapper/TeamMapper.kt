@@ -11,4 +11,8 @@ class TeamMapper {
         nickname = teamResponse.code,
         logo = teamResponse.logo
     )
+
+    fun mapTeamResponseList(teamsResponse: List<TeamResponse>): List<Team> {
+        return teamsResponse.map { teamResponse -> mapTeamResponseToTeam(teamResponse) }
+    }
 }
