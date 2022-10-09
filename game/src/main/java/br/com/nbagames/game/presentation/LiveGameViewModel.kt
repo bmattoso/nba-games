@@ -3,6 +3,7 @@ package br.com.nbagames.game.presentation
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import br.com.nbagames.core.error.toCommonError
 import br.com.nbagames.game.mapper.LiveGamePresentationMapper
 import br.com.nbagames.usecase.game.LoadLiveGames
 import kotlinx.coroutines.Dispatchers

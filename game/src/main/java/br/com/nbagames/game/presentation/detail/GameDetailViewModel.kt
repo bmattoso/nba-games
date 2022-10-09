@@ -3,8 +3,8 @@ package br.com.nbagames.game.presentation.detail
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import br.com.nbagames.core.error.toCommonError
 import br.com.nbagames.core.extension.formatDateHour
-import br.com.nbagames.game.presentation.toCommonError
 import br.com.nbagames.model.Game
 import br.com.nbagames.usecase.game.LoadGameDetail
 import kotlinx.coroutines.Dispatchers.IO

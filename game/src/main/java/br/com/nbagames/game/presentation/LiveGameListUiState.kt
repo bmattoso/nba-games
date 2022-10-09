@@ -1,5 +1,7 @@
 package br.com.nbagames.game.presentation
 
+import br.com.nbagames.core.error.CommonError
+
 data class LiveGameListUiState(
     val showLoading: Boolean = true,
     val showEmptyState: Boolean = false,

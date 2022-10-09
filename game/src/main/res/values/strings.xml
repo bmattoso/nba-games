@@ -3,8 +3,6 @@
     <string name="game_info">Game info</string>
     <string name="empty_live_games">It seems like there are no live games.\nSee the next games in the game\'s calendar section.</string>
     <string name="open_calendar">Open Calendar</string>
-    <string name="server_communication_failed">The connection with server is unstable, please try load information again.</string>
-    <string name="load_again">Load Again</string>
     <string name="countdown_timer_hint">Syncing in %1$s seconds</string>
     <string name="sync">Sync</string>
     <string name="countdown_timer_paused">Sync paused</string>

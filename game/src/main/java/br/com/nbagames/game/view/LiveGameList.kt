@@ -20,13 +20,13 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
+import br.com.nbagames.core.error.CommonError
 import br.com.nbagames.designsystem.components.CommunicationSection
 import br.com.nbagames.designsystem.components.appbar.HomeTopBarCenterAligned
 import br.com.nbagames.designsystem.components.loading.NbaProgressIndicator
 import br.com.nbagames.designsystem.theme.largePadding
 import br.com.nbagames.designsystem.theme.smallPadding
 import br.com.nbagames.game.R
-import br.com.nbagames.game.presentation.CommonError
 import br.com.nbagames.game.presentation.LiveGameViewModel
 import org.koin.androidx.compose.getViewModel
 

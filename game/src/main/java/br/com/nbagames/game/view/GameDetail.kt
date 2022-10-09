@@ -23,6 +23,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import br.com.nbagames.core.error.CommonError
 import br.com.nbagames.designsystem.components.CommunicationSection
 import br.com.nbagames.designsystem.components.appbar.DefaultTopBar
 import br.com.nbagames.designsystem.components.loading.NbaProgressIndicator
@@ -30,7 +31,6 @@ import br.com.nbagames.designsystem.theme.largePadding
 import br.com.nbagames.designsystem.theme.mediumPadding
 import br.com.nbagames.designsystem.theme.smallPadding
 import br.com.nbagames.game.R
-import br.com.nbagames.game.presentation.CommonError
 import br.com.nbagames.game.presentation.detail.GameDetailViewModel
 import org.koin.androidx.compose.getViewModel
 

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="load_again">Load Again</string>
+    <string name="unknown_error_message">Something weird happened, our dev team received this error and are working to fix it. Please, try load again.</string>
+    <string name="server_communication_failed">The connection with server is unstable, please try load information again.</string>
+</resources>

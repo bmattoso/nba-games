@@ -1,8 +1,8 @@
-package br.com.nbagames.game.presentation
+package br.com.nbagames.core.error
 
 import androidx.annotation.RawRes
 import androidx.annotation.StringRes
-import br.com.nbagames.game.R
+import br.com.nbagames.core.R
 
 enum class CommonError(
     @StringRes val message: Int,
