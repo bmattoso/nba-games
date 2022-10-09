@@ -5,5 +5,6 @@ data class Team(
     val name: String,
     val nickname: String,
     val logo: String,
+    val isFranchise: Boolean? = null,
     val color: String = "#FFFFFF"
 )
