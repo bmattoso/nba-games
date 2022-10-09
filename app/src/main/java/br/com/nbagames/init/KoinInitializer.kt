@@ -6,6 +6,7 @@ import androidx.startup.Initializer
 import br.com.nbagames.BuildConfig
 import br.com.nbagames.game.di.gamePresentationModule
 import br.com.nbagames.remote.di.NetworkModule.getNetworkModule
+import br.com.nbagames.team.di.teamPresentationModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.KoinApplication
 import org.koin.core.context.startKoin
@@ -22,6 +23,7 @@ class KoinInitializer : Initializer<KoinApplication> {
         )
         val allModules = mutableListOf(networkModule).apply {
             addAll(gamePresentationModule)
+            addAll(teamPresentationModule)
             add(
                 module {
                     factory<Locale> {

@@ -26,5 +26,4 @@ val gamePresentationModule: List<Module> = mutableListOf(
     }
 ).apply {
     addAll(liveGameUseCaseModule)
-    addAll(teamUseCaseModule) // TODO Extract to team Module
 }

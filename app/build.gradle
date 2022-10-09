@@ -54,7 +54,9 @@ android {
 
 dependencies {
     implementation project(":designsystem")
+    implementation project(":core")
     implementation project(":game")
+    implementation project(":team")
     implementation project(":remote")
 
     implementation "androidx.appcompat:appcompat:$androidx_compat"
