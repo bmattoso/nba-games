@@ -300,10 +300,9 @@ fun PlayerStatisticsRow(
             statistics.freeThrowsPercentage.toInt()
         ),
         stringResource(
-            id = R.string.player_stats_pattern,
+            id = R.string.rebounds_pattern,
             statistics.offensiveRebound,
-            statistics.defensiveRebounds,
-            statistics.totalRebounds
+            statistics.defensiveRebounds
         ),
         statistics.assists.toString(),
         statistics.steals.toString(),

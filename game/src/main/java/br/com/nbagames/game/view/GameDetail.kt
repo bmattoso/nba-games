@@ -51,7 +51,7 @@ fun GameDetail(
 
     Scaffold(topBar = {
         DefaultTopBar(
-            title = stringResource(id = R.string.game_details),
+            title = stringResource(id = R.string.game_info),
             showBackButton = true,
             onBackButtonClick = onBackPressed
         )

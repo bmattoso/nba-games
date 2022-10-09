@@ -4,7 +4,6 @@
     <string name="standings">Standings</string>
     <string name="calendar">Calendar</string>
     <string name="teams">Teams</string>
-    <string name="game_details">Game details</string>
     <string name="player_details">Player Details</string>
     <string name="team_details">Team Details</string>
 </resources>
