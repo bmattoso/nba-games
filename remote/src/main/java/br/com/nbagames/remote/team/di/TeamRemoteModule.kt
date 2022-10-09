@@ -7,5 +7,5 @@ import org.koin.dsl.module
 
 val teamRemoteModule = module {
     factory { TeamMapper() }
-    factory<TeamRemote> { TeamRemoteImpl(teamService = get(), teamMapper = get()) }
+    factory<TeamRemote> { TeamRemoteImpl(teamService = get(), teamMapper = get(), firebaseRealTimeDatabase = get()) }
 }
