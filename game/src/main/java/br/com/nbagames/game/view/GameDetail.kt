@@ -26,6 +26,7 @@ import androidx.compose.ui.unit.dp
 import br.com.nbagames.core.error.CommonError
 import br.com.nbagames.designsystem.components.CommunicationSection
 import br.com.nbagames.designsystem.components.appbar.DefaultTopBar
+import br.com.nbagames.designsystem.components.error.CommonErrorContent
 import br.com.nbagames.designsystem.components.loading.NbaProgressIndicator
 import br.com.nbagames.designsystem.theme.largePadding
 import br.com.nbagames.designsystem.theme.mediumPadding
@@ -68,7 +69,7 @@ fun GameDetail(
                     NbaProgressIndicator(modifier = Modifier.fillMaxSize())
                 }
                 if (uiState.error != null) {
-                    ErrorState(commonError = uiState.error) {
+                    CommonErrorContent(commonError = uiState.error) {
                         viewModel.loadGameDetails(gameId)
                     }
                 }
@@ -112,23 +113,6 @@ fun GameDetail(
                     }
                 }
             }
-        }
-    }
-}
-
-@Composable
-private fun ErrorState(
-    modifier: Modifier = Modifier,
-    commonError: CommonError,
-    onClickTryAgain: () -> Unit
-) {
-    CommunicationSection(
-        modifier = modifier,
-        message = commonError.message,
-        animationRes = commonError.animationRes
-    ) {
-        Button(onClick = onClickTryAgain) {
-            Text(text = stringResource(id = commonError.actionMessage))
         }
     }
 }
