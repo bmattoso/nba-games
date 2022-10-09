@@ -7,9 +7,12 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.material.Surface
 import androidx.compose.material.Switch
 import androidx.compose.material3.Button
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -18,6 +21,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import br.com.nbagames.designsystem.components.CommunicationSection
+import br.com.nbagames.designsystem.components.appbar.HomeTopBarCenterAligned
 import br.com.nbagames.designsystem.components.loading.NbaProgressIndicator
 import br.com.nbagames.designsystem.theme.largePadding
 import br.com.nbagames.designsystem.theme.smallPadding
@@ -26,6 +30,7 @@ import br.com.nbagames.game.presentation.CommonError
 import br.com.nbagames.game.presentation.LiveGameViewModel
 import org.koin.androidx.compose.getViewModel
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun LiveGameList(
     modifier: Modifier = Modifier,
@@ -35,34 +40,39 @@ fun LiveGameList(
 ) {
     val uiState = liveGameViewModel.uiState.collectAsState().value
 
-    with(uiState) {
-        when {
-            showLoading && liveGameList.isEmpty() -> NbaProgressIndicator(modifier = modifier)
-            showEmptyState -> LiveGameListEmptyState(
-                modifier = modifier.padding(largePadding),
-                onClickOpenCalendar = onClickOpenCalendar
-            )
-            showError && liveGameListError != null -> LiveGameListErrorState(
-                modifier = modifier.padding(largePadding),
-                liveGameListError = liveGameListError,
-                onClickTryAgain = { liveGameViewModel.loadLiveGameList() }
-            )
-            else ->
-                Column(modifier = modifier) {
-                    CountdownUpdate(
-                        modifier = Modifier.fillMaxWidth(),
-                        countdownTimer = countdownTimer,
-                        isCountdownAvailable = isCountdownAvailable,
-                        onToggleCountdown = liveGameViewModel::toggleCountdownTimer
+    Scaffold(topBar = {
+        HomeTopBarCenterAligned(
+            modifier = Modifier.background(MaterialTheme.colorScheme.primary),
+            title = stringResource(id = R.string.live_game_list)
+        )
+    }) { paddings ->
+        Surface(modifier = Modifier.padding(paddings)) {
+            with(uiState) {
+                when {
+                    showLoading && liveGameList.isEmpty() -> NbaProgressIndicator(modifier = modifier)
+                    showEmptyState -> LiveGameListEmptyState(
+                        modifier = modifier.padding(largePadding),
+                        onClickOpenCalendar = onClickOpenCalendar
                     )
-                    LiveGameListContent(
-                        liveGames = liveGameList,
-                        onLiveGameClick = { gameId ->
+                    showError && liveGameListError != null -> LiveGameListErrorState(
+                        modifier = modifier.padding(largePadding),
+                        liveGameListError = liveGameListError,
+                        onClickTryAgain = { liveGameViewModel.loadLiveGameList() }
+                    )
+                    else -> Column(modifier = modifier) {
+                        CountdownUpdate(
+                            modifier = Modifier.fillMaxWidth(),
+                            countdownTimer = countdownTimer,
+                            isCountdownAvailable = isCountdownAvailable,
+                            onToggleCountdown = liveGameViewModel::toggleCountdownTimer
+                        )
+                        LiveGameListContent(liveGames = liveGameList, onLiveGameClick = { gameId ->
                             liveGameViewModel.onGameClick()
                             onLiveGameClick(gameId)
-                        }
-                    )
+                        })
+                    }
                 }
+            }
         }
     }
 }
@@ -96,10 +106,7 @@ fun CountdownUpdate(
             style = MaterialTheme.typography.bodySmall
         )
         Spacer(modifier = Modifier.size(smallPadding))
-        Switch(
-            checked = isCountdownAvailable,
-            onCheckedChange = { onToggleCountdown() }
-        )
+        Switch(checked = isCountdownAvailable, onCheckedChange = { onToggleCountdown() })
     }
 }
 

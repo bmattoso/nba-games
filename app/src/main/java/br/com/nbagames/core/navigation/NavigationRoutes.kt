@@ -42,7 +42,8 @@ fun NavigationRoutes(
                 modifier = Modifier.fillMaxSize(),
                 gameId = gameId,
                 onPlayerClick = { playerId -> actions.onPlayerClick(playerId) },
-                onTeamClick = { teamId -> actions.onTeamClick(teamId) }
+                onTeamClick = { teamId -> actions.onTeamClick(teamId) },
+                onBackPressed = actions::onBackPressed
             )
         }
 
@@ -83,6 +84,11 @@ fun NavigationRoutes(
 }
 
 internal class NavigationDestination(private val navController: NavHostController) {
+
+    fun onBackPressed() {
+        navController.popBackStack()
+    }
+
     fun onSetupLoaded(onContentLoad: () -> Unit) {
         navController.navigate(HomeRoute.LiveGame.route) {
             popUpTo(Route.Splash.route) {

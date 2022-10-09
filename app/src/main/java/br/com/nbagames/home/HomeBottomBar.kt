@@ -29,7 +29,7 @@ fun HomeBottomBar(
                     icon = {
                         Icon(
                             painter = painterResource(homeTab.tabIcon),
-                            contentDescription = stringResource(id = currentTab.title),
+                            contentDescription = stringResource(id = homeTab.tabName),
                             modifier = Modifier.size(30.dp)
                         )
                     },

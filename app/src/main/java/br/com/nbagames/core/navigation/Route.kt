@@ -8,18 +8,18 @@ const val GAME_ID = "gameId"
 const val PLAYER_ID = "playerId"
 const val TEAM_ID = "teamId"
 
-sealed class Route(val route: String, @StringRes val title: Int = 0) {
+sealed class Route(val route: String) {
     object Splash : Route("splash")
-    object GameDetail : Route("game/{$GAME_ID}", R.string.game_details)
-    object PlayerDetail : Route("player/{$PLAYER_ID}", R.string.player_details)
-    object TeamDetail : Route("team/{$TEAM_ID}", R.string.team_details)
+    object GameDetail : Route("game/{$GAME_ID}")
+    object PlayerDetail : Route("player/{$PLAYER_ID}")
+    object TeamDetail : Route("team/{$TEAM_ID}")
 }
 
 sealed class HomeRoute(
     homeRoute: String,
     @StringRes val tabName: Int,
     @DrawableRes val tabIcon: Int
-) : Route(route = homeRoute, title = tabName) {
+) : Route(route = homeRoute) {
     object LiveGame : HomeRoute("liveGame", R.string.live_game_list, R.drawable.ic_ball)
     object Standings : HomeRoute("standings", R.string.standings, R.drawable.ic_standing)
     object Teams : HomeRoute("team", R.string.teams, R.drawable.ic_teams)

@@ -12,6 +12,8 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.Scaffold
+import androidx.compose.material.Surface
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -22,10 +24,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import br.com.nbagames.designsystem.components.CommunicationSection
+import br.com.nbagames.designsystem.components.appbar.DefaultTopBar
 import br.com.nbagames.designsystem.components.loading.NbaProgressIndicator
 import br.com.nbagames.designsystem.theme.largePadding
 import br.com.nbagames.designsystem.theme.mediumPadding
 import br.com.nbagames.designsystem.theme.smallPadding
+import br.com.nbagames.game.R
 import br.com.nbagames.game.presentation.CommonError
 import br.com.nbagames.game.presentation.detail.GameDetailViewModel
 import org.koin.androidx.compose.getViewModel
@@ -37,6 +41,7 @@ fun GameDetail(
     gameId: Int,
     onPlayerClick: (playerId: Int) -> Unit,
     onTeamClick: (teamId: Int) -> Unit,
+    onBackPressed: () -> Unit,
     viewModel: GameDetailViewModel = getViewModel()
 ) {
     val uiState = viewModel.uiState.collectAsState().value
@@ -44,57 +49,68 @@ fun GameDetail(
         viewModel.loadGameDetails(gameId)
     }
 
-    Column(
-        modifier = modifier
-            .padding(mediumPadding)
-            .verticalScroll(rememberScrollState()),
-        verticalArrangement = Arrangement.Center
-    ) {
-        if (uiState.showLoading) {
-            NbaProgressIndicator(modifier = Modifier.fillMaxSize())
-        }
-        if (uiState.error != null) {
-            ErrorState(commonError = uiState.error) {
-                viewModel.loadGameDetails(gameId)
-            }
-        }
-        if (uiState.game != null) {
-            GameCard(
-                game = uiState.game.toGamePresentation(),
-                modifier = Modifier
-                    .defaultMinSize(minHeight = 160.dp)
-                    .padding(top = smallPadding)
-            )
-            CompositionLocalProvider(LocalOverscrollConfiguration provides null) {
-                if (uiState.game.quarterScoreHistory != null) {
-                    Spacer(modifier = Modifier.size(mediumPadding))
-                    GameQuarterHistory(
-                        modifier = Modifier.fillMaxWidth(),
-                        homeTeamName = uiState.game.homeTeam.nickname,
-                        visitorTeamName = uiState.game.visitantTeam.nickname,
-                        quarterScoreHistory = uiState.game.quarterScoreHistory,
-                        currentQuarter = uiState.game.quarter,
-                        totalHomePoints = uiState.game.homePoints,
-                        totalVisitorPoints = uiState.game.visitantPoints,
-                        isGameFinished = uiState.game.isGameFinished
-                    )
-                    Spacer(modifier = Modifier.size(largePadding))
+    Scaffold(topBar = {
+        DefaultTopBar(
+            title = stringResource(id = R.string.game_details),
+            showBackButton = true,
+            onBackButtonClick = onBackPressed
+        )
+    }) { paddings ->
+        Surface(modifier = Modifier.padding(paddings)) {
+            Column(
+                modifier = modifier
+                    .fillMaxSize()
+                    .padding(mediumPadding)
+                    .verticalScroll(rememberScrollState()),
+                verticalArrangement = Arrangement.Center
+            ) {
+                if (uiState.showLoading) {
+                    NbaProgressIndicator(modifier = Modifier.fillMaxSize())
                 }
-                if (uiState.game.gameStatistics != null) {
-                    GameBoxScore(
-                        homeTeamName = uiState.game.homeTeam.name,
-                        visitorTeamName = uiState.game.visitantTeam.name,
-                        gameStatistics = uiState.game.gameStatistics,
-                        onPlayerClick = onPlayerClick
-                    )
+                if (uiState.error != null) {
+                    ErrorState(commonError = uiState.error) {
+                        viewModel.loadGameDetails(gameId)
+                    }
                 }
-            }
-            if (uiState.game.officials.isNotEmpty()) {
-                Spacer(modifier = Modifier.size(mediumPadding))
-                GameOfficials(
-                    modifier = Modifier.padding(bottom = smallPadding),
-                    officials = uiState.game.officials
-                )
+                if (uiState.game != null) {
+                    GameCard(
+                        game = uiState.game.toGamePresentation(),
+                        modifier = Modifier
+                            .defaultMinSize(minHeight = 160.dp)
+                            .padding(top = smallPadding)
+                    )
+                    CompositionLocalProvider(LocalOverscrollConfiguration provides null) {
+                        if (uiState.game.quarterScoreHistory != null) {
+                            Spacer(modifier = Modifier.size(mediumPadding))
+                            GameQuarterHistory(
+                                modifier = Modifier.fillMaxWidth(),
+                                homeTeamName = uiState.game.homeTeam.nickname,
+                                visitorTeamName = uiState.game.visitantTeam.nickname,
+                                quarterScoreHistory = uiState.game.quarterScoreHistory,
+                                currentQuarter = uiState.game.quarter,
+                                totalHomePoints = uiState.game.homePoints,
+                                totalVisitorPoints = uiState.game.visitantPoints,
+                                isGameFinished = uiState.game.isGameFinished
+                            )
+                            Spacer(modifier = Modifier.size(largePadding))
+                        }
+                        if (uiState.game.gameStatistics != null) {
+                            GameBoxScore(
+                                homeTeamName = uiState.game.homeTeam.name,
+                                visitorTeamName = uiState.game.visitantTeam.name,
+                                gameStatistics = uiState.game.gameStatistics,
+                                onPlayerClick = onPlayerClick
+                            )
+                        }
+                    }
+                    if (uiState.game.officials.isNotEmpty()) {
+                        Spacer(modifier = Modifier.size(mediumPadding))
+                        GameOfficials(
+                            modifier = Modifier.padding(bottom = smallPadding),
+                            officials = uiState.game.officials
+                        )
+                    }
+                }
             }
         }
     }
