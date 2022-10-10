@@ -7,4 +7,5 @@ object CustomColors {
     val blackOpacity20 = Color(0X20000000)
     val blackCurrant = Color(0XFF3F354B)
     val primary70 = Color(0X70714DA0)
+    val golden = Color(0XFFFFD700)
 }

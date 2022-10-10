@@ -14,7 +14,7 @@ import androidx.compose.material.IconButton
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.outlined.Star
+import androidx.compose.material.icons.sharp.Star
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
@@ -24,8 +24,10 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import br.com.nbagames.designsystem.color.CustomColors
 import br.com.nbagames.designsystem.components.loading.ImageLoader
 import br.com.nbagames.designsystem.theme.defaultElevation
+import br.com.nbagames.designsystem.theme.largePadding
 import br.com.nbagames.designsystem.theme.mediumPadding
 import br.com.nbagames.designsystem.theme.smallPadding
 import br.com.nbagames.model.Team
@@ -55,9 +57,9 @@ fun TeamCard(
                     onClick = { onTeamFavoriteClick(team.id) }
                 ) {
                     if (team.isFavorite) {
-                        Icon(Icons.Outlined.Star, "Favorite ${team.name}", tint = Color.Yellow)
+                        Icon(Icons.Sharp.Star, "Favorite ${team.name}", tint = CustomColors.golden)
                     } else {
-                        Icon(Icons.Outlined.Star, "Remove ${team.name} from favorites", tint = Color.Gray)
+                        Icon(Icons.Sharp.Star, "Remove ${team.name} from favorites", tint = Color.LightGray)
                     }
                 }
 
@@ -104,7 +106,7 @@ fun ColoredTeamCardPreview() {
         logo = "https://upload.wikimedia.org/wikipedia/fr/e/ee/Hawks_2016.png",
         isFavorite = false,
         isFranchise = true,
-        color = 556611
+        color = android.graphics.Color.parseColor("#A80017")
     )
 
     Surface(
@@ -112,6 +114,26 @@ fun ColoredTeamCardPreview() {
             .padding(smallPadding)
             .background(Color.LightGray)
     ) {
-        TeamCard(team = team, onTeamFavoriteClick = {}, onTeamClick = {})
+        TeamCard(modifier = Modifier.padding(largePadding), team = team, onTeamFavoriteClick = {}, onTeamClick = {})
+    }
+}
+
+@Preview
+@Composable
+fun FavoriteTeamCardPreview() {
+    val team = Team(
+        id = 1,
+        name = "Atlanta Hawks",
+        nickname = "Hawks",
+        logo = "https://upload.wikimedia.org/wikipedia/fr/e/ee/Hawks_2016.png",
+        isFavorite = true,
+        isFranchise = true,
+        color = android.graphics.Color.parseColor("#A80017")
+    )
+
+    Surface(
+        modifier = Modifier.background(Color.LightGray)
+    ) {
+        TeamCard(modifier = Modifier.padding(largePadding), team = team, onTeamFavoriteClick = {}, onTeamClick = {})
     }
 }
