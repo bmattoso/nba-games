@@ -45,7 +45,7 @@ fun TeamCard(
         Column(
             modifier = Modifier
                 .fillMaxWidth()
-                .background(color = Color(team.color)),
+                .background(color = Color(team.color))
         ) {
             Row(
                 modifier = Modifier.fillMaxWidth()
@@ -104,7 +104,7 @@ fun ColoredTeamCardPreview() {
         logo = "https://upload.wikimedia.org/wikipedia/fr/e/ee/Hawks_2016.png",
         isFavorite = false,
         isFranchise = true,
-        color = 556611,
+        color = 556611
     )
 
     Surface(

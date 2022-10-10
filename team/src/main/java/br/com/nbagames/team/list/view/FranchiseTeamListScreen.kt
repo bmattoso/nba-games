@@ -30,7 +30,8 @@ fun FranchiseTeamListScreen(
                 teams != null -> TeamList(
                     teams = teams,
                     onTeamClick = onTeamClick,
-                    onTeamFavoriteClick = { teamId -> teamListViewModel.favoriteTeam(teamId) })
+                    onTeamFavoriteClick = { teamId -> teamListViewModel.favoriteTeam(teamId) }
+                )
             }
         }
     }
