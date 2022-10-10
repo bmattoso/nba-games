@@ -44,9 +44,6 @@ android {
             buildConfigField("String", "BACKEND_BASE_URL", "\"https://api-nba-v1.p.rapidapi.com/\"")
         }
     }
-    kotlinOptions {
-        useIR = true
-    }
     lint {
         disable 'ObsoleteLintCustomCheck'
     }

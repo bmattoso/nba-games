@@ -30,4 +30,6 @@ ext {
     coroutine_version = '1.5.2'
     coroutine_test_version = '1.6.3'
     mockk = '1.13.1'
+    room_version = '2.4.3'
+    ksp_version = '1.7.10-1.0.6'
 }
