@@ -67,22 +67,14 @@ fun OfficialCard(
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        if (official.profilePictureUrl.isEmpty()) {
-            Image(
-                painter = painterResource(id = R.drawable.ic_user_black),
-                contentDescription = official.id,
-                modifier = Modifier.size(70.dp).clip(CircleShape)
-            )
-        } else {
-            ImageLoader(
-                imageUrl = official.profilePictureUrl,
-                contentDescription = official.id,
-                defaultContentResource = R.drawable.ic_user_black,
-                modifier = Modifier
-                    .size(70.dp)
-                    .clip(CircleShape)
-            )
-        }
+        ImageLoader(
+            imageUrl = official.profilePictureUrl,
+            contentDescription = official.id,
+            defaultContentResource = R.drawable.ic_user_black,
+            modifier = Modifier
+                .size(70.dp)
+                .clip(CircleShape)
+        )
         Text(
             modifier = Modifier.padding(mediumPadding),
             text = official.id,

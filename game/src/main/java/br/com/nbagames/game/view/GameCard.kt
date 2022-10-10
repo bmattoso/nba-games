@@ -13,7 +13,6 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.material.Card
 import androidx.compose.material.Surface
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -202,7 +201,6 @@ fun GameStatusDescription(
     }
 }
 
-@ExperimentalMaterial3Api
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {

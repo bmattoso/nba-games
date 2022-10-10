@@ -26,8 +26,11 @@ fun FranchiseTeamListScreen(
         with(uiState) {
             when {
                 showLoading -> NbaProgressIndicator(modifier = Modifier.fillMaxSize())
-                error != null -> CommonErrorContent(commonError = error) {}
-                teams != null -> TeamList(teams = teams, onTeamClick = onTeamClick)
+                error != null -> CommonErrorContent(commonError = error) { teamListViewModel.loadFranchiseTeams() }
+                teams != null -> TeamList(
+                    teams = teams,
+                    onTeamClick = onTeamClick,
+                    onTeamFavoriteClick = { teamId -> teamListViewModel.favoriteTeam(teamId) })
             }
         }
     }

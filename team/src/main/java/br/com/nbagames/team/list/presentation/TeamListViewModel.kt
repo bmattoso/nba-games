@@ -36,6 +36,9 @@ class TeamListViewModel(
         }
     }
 
+    fun favoriteTeam(teamId: Int) {
+    }
+
     private fun updateUiState(newState: TeamListUiState) {
         mutableUiState.value = newState
     }

@@ -9,7 +9,8 @@ class TeamMapper {
         id = teamResponse.id,
         name = teamResponse.name,
         nickname = teamResponse.code,
-        logo = teamResponse.logo
+        logo = teamResponse.logo,
+        isFranchise = teamResponse.isFranchise == true && teamResponse.isAllStar == false
     )
 
     fun mapTeamResponseList(teamsResponse: List<TeamResponse>): List<Team> {

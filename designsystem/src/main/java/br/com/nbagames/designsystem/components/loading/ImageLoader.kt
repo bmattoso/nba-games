@@ -15,16 +15,25 @@ fun ImageLoader(
     contentDescription: String,
     @DrawableRes defaultContentResource: Int
 ) {
-    val painter = rememberAsyncImagePainter(
-        model = imageUrl,
-        placeholder = painterResource(defaultContentResource),
-        fallback = painterResource(defaultContentResource)
-    )
+    if (!imageUrl.isNullOrBlank()) {
+        val painter = rememberAsyncImagePainter(
+            model = imageUrl,
+            placeholder = painterResource(defaultContentResource),
+            fallback = painterResource(defaultContentResource)
+        )
 
-    Image(
-        painter = painter,
-        contentDescription = contentDescription,
-        modifier = modifier,
-        contentScale = ContentScale.Fit
-    )
+        Image(
+            modifier = modifier,
+            painter = painter,
+            contentDescription = contentDescription,
+            contentScale = ContentScale.Fit
+        )
+    } else {
+        Image(
+            modifier = modifier,
+            painter = painterResource(id = defaultContentResource),
+            contentDescription = contentDescription,
+            contentScale = ContentScale.Fit
+        )
+    }
 }

@@ -10,7 +10,7 @@ class TeamRepositoryImpl(private val teamRemote: TeamRemote) : TeamRepository {
 
         return teams.map { team ->
             val teamColor = teamRemote.getTeamColor(team.id)
-            return@map if (!teamColor.isNullOrBlank()) team.copy(color = teamColor) else team
+            return@map if (teamColor != null) team.copy(color = teamColor) else team
         }
     }
 }

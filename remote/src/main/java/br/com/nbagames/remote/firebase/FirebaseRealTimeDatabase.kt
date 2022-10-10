@@ -13,6 +13,22 @@ class FirebaseRealTimeDatabase(
     val database: DatabaseReference
 ) {
 
+    suspend inline fun <reified T> getJsonNode(vararg keys: String): T? {
+        if (keys.isEmpty()) throw IllegalArgumentException()
+
+        try {
+            var currentNode = database.child(keys[0])
+            for (key in keys) {
+                currentNode = currentNode.child(key)
+            }
+            val dataSnapshot = withContext(IO) { currentNode.awaitGet() }
+            return dataSnapshot.getValue(T::class.java)
+        } catch (e: Exception) {
+            Log.e("FIRESTORE_ERROR", e.toString(), e)
+        }
+        return null
+    }
+
     suspend inline fun <reified T> getJsonNode(nodeKey: String, childKey: String): T? {
         try {
             val dataSnapshot = withContext(IO) { database.child(nodeKey).child(childKey).awaitGet() }
