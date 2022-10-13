@@ -8,6 +8,11 @@ import org.koin.dsl.module
 val teamRepositoryModule = listOf(
     teamRemoteModule,
     module {
-        factory<TeamRepository> { TeamRepositoryImpl(teamRemote = get()) }
+        factory<TeamRepository> {
+            TeamRepositoryImpl(
+                teamRemote = get(),
+                teamLocal = get()
+            )
+        }
     }
 )

@@ -55,6 +55,7 @@ dependencies {
     implementation project(":game")
     implementation project(":team")
     implementation project(":remote")
+    implementation project(":local")
 
     implementation "androidx.appcompat:appcompat:$androidx_compat"
     implementation "androidx.core:core-ktx:$core_ktx"

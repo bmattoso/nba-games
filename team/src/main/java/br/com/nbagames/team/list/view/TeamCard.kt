@@ -47,7 +47,7 @@ fun TeamCard(
         Column(
             modifier = Modifier
                 .fillMaxWidth()
-                .background(color = Color(team.color))
+                .background(color = team.color?.let { Color(it) } ?: Color.White)
         ) {
             Row(
                 modifier = Modifier.fillMaxWidth()
