@@ -8,6 +8,7 @@ buildscript {
     dependencies {
         classpath 'com.android.tools.build:gradle:7.2.1'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.7.10"
+        classpath("org.jetbrains.kotlinx:kover:0.6.1")
         classpath 'com.google.gms:google-services:4.3.13'
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
@@ -15,31 +16,36 @@ buildscript {
 }
 
 plugins {
-    id 'org.jetbrains.kotlinx.kover' version '0.5.0'
+    id 'org.jetbrains.kotlinx.kover' version '0.6.1'
 }
 
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
 
-tasks.koverMergedHtmlReport {
-    excludes = [
-            "**Response*",
-            "br.com.nbagames.model.**",
-            "**BuildConfig**"
-    ]
-}
-
-tasks.koverMergedXmlReport {
-    excludes = [
-            "**Response*",
-            "br.com.nbagames.model.**",
-            "**BuildConfig**"
-    ]
-}
-
 allprojects {
+    apply plugin: 'kover'
+
     tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
         kotlinOptions.freeCompilerArgs += ["-opt-in=kotlin.RequiresOptIn"]
+    }
+}
+
+koverMerged {
+    enable()
+
+    filters {
+        classes {
+            excludes.addAll(
+                    "**Response*",
+                    "br.com.nbagames.model.**",
+                    "**BuildConfig**",
+                    "**\$**",
+                    "**Entity**",
+            )
+        }
+        annotations {
+            excludes.addAll("androidx.compose.runtime.Composable")
+        }
     }
 }
