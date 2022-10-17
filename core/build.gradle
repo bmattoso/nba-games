@@ -3,3 +3,7 @@ apply from: rootProject.file("unit_test.gradle")
 
 dependencies {
 }
+
+android {
+    namespace 'br.com.nbagames.core'
+}

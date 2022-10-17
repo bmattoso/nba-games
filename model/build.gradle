@@ -1,1 +1,5 @@
 apply from: rootProject.file("android_dependencies.gradle")
+
+android {
+    namespace 'br.com.nbagames.model'
+}

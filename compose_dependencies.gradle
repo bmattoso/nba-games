@@ -1,11 +1,9 @@
-apply from: rootProject.file("dependencies_versions.gradle")
-
 android {
     buildFeatures {
-        compose true
+        compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion compose_compiler
+        kotlinCompilerExtensionVersion = libs.versions.composecompiler.get()
     }
     packagingOptions {
         exclude "**/attach_hotspot_windows.dll"
@@ -16,20 +14,20 @@ android {
 }
 
 dependencies {
-    implementation "androidx.activity:activity-compose:$compose_activity"
-    implementation "androidx.compose.material:material:$compose_version"
-    implementation "androidx.compose.material3:material3:$google_material_3"
-    implementation "androidx.compose.ui:ui:$compose_version"
-    implementation "androidx.compose.ui:ui-tooling:$compose_version"
-    implementation "androidx.lifecycle:lifecycle-viewmodel-compose:$compose_viewmodel"
-    implementation "com.google.android.material:material:$google_material"
-    implementation "io.insert-koin:koin-androidx-compose:$koin_version"
-    implementation "com.google.accompanist:accompanist-pager:$accompanist"
-    implementation "com.google.accompanist:accompanist-pager-indicators:$accompanist"
+    implementation(libs.androidx.activity.compose)
+    implementation(libs.compose.material.material)
+    implementation(libs.compose.material.material.dynamic)
+    implementation(libs.google.material)
+    implementation(libs.compose.ui.ui)
+    implementation(libs.compose.ui.tooling)
+    implementation(libs.androidx.lifecycle.viewmodel.compose)
+    implementation(libs.koin)
+    implementation(libs.accompanist.pager.pager)
+    implementation(libs.accompanist.pager.indicators)
 
-    debugImplementation("androidx.compose.ui:ui-test-manifest:$compose_version")
-    debugImplementation("androidx.customview:customview-poolingcontainer:$compose_custom_view")
+    debugImplementation(libs.androidx.compose.ui.manifest)
+    debugImplementation(libs.androidx.customview)
 
-    androidTestImplementation "androidx.test.ext:junit:$androidx_junit_ext"
-    androidTestImplementation "androidx.compose.ui:ui-test-junit4:$compose_version"
+    androidTestImplementation(libs.androidx.test.junit)
+    androidTestImplementation(libs.compose.ui.test)
 }

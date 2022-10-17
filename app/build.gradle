@@ -47,6 +47,7 @@ android {
     lint {
         disable 'ObsoleteLintCustomCheck'
     }
+    namespace 'br.com.nbagames'
 }
 
 dependencies {

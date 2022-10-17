@@ -5,3 +5,7 @@ dependencies {
     implementation project(":designsystem")
     implementation project(":model")
 }
+
+android {
+    namespace 'br.com.nbagames.calendar'
+}

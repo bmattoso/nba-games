@@ -8,3 +8,7 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutine_version")
     testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutine_test_version")
 }
+
+android {
+    namespace 'br.com.nbagames.repository'
+}

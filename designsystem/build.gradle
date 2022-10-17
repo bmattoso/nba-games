@@ -11,3 +11,7 @@ dependencies {
 
     implementation "com.google.accompanist:accompanist-systemuicontroller:$accompanist"
 }
+
+android {
+    namespace 'br.com.nbagames.designsystem'
+}

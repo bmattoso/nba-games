@@ -8,3 +8,7 @@ dependencies {
     implementation project(":usecase")
     implementation project(":core")
 }
+
+android {
+    namespace 'br.com.nbagames.game'
+}
