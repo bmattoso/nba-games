@@ -17,16 +17,18 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "nbagames"
-rootProject.buildFileName = "build.gradle"
+rootProject.buildFileName = "build.gradle.kts"
 
-include(":app")
-include(":designsystem")
-include(":game")
-include(":model")
-include(":usecase")
-include(":calendar")
-include(":repository")
-include(":remote")
-include(":local")
-include(":core")
-include(":team")
+include(
+    ":app",
+    ":model",
+    ":core",
+    ":designsystem",
+    ":game",
+    ":usecase",
+    ":calendar",
+    ":repository",
+    ":remote",
+    ":local",
+    ":team"
+)
